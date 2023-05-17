@@ -1,0 +1,96 @@
+<template>
+  <!-- Header -->
+  <div>
+    <nav
+      class="navbar navbar-expand-lg fixed-top py-3 backdrop"
+      data-navbar-on-scroll="data-navbar-on-scroll"
+    >
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold fs-2" href="#">
+          <img
+            class="d-inline-block align-top img-fluid"
+            src="assets/img/gallery/logo-icon.png"
+            alt=""
+            width="50"
+          /><span class="text-primary fs-4 ps-2">Trip</span></a
+        >
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#main">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link text-600" href="#Korea-trip">국내여행</a></li>
+            <li class="nav-item"><a class="nav-link text-600" href="#search">지역찾기</a></li>
+
+            <li v-show="!isLogin" class="nav-item">
+              <a class="nav-link text-600 regist-btn" id="regist-btn">회원가입</a>
+            </li>
+            <button
+              v-show="!isLogin"
+              class="btn btn-lg btn-outline-primary order-0"
+              type="submit"
+              id="signup-btn"
+              @click="showloginModal"
+            >
+              Sign In
+            </button>
+
+            <li class="nav-item" v-show="isLogin">
+              <a class="nav-link text-600" id="regist-btn" href="userInfo.html">회원정보</a>
+            </li>
+            <li class="nav-item" v-show="isLogin">
+              <a class="nav-link text-600" id="logout">로그아웃</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <login-modal v-on:call-parent-login="closeAfterlogin"></login-modal>
+  </div>
+
+  <!-- Close Header -->
+</template>
+
+<script>
+import LoginModal from "./modal/LoginModal.vue";
+
+import { Modal } from "bootstrap";
+
+export default {
+  // 로그인 했는지 확인필요
+  props: ["isLogin"],
+
+  components: { LoginModal },
+  data() {
+    return {
+      loginModal: null,
+    };
+  },
+  methods: {
+    showloginModal() {
+      this.loginModal.show();
+    },
+    closeAfterlogin() {
+      this.loginModal.hide();
+    },
+  },
+
+  mounted() {
+    this.loginModal = new Modal(document.querySelector("loginModal"));
+  },
+};
+</script>
+
+<style scoped></style>

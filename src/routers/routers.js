@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import BoardMain from "@/components/BoardMain.vue";
-import LoginPage from "@/components/LoginPage.vue";
 import MainPage from "@/components/MainPage.vue";
 import MapPage from "@/components/MapPage.vue";
 import UserInfo from "@/components/UserInfo.vue";
@@ -29,11 +28,6 @@ export default new VueRouter({
           return next();
         }
       },
-    },
-    {
-      name: "LoginPage",
-      path: "/login",
-      component: LoginPage,
     },
     {
       name: "MapPage",
