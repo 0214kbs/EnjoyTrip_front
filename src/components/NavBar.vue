@@ -47,7 +47,7 @@
             </button>
 
             <li class="nav-item" v-show="isLogin">
-              <a class="nav-link text-600" id="regist-btn" href="userInfo.html">회원정보</a>
+              <router-link to="/userinfo" class="nav-link text-600">회원정보</router-link>
             </li>
             <li class="nav-item" v-show="isLogin">
               <a class="nav-link text-600" id="logout">로그아웃</a>
@@ -72,9 +72,12 @@ export default {
   // 로그인 했는지 확인필요
   props: ["isLogin"],
 
-  components: { LoginModal },
+  components: {
+    LoginModal,
+  },
   data() {
     return {
+      // modal
       loginModal: null,
     };
   },
@@ -88,7 +91,7 @@ export default {
   },
 
   mounted() {
-    this.loginModal = new Modal(document.querySelector("loginModal"));
+    this.loginModal = new Modal(document.querySelector("#loginModal"));
   },
 };
 </script>
