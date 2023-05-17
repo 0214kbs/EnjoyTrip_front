@@ -31,11 +31,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\서울.jpg"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/서울.jpg" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">Seoul</h3>
@@ -49,11 +45,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\부산.jpg"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/부산.jpg" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">Busan</h3>
@@ -67,11 +59,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\jeju.jpg"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/jeju.jpg" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">Jeju</h3>
@@ -85,11 +73,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\가평.png"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/가평.png" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">Gapyeong</h3>
@@ -103,11 +87,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\경주.jpg"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/경주.jpg" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">Gyeongju</h3>
@@ -121,11 +101,7 @@
           <!-- Start Recent Work -->
           <div class="col-md-4 mb-3">
             <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-              <img
-                class="recent-work-img card-img"
-                src="C:\Users\SSAFY\Desktop\enjoy_trip2\enjoy_trip2\src\assets\img\서울.jpg"
-                alt="Card image"
-              />
+              <img class="recent-work-img card-img" src="@/assets/img/서울.jpg" alt="Card image" />
               <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
                 <div class="recent-work-content text-start mb-3 ml-3 text-dark">
                   <h3 class="card-title light-300">hi</h3>
