@@ -6,13 +6,13 @@
       data-navbar-on-scroll="data-navbar-on-scroll"
     >
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center fw-bold fs-2" href="#">
+        <router-link to="/" class="navbar-brand d-flex align-items-center fw-bold fs-2">
           <img
             class="d-inline-block align-top img-fluid"
             src="@/assets/img/gallery/logo-icon.png"
             alt=""
             width="50"
-          /><span class="text-primary fs-4 ps-2">Trip</span></a
+          /><span class="text-primary fs-4 ps-2">Trip</span></router-link
         >
         <button
           class="navbar-toggler collapsed"
