@@ -63,7 +63,7 @@ export default {
 
 <style>
 #map {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 400px;
 }
 </style>
