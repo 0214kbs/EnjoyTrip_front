@@ -32,7 +32,8 @@ export default {
     loadScript() {
       const script = document.createElement("script");
       // 해당 앱키의 값은 추후 변경해야할것(현재 테스트용으로 개인키 입력)
-      script.src = "//dapi.kakao.com/v2/maps/sdk.js?appkey=95bee30736d3ca3d735d6211401c9238&autoload=false";
+      script.src =
+        "//dapi.kakao.com/v2/maps/sdk.js?appkey=95bee30736d3ca3d735d6211401c9238&autoload=false";
       script.onload = () => window.kakao.maps.load(this.loadMap);
 
       document.head.appendChild(script);

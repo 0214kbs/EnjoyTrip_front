@@ -3,7 +3,7 @@
     <!-- Start Banner Hero -->
 	<section class="py-0" id="main">
 		<div class="bg-holder d-none d-md-block"
-			style="background-image: url(./assets/img/illustrations/hero.png); background-position: right bottom; background-size: contain;">
+			style="background-image: url(./assets/img/fron.jpg); background-position: right bottom; background-size: contain;">
 		</div>
 		<!--/.bg-holder-->
 
