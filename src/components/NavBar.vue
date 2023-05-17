@@ -30,23 +30,29 @@
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#main">Home</a>
             </li>
-            <li class="nav-item"><a class="nav-link text-600" href="#Korea-trip">국내여행</a></li>
-            <li class="nav-item"><a class="nav-link text-600" href="#search">지역찾기</a></li>
-
-            <li v-show="!isLogin" class="nav-item">
-              <a class="nav-link text-600 regist-btn" id="regist-btn" @click="showregistmodal"
-                >회원가입</a
+            <li class="nav-item">
+              <router-link to="/" class="nav-link text-600" href="#Korea-trip"
+                >국내여행</router-link
               >
             </li>
-            <button
-              v-show="!isLogin"
-              class="btn btn-lg btn-outline-primary order-0"
-              type="submit"
-              id="signup-btn"
-              @click="showloginModal"
-            >
-              Sign In
-            </button>
+            <li class="nav-item">
+              <router-link to="/map" class="nav-link text-600">지역찾기</router-link>
+            </li>
+
+            <li v-show="!isLogin" class="nav-item">
+              <a class="nav-link text-600" @click="showregistmodal">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <button
+                v-show="!isLogin"
+                class="btn btn-lg btn-outline-primary order-0"
+                type="submit"
+                id="signup-btn"
+                @click="showloginModal"
+              >
+                Sign In
+              </button>
+            </li>
 
             <li class="nav-item" v-show="isLogin">
               <router-link to="/userinfo" class="nav-link text-600">회원정보</router-link>

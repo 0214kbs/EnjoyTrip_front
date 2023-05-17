@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 //import BoardMain from "@/components/BoardMain.vue";
 import MainPage from "@/components/MainPage.vue";
 import MapPage from "@/components/MapPage.vue";
-//import UserInfo from "@/components/UserInfo.vue";
+import UserInfoPage from "@/components/UserInfoPage.vue";
 //import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({
@@ -20,6 +20,11 @@ export default new VueRouter({
       path: "/map",
       component: MapPage,
     },
+    {
+      name: "UserInfoPage",
+      path: '/userinfo',
+      component: UserInfoPage
+    }
   ],
 });
 
