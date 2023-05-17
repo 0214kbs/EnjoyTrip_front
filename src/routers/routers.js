@@ -26,14 +26,14 @@ export default new VueRouter({
       path: "/board",
       component: BoardMain,
       // login 여부에 따라..
-      beforeEnter: (to, from, next) => {
-        console.log(store.state.login.isLogin);
-        if (!store.state.login.isLogin) {
-          next("/");
-        } else {
-          return next();
-        }
-      },
+      // beforeEnter: (to, from, next) => {
+      //   console.log(store.state.login.isLogin);
+      //   if (!store.state.login.isLogin) {
+      //     next("/");
+      //   } else {
+      //     return next();
+      //   }
+      // },
     },
     {
       name: "MapPage",
