@@ -58,12 +58,11 @@ export default {
   },
 
   methods: {
-    login() {
+    async login() {
       this.$emit("call-parent-loginSuccess", {
         userId: this.userId,
         userPwd: this.userPwd,
       });
-      this.$router.push("/");
     },
     close() {
       var signupModal = document.querySelector("#signup-modal");

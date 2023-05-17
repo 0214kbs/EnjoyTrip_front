@@ -5,12 +5,11 @@
       v-on:call-parent-registmodal="showregistmodal"
     ></nav-bar>
     <router-view v-on:call-parent-loginSuccess="loginSuccess"></router-view>
-    <main-page></main-page>
   </div>
 </template>
 
 <script>
-import MainPage from "./components/MainPage.vue";
+//import MainPage from "./components/MainPage.vue";
 import NavBar from "./components/NavBar.vue";
 
 export default {
@@ -23,7 +22,7 @@ export default {
 
   components: {
     NavBar,
-    MainPage, //NavBar: NavBar
+    //MainPage, //NavBar: NavBar
   },
   methods: {
     showloginmodal() {
@@ -35,6 +34,7 @@ export default {
       registModal.style.display = "block";
     },
     loginSuccess(userInfo) {
+      alert("로그인이용");
       this.isLogin = true;
       this.userInfo = userInfo;
     },
