@@ -29,6 +29,18 @@ export default {
     },
   },
 };
+// <link
+// 	href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+// 	rel="stylesheet">
+// <!-- Custom CSS -->
 </script>
 
-<style></style>
+<style>
+@import "./assets/css/theme.css";
+@import "@/assets/css/boxicon.min.css";
+@import "@/assets/css/templatemo.css";
+@import "@/assets/css/custom.css";
+@import "@/assets/css/modal.css";
+@import "@/vendors/plyr/plyr.css";
+@import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap";
+</style>
