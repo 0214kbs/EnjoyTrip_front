@@ -3,7 +3,7 @@
   <div class="signup-modal" id="signup-modal">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto modal-content">
-        <span class="close">&times;</span>
+        <span class="close" @click="close">&times;</span>
         <form novalidate>
           <div class="mb-3">
             <label for="userId" class="form-label">User Id :</label>
@@ -64,6 +64,10 @@ export default {
         userPwd: this.userPwd,
       });
       this.$router.push("/");
+    },
+    close() {
+      var signupModal = document.querySelector("#signup-modal");
+      signupModal.style.display = "none";
     },
     // async login() {
     //   // axios 비동기 통신

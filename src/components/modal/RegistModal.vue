@@ -3,7 +3,7 @@
   <div class="regist-modal" id="regist-modal">
     <div class="input-form-backgroud row">
       <div class="input-form col-md-12 mx-auto modal-content">
-        <span class="close2">&times;</span>
+        <span class="close2" @click="close">&times;</span>
         <h4 class="mb-3">회원가입</h4>
         <form novalidate class="validation-form">
           <div class="mb-3">
@@ -107,7 +107,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    close() {
+      var registModal = document.querySelector("#regist-modal");
+      registModal.style.display = "none";
+    },
+  },
+};
 </script>
 
 <style scope></style>

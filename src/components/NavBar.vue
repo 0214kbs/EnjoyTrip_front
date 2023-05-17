@@ -9,7 +9,7 @@
         <a class="navbar-brand d-flex align-items-center fw-bold fs-2" href="#">
           <img
             class="d-inline-block align-top img-fluid"
-            src="assets/img/gallery/logo-icon.png"
+            src="@/assets/img/gallery/logo-icon.png"
             alt=""
             width="50"
           /><span class="text-primary fs-4 ps-2">Trip</span></a
@@ -34,7 +34,9 @@
             <li class="nav-item"><a class="nav-link text-600" href="#search">지역찾기</a></li>
 
             <li v-show="!isLogin" class="nav-item">
-              <a class="nav-link text-600 regist-btn" id="regist-btn">회원가입</a>
+              <a class="nav-link text-600 regist-btn" id="regist-btn" @click="showregistmodal"
+                >회원가입</a
+              >
             </li>
             <button
               v-show="!isLogin"
@@ -56,25 +58,17 @@
         </div>
       </div>
     </nav>
-
-    <login-modal v-on:call-parent-login="closeAfterlogin"></login-modal>
   </div>
 
   <!-- Close Header -->
 </template>
 
 <script>
-import LoginModal from "./modal/LoginModal.vue";
-
-import { Modal } from "bootstrap";
-
 export default {
   // 로그인 했는지 확인필요
   props: ["isLogin"],
 
-  components: {
-    LoginModal,
-  },
+  components: [],
   data() {
     return {
       // modal
@@ -83,15 +77,11 @@ export default {
   },
   methods: {
     showloginModal() {
-      this.loginModal.show();
+      this.$emit("call-parent-loginmodal");
     },
-    closeAfterlogin() {
-      this.loginModal.hide();
+    showregistmodal() {
+      this.$emit("call-parent-registmodal");
     },
-  },
-
-  mounted() {
-    this.loginModal = new Modal(document.querySelector("#loginModal"));
   },
 };
 </script>

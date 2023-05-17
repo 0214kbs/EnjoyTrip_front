@@ -1,6 +1,9 @@
 <template>
   <div>
-    <nav-bar></nav-bar>
+    <nav-bar
+      v-on:call-parent-loginmodal="showloginmodal"
+      v-on:call-parent-registmodal="showregistmodal"
+    ></nav-bar>
     <router-view v-on:call-parent-loginSuccess="loginSuccess"></router-view>
     <main-page></main-page>
   </div>
@@ -23,6 +26,14 @@ export default {
     MainPage, //NavBar: NavBar
   },
   methods: {
+    showloginmodal() {
+      var signupModal = document.querySelector("#signup-modal");
+      signupModal.style.display = "block";
+    },
+    showregistmodal() {
+      var registModal = document.querySelector("#regist-modal");
+      registModal.style.display = "block";
+    },
     loginSuccess(userInfo) {
       this.isLogin = true;
       this.userInfo = userInfo;

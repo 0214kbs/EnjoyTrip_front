@@ -3,7 +3,7 @@
     <!-- Start Banner Hero -->
 	<section class="py-0" id="main">
 		<div class="bg-holder d-none d-md-block"
-			style="background-image: url(assets/img/illustrations/hero.png); background-position: right bottom; background-size: contain;">
+			style="background-image: url(./assets/img/illustrations/hero.png); background-position: right bottom; background-size: contain;">
 		</div>
 		<!--/.bg-holder-->
 
@@ -27,14 +27,19 @@
 	</section>
 	<!-- End Banner Hero -->
     <korea-trip></korea-trip>
+	<login-modal></login-modal>
+	<regist-modal></regist-modal>
+	
 </div>
 </template>
 
 <script>
 import KoreaTrip from "./KoreaTrip.vue"
+import LoginModal from "./modal/LoginModal.vue"
+import RegistModal from "./modal/RegistModal.vue"
 
 export default {
-    components: { KoreaTrip }
+    components: { KoreaTrip, LoginModal, RegistModal }
 }
 
 </script>
