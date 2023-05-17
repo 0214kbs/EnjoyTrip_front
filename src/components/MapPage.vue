@@ -23,7 +23,9 @@
       </form>
 
       <!-- kakao map start -->
-      <div id="map"></div>
+      <MapKakao :latitude="37.39843974939604" :longitude="127.10972941510465" />
+      <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
+
       <!-- kakao map end -->
 
       <!-- 관광지 table -->
@@ -34,7 +36,11 @@
 </template>
 
 <script>
+import MapKakao from "@/components/MapKakao.vue";
 export default {
+  components: {
+    MapKakao,
+  },
   mounted() {
     this.initialize();
   },
@@ -229,69 +235,22 @@ export default {
       // 테이블을 HTML에 삽입
       tableContainer.appendChild(table);
     },
-  },
-  makeList(data) {
-    const trips = data.response.body.items.item;
-    const positions = [];
-    trips.forEach((area) => {
-      const markerInfo = {
-        title: area.title,
-        latlng: new kakao.maps.LatLng(area.mapy, area.mapx),
-      };
-      positions.push(markerInfo);
-    });
-    this.positions = positions;
-    this.displayMarker();
-  },
-  makeTable(itemList) {
-    const tableContainer = document.getElementById("table-container");
-    const existingTable = tableContainer.querySelector("table");
-    if (existingTable) {
-      existingTable.remove();
-    }
+    displayMarker() {
+      const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+      const imageSize = new kakao.maps.Size(24, 35);
 
-    const table = document.createElement("table");
-    table.classList.add("table", "table-striped", "table-hover");
-    const headerRow = table.insertRow();
-    headerRow.classList.add("table-dark");
-    headerRow.insertCell().textContent = "번호";
-    headerRow.insertCell().textContent = "관광지";
-    headerRow.insertCell().textContent = "주소";
-
-    for (let i = 0; i < itemList.length; i++) {
-      const item = itemList[i];
-      const row = table.insertRow();
-      row.setAttribute("data-x", item.mapx);
-      row.setAttribute("data-y", item.mapy);
-      row.insertCell().textContent = i + 1;
-      row.insertCell().textContent = item.title;
-      row.insertCell().textContent = item.addr1;
-
-      row.addEventListener("click", () => {
-        const x = row.getAttribute("data-x");
-        const y = row.getAttribute("data-y");
-        const moveLatLon = new kakao.maps.LatLng(y, x);
-        this.map.panTo(moveLatLon);
+      this.positions.forEach((position) => {
+        const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+        const marker = new kakao.maps.Marker({
+          map: this.map,
+          position: position.latlng,
+          title: position.title,
+          image: markerImage,
+        });
       });
-    }
 
-    tableContainer.appendChild(table);
-  },
-  displayMarker() {
-    const imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-    const imageSize = new kakao.maps.Size(24, 35);
-
-    this.positions.forEach((position) => {
-      const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-      const marker = new kakao.maps.Marker({
-        map: this.map,
-        position: position.latlng,
-        title: position.title,
-        image: markerImage,
-      });
-    });
-
-    this.map.setCenter(this.positions[0].latlng);
+      this.map.setCenter(this.positions[0].latlng);
+    },
   },
 };
 </script>
