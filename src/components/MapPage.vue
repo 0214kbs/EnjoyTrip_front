@@ -40,13 +40,25 @@
 import MapKakao from "@/components/MapKakao.vue";
 
 export default {
+  sigunguCode,
   components: {
     MapKakao,
   },
   mounted() {
     this.initialize();
   },
-  methods: {},
+  methods: {
+    async initialize() {
+      // await getArea1List();
+      // await getCat1List();
+
+      document.querySelector("#btnSearch").onclick = function () {
+        sigunguCode = document.querySelector("#area2List").value;
+        cat3 = document.querySelector("#cat3List").value;
+        getList();
+      };
+    },
+  },
 };
 </script>
 
