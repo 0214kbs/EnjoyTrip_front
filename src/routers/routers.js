@@ -6,7 +6,8 @@ Vue.use(VueRouter);
 import BoardMain from "@/components/BoardMain.vue";
 import MainPage from "@/components/MainPage.vue";
 import MapPage from "@/components/MapPage.vue";
-import UserInfo from "@/components/UserInfo.vue";
+import UserInfoPage from "@/components/UserInfoPage.vue";
+import RegistModal from "@/components/modal/RegistModal.vue"
 //import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({
@@ -16,6 +17,11 @@ export default new VueRouter({
       component: MainPage,
     },
     {
+      name:"RegistModal",
+      path: "/regist",
+      component: RegistModal,
+    },
+    {
       name: "BoardMain",
       path: "/board",
       component: BoardMain,
@@ -23,7 +29,7 @@ export default new VueRouter({
       beforeEnter: (to, from, next) => {
         console.log(store.state.login.isLogin);
         if (!store.state.login.isLogin) {
-          next("/login");
+          next("/");
         } else {
           return next();
         }
@@ -35,9 +41,9 @@ export default new VueRouter({
       component: MapPage,
     },
     {
-      name: "UserInfo",
+      name: "UserInfoPage",
       path: "/userinfo",
-      component: UserInfo,
+      component: UserInfoPage,
     },
   ],
 });

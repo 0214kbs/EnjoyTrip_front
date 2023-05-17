@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar v-bind:isLogin="isLogin" v-bind:userInfo="userInfo" />
+    <nav-bar></nav-bar>
     <router-view v-on:call-parent-loginSuccess="loginSuccess"></router-view>
     <main-page></main-page>
   </div>
