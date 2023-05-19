@@ -29,18 +29,15 @@
     </section>
     <!-- End Banner Hero -->
     <korea-trip></korea-trip>
-    <login-modal></login-modal>
-    <regist-modal></regist-modal>
+    <video-page></video-page>
   </div>
 </template>
 
 <script>
+import VideoPage from "./VideoPage.vue";
 import KoreaTrip from "./KoreaTrip.vue";
-import LoginModal from "./modal/LoginModal.vue";
-import RegistModal from "./modal/RegistModal.vue";
-
 export default {
-  components: { KoreaTrip, LoginModal, RegistModal },
+  components: { KoreaTrip, VideoPage },
 };
 </script>
 

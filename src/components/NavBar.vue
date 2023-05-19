@@ -40,18 +40,19 @@
             </li>
 
             <li v-show="!isLogin" class="nav-item">
-              <a class="nav-link text-600" @click="showregistmodal">회원가입</a>
+              <router-link to="/regist" class="nav-link text-600">회원가입</router-link>
             </li>
             <li class="nav-item">
-              <button
-                v-show="!isLogin"
-                class="btn btn-lg btn-outline-primary order-0"
-                type="submit"
-                id="signup-btn"
-                @click="showloginModal"
-              >
-                Sign In
-              </button>
+              <router-link to="/login">
+                <button
+                  v-show="!isLogin"
+                  class="btn btn-lg btn-outline-primary order-0"
+                  type="submit"
+                  id="signup-btn"
+                >
+                  Sign In
+                </button>
+              </router-link>
             </li>
 
             <li class="nav-item" v-show="isLogin">

@@ -4,6 +4,8 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 //import BoardMain from "@/components/BoardMain.vue";
+import RegistModal from "@/components/modal/RegistModal";
+import LoginModal from "@/components/modal/LoginModal.vue";
 import MainPage from "@/components/MainPage.vue";
 import MapPage from "@/components/MapPage.vue";
 import UserInfoPage from "@/components/UserInfoPage.vue";
@@ -14,6 +16,14 @@ export default new VueRouter({
     {
       path: "/",
       component: MainPage,
+    },
+    {
+      path: "/login",
+      component: LoginModal,
+    },
+    {
+      path: "/regist",
+      component: RegistModal,
     },
     {
       name: "MapPage",

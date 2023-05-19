@@ -1,0 +1,55 @@
+body {
+  background-color: #eef0f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#Button {
+  height: 400px;
+  width: 400px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all ease-out 1s;
+}
+#Button:focus {
+  /*outline: 2px solid #9ca3cb;
+  */
+}
+#Button:hover {
+  transform: scale(1.05);
+}
+#Button::-moz-focus-inner {
+  border: 0;
+}
+#Button svg {
+  outline: none;
+}
+
+.Button__text {
+  fill: #6b7190;
+}
+
+.screenreader-only {
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+#bgBlobEnd, #frontBlobEnd, .circle {
+  visibility: hidden;
+}
+
+.circle {
+  fill: white;
+  stroke: white;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.frontBlob {
+  fill: #fffff8;
+}/*# sourceMappingURL=style.css.map */
