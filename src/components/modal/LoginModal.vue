@@ -33,7 +33,7 @@
                     id="userPwd"
                     value="1234"
                     placeholder="Password"
-                    v-model="userPwd"
+                    v-model="userPassword"
                   />
                 </div>
 
@@ -41,10 +41,10 @@
                   <input
                     @click="login"
                     type="submit"
+                    value="Register"
                     name="signin"
                     id="signin"
                     class="form-submit"
-                    value="Log in"
                   />
                 </div>
               </form>
@@ -82,30 +82,32 @@ export default {
   data() {
     return {
       userId: "",
-      userPwd: "",
+      userPassword: "",
     };
   },
 
   methods: {
     async login() {
       // axios 비동기 통신
+      console.log("메롱");
       try {
         let response = await http.post("/login", {
-          id: this.userId,
-          pwd: this.userPwd,
+          userId: this.userId,
+          userPassword: this.userPassword,
         });
+
         let { data } = response;
         console.log(data);
         if (data.result == "success") {
           this.$emit("call-parent-loginSuccess", {
-            userName: data.name,
-            userId: data.id,
-            userEmail: data.email,
-            userAdd: data.address,
+            userName: data.userName,
+            userId: data.userId,
+            userEmail: data.userEmail,
+            userAddress: data.userAddress,
             // userProfileImageUrl: data.userProfileImageUrl,
           });
           // main 이동
-          this.$router.push("/");
+          this.$router.push("/main");
         } else if (data.result == "fail") {
           this.$alertify.error("이메일 또는 비밀번호가 올바르지 않습니다.");
         }
