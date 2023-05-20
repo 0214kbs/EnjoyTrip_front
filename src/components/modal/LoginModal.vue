@@ -11,7 +11,6 @@
 
             <div class="signin-form">
               <h2 class="form-title">Sign up</h2>
-              <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
                   <label for="your_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -47,7 +46,6 @@
                     class="form-submit"
                   />
                 </div>
-              </form>
               <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
@@ -89,7 +87,6 @@ export default {
   methods: {
     async login() {
       // axios 비동기 통신
-      console.log("메롱");
       try {
         let response = await http.post("/login", {
           userId: this.userId,
@@ -107,7 +104,12 @@ export default {
             // userProfileImageUrl: data.userProfileImageUrl,
           });
           // main 이동
-          this.$router.push("/main");
+          console.log(data);
+          localStorage.setItem("Name",data.userName);
+          localStorage.setItem("Id",data.userId);
+          localStorage.setItem("Email",data.userEmail);
+          localStorage.setItem("Address",data.userAddress);
+          this.$router.push("/");
         } else if (data.result == "fail") {
           this.$alertify.error("이메일 또는 비밀번호가 올바르지 않습니다.");
         }
@@ -164,8 +166,10 @@ export default {
 @import "@/assets/css/loginstyle.css";
 @import "@/assets/fonts/material-icon/css/material-design-iconic-font.min.css";
 .container {
+  border-radius: 20%;
   width: 900px;
   background-color: #ffffff;
   margin: auto;
 }
+
 </style>

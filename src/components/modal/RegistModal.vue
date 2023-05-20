@@ -92,23 +92,17 @@ export default {
   methods: {
     async regist() {
       // axios 비동기 통신
-
-      let options = {
-        headers: { "Content-Type": "application/json;charset=utf-8" },
-      };
-
       try {
         console.log(this.userName);
         let response = await http.post(
           "/users",
           {
-            name: this.userName,
-            id: this.userId,
-            pwd: this.userPwd,
-            email: this.userEmail,
-            address: this.userAddress,
+            userName: this.userName,
+            userId: this.userId,
+            userPassword: this.userPwd,
+            userEmail: this.userEmail,
+            userAddress: this.userAddress,
           },
-          options
         );
         let { data } = response;
         console.log(data);
@@ -131,6 +125,7 @@ export default {
 @import "@/assets/css/loginstyle.css";
 @import "@/assets/fonts/material-icon/css/material-design-iconic-font.min.css";
 .container {
+  border-radius: 20%;
   width: 900px;
   background-color: #ffffff;
   margin: auto;

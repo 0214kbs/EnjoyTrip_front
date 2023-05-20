@@ -1,12 +1,12 @@
 <template>
   <div>
     <!-- Start Banner Hero -->
-    <section class="py-0" id="main">
+    <section class="py-1" id="main">
       <div id="front" class="bg-holder d-none d-md-block" style="background-size: cover"></div>
       <!--/.bg-holder-->
 
       <div class="container position-relative">
-        <div class="row align-items-center min-vh-75 my-lg-8">
+        <div class="row align-items-center min-vh-75 my-lg-7">
           <div class="col-md-7 col-lg-6 text-center text-md-start py-8">
             <h1 class="mb-4 display-1 lh-sm">
               Travel around <br class="d-block d-lg-none d-xl-block" />the world

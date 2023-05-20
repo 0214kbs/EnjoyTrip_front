@@ -3,6 +3,7 @@
     <nav-bar
       v-on:call-parent-loginmodal="showloginmodal"
       v-on:call-parent-registmodal="showregistmodal"
+      v-bind:isLogin="isLogin"
     ></nav-bar>
     <router-view v-on:call-parent-loginSuccess="loginSuccess"></router-view>
   </div>
@@ -35,6 +36,7 @@ export default {
     },
     loginSuccess(userInfo) {
       alert("로그인이용");
+      localStorage.setItem("isLogin",true);
       this.isLogin = true;
       this.userInfo = userInfo;
     },
