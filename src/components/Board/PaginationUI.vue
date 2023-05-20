@@ -93,7 +93,7 @@ export default {
  z-index: 1;
  color: white;
  font-weight:bold;
- background-color: #5FA8D3;
+ background-color: #4298F3;
  border-color: #ccc;
  
 }

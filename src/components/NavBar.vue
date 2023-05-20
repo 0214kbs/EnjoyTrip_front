@@ -26,6 +26,10 @@
             <li class="nav-item">
               <router-link to="/map" class="nav-link btn-outline-primary rounded-pill px-3">지역찾기</router-link>
             </li>
+            <li class="nav-item">
+              <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link>
+            </li>
+
             <li v-show="!isLogin" class="nav-item">
               <router-link to="/regist" class="nav-link btn-outline-primary rounded-pill px-3">회원가입</router-link>
             </li>

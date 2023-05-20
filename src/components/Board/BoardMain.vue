@@ -36,87 +36,29 @@
       <!-- searchbar end -->
 
 <button class="button_1" @click="showInsertModal">글쓰기</button>
-      <!-- display start -->
-      <!-- <div>
-        <div class="shadow rounded-lg flex">
-          <div class="relative">
-            <button
-              @click.prevent="open = !open"
-              class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-6 h-6 md:hidden"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
-                <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
-              </svg>
-
-              <span class="hidden md:block">Display</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5 ml-1"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </button>
-
-            <div
-              x-show="open"
-              @click.open="false"
-              class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden"
-            >
-              <template x-for="heading in headings">
-                <label class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
-                  <div class="text-teal-600 mr-3">
-                    <input type="checkbox" class="form-checkbox focus:outline-none focus:shadow-outline" checked @click="toggleColumn(heading.key)" />
-                  </div>
-                  <div class="select-none text-gray-700" x-text="heading.value"></div>
-                </label>
-              </template>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- display end -->
     </div>
 
     <!-- table start-->
     <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
-      <table class="table table-hover" >
+      <table class="table table-hover" style="border-collapse: collapse; width: 100%; height: 102px; " border="1" data-ke-align="alignLeft" data-ke-style="style12">
         <thead>
           <tr bgcolor="#e0eff7">
             <!-- <template x-for="heading in headings"> -->
-            <th>#</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>조회수</th>
-            <th>작성일시</th>
+            <th style="width: 7.55811%; height: 17px; text-align: center;">#</th>
+            <th style="width:  33.6047%; height: 17px; text-align: center;">제목</th>
+            <th style="width:  29.3023%; height: 17px; text-align: center;">작성자</th>
+            <th style="width: 9.53493%; height: 17px; text-align: center;">조회수</th>
+            <th style="width: 20%; height: 17px; text-align: center;">작성일시</th>
             <!-- </template> -->
           </tr>
         </thead>
         <tbody>
           <tr v-for="(board, index) in list" :key="index" @click="boardDetail(board.boardId)">
-            <td>{{ board.boardId }}</td>
-            <td>{{ board.title }}</td>
-            <td>{{ board.userName }}</td>
-            <td>{{ board.readCount }}</td>
-            <td>{{ ListDate(board.regDt.date) }}</td>
+            <td style=" text-align: center;">{{ board.boardId }}</td>
+            <td style="padding-left : 100px"> {{ board.title }}</td>
+            <td style=" text-align: center;">{{ board.userName }}</td>
+            <td style=" text-align: center;">{{ board.readCount }}</td>
+            <td style=" text-align: center;">{{ ListDate(board.regDt.date) }}</td>
           </tr>
         </tbody>
       </table>
@@ -152,36 +94,6 @@ import PaginationUI from "@/components/Board/PaginationUI.vue";
 import { Modal } from "bootstrap";
 
 export default {
-  // datatables 선언 start
-  // datatables() {
-  //   return {
-  //     headings: [
-  //       {
-  //         key: "boardId",
-  //         value: "Num #",
-  //       },
-  //       {
-  //         key: "title",
-  //         value: "Subject",
-  //       },
-  //       {
-  //         key: "userName",
-  //         value: "Poster",
-  //       },
-  //       {
-  //         key: "regDate",
-  //         value: "Date",
-  //       },
-  //       {
-  //         key: "readCount",
-  //         value: "Hit",
-  //       },
-  //     ],
-  //   };
-  // },
-  // board data 받는 거 추가해야함(display 적용하려면)
-  // datatables 선언 end 
-
   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
   data() {
     return {
@@ -348,7 +260,7 @@ button.button_1 {
   border: 0;
   outline: none;
   font-size: 15px;
-  background:#5FA8D3;
+  background:#4298F3;
   color: #E7ECEF;
   padding: 8px;
   cursor: pointer;
