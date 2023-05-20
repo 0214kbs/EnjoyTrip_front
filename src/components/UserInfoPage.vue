@@ -51,6 +51,16 @@
                   @click="update"
                 />
               </div>
+              <div class="form-group form-button">
+                <input
+                  type="submit"
+                  name="signup"
+                  id="signup"
+                  class="form-submit"
+                  value="탈퇴하기"
+                  @click="userdelete"
+                />
+              </div>
             </div>
             <div class="signup-image">
               <figure><img src="@/assets/images/signup-image.jpg" alt="sing up image" /></figure>
@@ -66,6 +76,7 @@
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
 import http from "@/common/axios.js";
+
 Vue.use(VueAlertify);
 
 export default {
@@ -78,30 +89,62 @@ export default {
     };
   },
   methods:{
+
     async update(){
       try {
-        console.log(this.userName);
-        let response = await http.post(
-          "/user" + this.userId,
+        let response = await http.put(
+          "/user/" + this.userId,
           {
             userName: this.userName,
             userId: this.userId,
-            userPassword: this.userPwd,
             userEmail: this.userEmail,
             userAddress: this.userAddress,
           },
         );
         let { data } = response;
-        console.log(data);
-        if (data.result == "success") {
-          this.$alertify.message("회원가입 완료!.");
-          this.$router.push("/login");
+        if (data == 1) {
+          this.detail();
+          this.$alertify.message("수정완료");
         } else if (data.result == "fail") {
           this.$alertify.error("에러,,.");
         }
       } catch (error) {
         console.error(error);
-        this.$alertify.error("회원가입 과정에서 문제 발생.");
+        this.$alertify.error("회원정보 수정과정에서 문제 발생.");
+      }
+    },
+    async detail(){
+      try{
+        let response = await http.get(
+          "/user/" + this.userId
+        );
+        let { data } = response;
+        if(data!=null){
+          localStorage.setItem("Name",data.userName);
+          localStorage.setItem("Id",data.userId);
+          localStorage.setItem("Email",data.userEmail);
+          localStorage.setItem("Address",data.userAddress);
+          this.$router.go(0);
+        }
+      } catch(error){
+        console.error(error);
+        this.$alertify.error("회원정보 수정과정에서 문제 발생.");
+      }
+    },
+    async userdelete(){
+      try{
+        let response = await http.delete(
+          "/user/" + this.userId
+        );
+        let { data } = response;
+        console.log(data);
+        if(data == 1){
+          localStorage.clear();
+          this.$router.push("/");
+        }
+      } catch(error){
+        console.error(error);
+        this.$alertify.error("탈퇴 과정에서 문제 발생.");
       }
     }
   },
