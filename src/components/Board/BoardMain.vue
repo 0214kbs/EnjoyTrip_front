@@ -144,9 +144,9 @@
 import http from "@/common/axios";
 import util from "@/common/util";
 
-import InsertModal from "@/components/modal/board_modal/InsertModal.vue";
-import DetailModal from "@/components/modal/board_modal/DetailModal.vue";
-import UpdateModal from "@/components/modal/board_modal/UpdateModal.vue";
+import InsertModal from "./board_modal/InsertModal.vue";
+import DetailModal from "./board_modal/DetailModal.vue";
+import UpdateModal from "./board_modal/UpdateModal.vue";
 import PaginationUI from "@/components/Board/PaginationUI.vue";
 
 import { Modal } from "bootstrap";
