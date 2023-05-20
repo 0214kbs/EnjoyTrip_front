@@ -132,19 +132,22 @@ export default {
       }
     },
     async userdelete(){
-      try{
-        let response = await http.delete(
-          "/user/" + this.userId
-        );
-        let { data } = response;
-        console.log(data);
-        if(data == 1){
-          localStorage.clear();
-          this.$router.push("/");
+      var answer = confirm("탈퇴하시겠습니까?");
+      if(answer){
+        try{
+          let response = await http.delete("/user/" + this.userId)
+          let {data} = response;
+          console.log(data);
+          if(data == 1){
+            localStorage.clear();
+            this.$router.push("/");
+          }
+        }catch(error){
+          console.error(error);
+          this.$alertify.error("탈퇴 과정에서 문제 발생.");
         }
-      } catch(error){
-        console.error(error);
-        this.$alertify.error("탈퇴 과정에서 문제 발생.");
+      } else{
+        alert("취소되었습니다.");
       }
     }
   },
