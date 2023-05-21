@@ -39,6 +39,9 @@
             </li>
 
             <li class="nav-item" v-show="isLogin">
+              <router-link to="/plan" class="nav-link btn-outline-primary rounded-pill px-3">일정확인</router-link>
+            </li>
+            <li class="nav-item" v-show="isLogin">
               <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3">회원정보</router-link>
             </li>
             <li class="nav-item" v-show="isLogin">
