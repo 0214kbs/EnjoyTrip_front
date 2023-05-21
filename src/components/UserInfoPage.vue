@@ -39,6 +39,7 @@
                 />
               </div>
 
+              
               <div class="form-group form-button">
                 <input
                   type="submit"
@@ -48,8 +49,6 @@
                   value="수정하기"
                   @click="update"
                 />
-              </div>
-              <div class="form-group form-button">
                 <input
                   type="submit"
                   name="signup"
@@ -58,6 +57,7 @@
                   value="탈퇴하기"
                   @click="userdelete"
                 />
+
               </div>
             </div>
             <div class="signup-image">
@@ -165,5 +165,8 @@ export default {
   width: 900px;
   background-color: #ffffff;
   margin: auto;
+}
+input{
+  margin-right: 10px;
 }
 </style>

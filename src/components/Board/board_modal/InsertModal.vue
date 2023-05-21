@@ -9,11 +9,11 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="titleInsert" class="form-label">제목</label>
+            <h5 for="titleInsert" class="form-label">제목</h5>
             <input type="text" class="form-control" id="titleInsert" v-model="title" />
           </div>
           <div class="mb-3">
-            <label for="contentInsert" class="form-label">내용</label>
+            <h5 for="contentInsert" class="form-label">내용</h5>
 
             <!-- New for FileUpload, CKEditor -->
             <div id="divEditorInsert"></div>
@@ -22,7 +22,7 @@
           <div class="mb-3">
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert" />
-              <label class="form-check-label" for="chkFileUploadInsert">파일 추가</label>
+              <h5 class="form-check-label" for="chkFileUploadInsert">파일 추가</h5>
             </div>
           </div>
           <div v-show="attachFile" class="mb-3" style="display: none" id="imgFileUploadInsertWrapper">
