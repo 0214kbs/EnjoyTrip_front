@@ -13,7 +13,7 @@
               <div class="service-work overflow-hidden card mb-5 mx-5 m-sm-0 card-1">
                 <img class="card-img-top" src="@/assets/img/서울.jpg" alt="..." />
                 <div class="card-body">
-                  <h5 class="card-title light-300 text-dark">Digital Marketing</h5>
+                  <h5 class="card-title light-300 text-dark">지역찾기</h5>
                   <p class="card-text light-300 text-dark">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
                     incididunt ut labore et dolor.
@@ -31,7 +31,7 @@
               <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 card-2">
                 <img class="card-img-top" src="@/assets/img/부산.jpg" alt="..." />
                 <div class="card-body">
-                  <h5 class="card-title light-300 text-dark">Corporate Branding</h5>
+                  <h5 class="card-title light-300 text-dark">일정짜기</h5>
                   <p class="card-text light-300 text-dark">
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
                     aliquip ex ea commodo consequat.
@@ -49,7 +49,7 @@
               <div class="service-work overflow-hidden card mx-5 mx-sm-0 mb-5 card-3">
                 <img class="card-img-top" src="@/assets/img/jeju.jpg" alt="..." />
                 <div class="card-body">
-                  <h5 class="card-title light-300 text-dark">Leading Digital Solution</h5>
+                  <h5 class="card-title light-300 text-dark">하나는 뭐지?</h5>
                   <p class="card-text light-300 text-dark">
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiatdolore eu fugiat nulla pariatur.

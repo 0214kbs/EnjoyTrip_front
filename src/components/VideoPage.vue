@@ -128,50 +128,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6 col-lg-3 px-xxl-0">
-                <div class="row">
-                  <div
-                    class="col-12 col-md-11 col-lg-12 col-xl-10 col-xxl-7 px-xxl-0 ps-lg-0 ps-md-4"
-                  >
-                    <div class="card h-100 py-md-2 active" style="min-height: 113px">
-                      <div class="card-body d-flex flex-column justify-content-center">
-                        <p class="mb-0 fw-semi-bold text-dark">When go to maldives</p>
-                        <p class="card-text"><small class="text-800">0.20</small></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 col-md-11 col-lg-12 col-xl-10 col-xxl-7 px-xxl-0 ps-lg-0 ps-md-4"
-                  >
-                    <div class="card h-100 py-md-2" style="min-height: 113px">
-                      <div class="card-body d-flex flex-column justify-content-center">
-                        <p class="mb-0 fw-semi-bold text-500">Tanzania’s deadly pink lake</p>
-                        <p class="card-text"><small class="text-800">05.24</small></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 col-md-11 col-lg-12 col-xl-10 col-xxl-7 px-xxl-0 ps-lg-0 ps-md-4"
-                  >
-                    <div class="card h-100 py-md-2" style="min-height: 113px">
-                      <div class="card-body d-flex flex-column justify-content-center">
-                        <p class="mb-0 fw-semi-bold text-500">Top things to do in Kathmandu</p>
-                        <p class="card-text"><small class="text-800">06.12</small></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="col-12 col-md-11 col-lg-12 col-xl-10 col-xxl-7 px-xxl-0 ps-lg-0 ps-md-4"
-                  >
-                    <div class="card h-100 py-md-3" style="min-height: 113px">
-                      <div class="card-body d-flex flex-column justify-content-center">
-                        <p class="mb-0 fw-semi-bold text-500">Exploring China’s creative capital</p>
-                        <p class="card-text"><small class="text-800">0.20 </small></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

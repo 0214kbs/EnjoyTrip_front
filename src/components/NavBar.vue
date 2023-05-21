@@ -78,13 +78,13 @@ export default {
       this.$emit("call-parent-registmodal");
     },
     logout(){
-      localStorage.clear();
+      sessionStorage.clear();
       this.$router.go(0);
     }
   },
   created(){
-    this.isLogin = localStorage.getItem("isLogin");   
-    console.log(this.isLogin);
+    this.isLogin = sessionStorage.getItem("isLogin");   
+    console.log(sessionStorage.getItem("userDto"));
   }
 };
 </script>

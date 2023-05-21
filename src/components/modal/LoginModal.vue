@@ -72,6 +72,7 @@
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
 import http from "@/common/axios.js";
+import alertify from "alertifyjs";
 Vue.use(VueAlertify);
 
 //import http from "@/common/axios.js";
@@ -94,25 +95,34 @@ export default {
         });
 
         let { data } = response;
-        console.log(data);
-        if (data.result == "success") {
-          this.$emit("call-parent-loginSuccess", {
-            userName: data.userName,
-            userId: data.userId,
-            userEmail: data.userEmail,
-            userAddress: data.userAddress,
-            // userProfileImageUrl: data.userProfileImageUrl,
-          });
-          // main 이동
-          console.log(data);
-          localStorage.setItem("Name",data.userName);
-          localStorage.setItem("Id",data.userId);
-          localStorage.setItem("Email",data.userEmail);
-          localStorage.setItem("Address",data.userAddress);
+        console.log(data.userDto);
+
+        if(data.result == "login"){
+          this.$router.push("/login");
+        } else{
+          sessionStorage.setItem("isLogin",true);
+          sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
           this.$router.push("/");
-        } else if (data.result == "fail") {
-          this.$alertify.error("이메일 또는 비밀번호가 올바르지 않습니다.");
+          alertify.success("로그인되었습니다.",1.5);
         }
+        // if (data.result == "success") {
+        //   this.$emit("call-parent-loginSuccess", {
+        //     userName: data.userName,
+        //     userId: data.userId,
+        //     userEmail: data.userEmail,
+        //     userAddress: data.userAddress,
+        //     // userProfileImageUrl: data.userProfileImageUrl,
+        //   });
+        //   // main 이동
+        //   console.log(data);
+        //   localStorage.setItem("Name",data.userName);
+        //   localStorage.setItem("Id",data.userId);
+        //   localStorage.setItem("Email",data.userEmail);
+        //   localStorage.setItem("Address",data.userAddress);
+        //   this.$router.push("/");
+        // } else if (data.result == "fail") {
+        //   this.$alertify.error("이메일 또는 비밀번호가 올바르지 않습니다.");
+        // }
       } catch (error) {
         console.error(error);
         this.$alertify.error("로그인 과정에서 오류가 발생했습니다.");

@@ -18,7 +18,7 @@
               </div>
               <div class="form-group">
                 <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input type="text" name="id" id="id" placeholder="Your Id" v-model="userId" />
+                <input type="text" name="id" id="id" v-model="userId" />
               </div>
               <div class="form-group">
                 <label for="email"><i class="zmdi zmdi-email"></i></label>
@@ -26,7 +26,6 @@
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Your Email"
                   v-model="userEmail"
                 />
               </div>
@@ -36,7 +35,6 @@
                   type="text"
                   name="address"
                   id="address"
-                  placeholder="Your Address"
                   v-model="userAddress"
                 />
               </div>
@@ -82,10 +80,11 @@ Vue.use(VueAlertify);
 export default {
   data() {
     return {
-      userName: localStorage.getItem("Name"),
-      userId: localStorage.getItem("Id"),
-      userEmail: localStorage.getItem("Email"),
-      userAddress: localStorage.getItem("Address"),
+      data: JSON.parse(sessionStorage.getItem("userDto")),
+      userName: "",
+      userId: "",
+      userEmail: "",
+      userAddress: ""
     };
   },
   methods:{
@@ -119,11 +118,11 @@ export default {
           "/user/" + this.userId
         );
         let { data } = response;
-        if(data!=null){
-          localStorage.setItem("Name",data.userName);
-          localStorage.setItem("Id",data.userId);
-          localStorage.setItem("Email",data.userEmail);
-          localStorage.setItem("Address",data.userAddress);
+
+        if(data.result == "login"){
+          this.$router.push("/login");
+        } else{
+          sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
           this.$router.go(0);
         }
       } catch(error){
@@ -150,6 +149,12 @@ export default {
         alert("취소되었습니다.");
       }
     }
+  },
+  created() {
+    this.userName = this.data.userName;
+    this.userId = this.data.userId;
+    this.userEmail = this.data.userEmail;
+    this.userAddress = this.data.userAddress;
   },
 };
 </script>
