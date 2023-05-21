@@ -9,14 +9,13 @@
             src="@/assets/img/gallery/logo-icon.png"
             alt=""
             width="50"
-          /><span class="text-primary fs-4 ps-2">Trip</span></router-link
-        >
+          /><span class="text-primary fs-4 ps-2">Trip</span></router-link>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
                 <div class="flex-fill mx-xl-5">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                       <li class="nav-item">
-              <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a>
+              <!-- <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a> -->
             </li>
             <li class="nav-item">
               <router-link to="/" class="nav-link btn-outline-primary rounded-pill px-3" href="#Korea-trip"
