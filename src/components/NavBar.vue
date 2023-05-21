@@ -59,6 +59,10 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+import http from "@/common/axios.js";
+Vue.use(VueAlertify);
 export default {
   // 로그인 했는지 확인필요
   // props: ["isLogin"],
@@ -77,9 +81,20 @@ export default {
     showregistmodal() {
       this.$emit("call-parent-registmodal");
     },
-    logout(){
-      sessionStorage.clear();
-      this.$router.go(0);
+    async logout(){
+        try {
+        let response = await http.get("/logout");
+
+        let { data } = response;
+        console.log(data);
+
+        sessionStorage.clear();
+        this.$router.go(0);
+        
+      } catch (error) {
+        console.error(error);
+      }
+
     }
   },
   created(){
