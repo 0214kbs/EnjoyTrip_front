@@ -13,7 +13,7 @@
         >
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
-                <div class="flex-fill mx-xl-5 mb-2">
+                <div class="flex-fill mx-xl-5">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                       <li class="nav-item">
               <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a>
