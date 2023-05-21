@@ -10,7 +10,7 @@
             </div>
 
             <div class="signin-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2 class="form-title">Log in</h2>
                 <div class="form-group">
                   <label for="your_name"
                     ><i class="zmdi zmdi-account material-icons-name"></i
@@ -40,13 +40,14 @@
                   <input
                     @click="login"
                     type="submit"
-                    value="Register"
+                    value="Login"
                     name="signin"
                     id="signin"
                     class="form-submit"
                   />
                 </div>
-              <div class="social-login">
+              
+              <!-- <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
                   <li>
@@ -59,7 +60,8 @@
                     <a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a>
                   </li>
                 </ul>
-              </div>
+              </div> -->
+              
             </div>
           </div>
         </div>

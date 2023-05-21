@@ -6,7 +6,7 @@
         <div class="row align-items-center min-vh-75 my-lg-8">
           <div class="signup-content">
             <div class="signup-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2 class="form-title">Register</h2>
               <div class="form-group">
                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                 <input

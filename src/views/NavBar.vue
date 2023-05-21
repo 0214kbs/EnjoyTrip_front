@@ -34,7 +34,7 @@
               <router-link to="/regist" class="nav-link btn-outline-primary rounded-pill px-3">회원가입</router-link>
             </li>
             <li class="nav-item" v-show="!isLogin">
-              <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">  Sign In
+              <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">  로그인
               </router-link>
             </li>
 
