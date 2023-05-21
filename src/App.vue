@@ -11,7 +11,7 @@
 
 <script>
 //import MainPage from "./components/MainPage.vue";
-import NavBar from "./components/NavBar.vue";
+import NavBar from "./views/NavBar.vue";
 
 export default {
   data() {

@@ -5,10 +5,10 @@ Vue.use(VueRouter);
 
 import RegistModal from "@/components/modal/RegistModal";
 import LoginModal from "@/components/modal/LoginModal.vue";
-import MainPage from "@/components/MainPage.vue";
+import MainPage from "@/views/MainPage.vue";
 import BoardPage from "@/components/Board/BoardMain.vue"
 //import MapPage from "@/components/MapPage.vue";
-import UserInfoPage from "@/components/UserInfoPage.vue";
+import UserInfoPage from "@/views/UserInfoPage.vue";
 //import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import VideoPage from "./VideoPage.vue";
+import VideoPage from "../views/VideoPage.vue";
 import KoreaTrip from "./KoreaTrip.vue";
 export default {
   components: { KoreaTrip, VideoPage },
