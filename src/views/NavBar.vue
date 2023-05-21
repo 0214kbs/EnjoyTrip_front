@@ -9,13 +9,14 @@
             src="@/assets/img/gallery/logo-icon.png"
             alt=""
             width="50"
-          /><span class="text-primary fs-4 ps-2">Trip</span></router-link>
+          /><span class="text-primary fs-4 ps-2">Trip</span></router-link
+        >
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
                 <div class="flex-fill mx-xl-5">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                       <li class="nav-item">
-              <!-- <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a> -->
+              <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a>
             </li>
             <li class="nav-item">
               <router-link to="/" class="nav-link btn-outline-primary rounded-pill px-3" href="#Korea-trip"
@@ -29,21 +30,21 @@
               <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link>
             </li>
 
-            <li v-show="!isLogin" class="nav-item">
+            <li v-show="!ISLOGIN" class="nav-item">
               <router-link to="/regist" class="nav-link btn-outline-primary rounded-pill px-3">회원가입</router-link>
             </li>
-            <li class="nav-item" v-show="!isLogin">
+            <li class="nav-item" v-show="!ISLOGIN">
               <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">  로그인
               </router-link>
             </li>
 
-            <li class="nav-item" v-show="isLogin">
+            <li class="nav-item" v-show="ISLOGIN">
               <router-link to="/plan" class="nav-link btn-outline-primary rounded-pill px-3">일정확인</router-link>
             </li>
-            <li class="nav-item" v-show="isLogin">
+            <li class="nav-item" v-show="ISLOGIN">
               <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3">회원정보</router-link>
             </li>
-            <li class="nav-item" v-show="isLogin">
+            <li class="nav-item" v-show="ISLOGIN">
               <a class="nav-link btn-outline-primary rounded-pill px-3" id="logout" @click="logout">로그아웃</a>
             </li>
 
@@ -51,7 +52,7 @@
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
-                    <a class="nav-link dropdown-toggle" href="#" v-show="isLogin"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                    <a class="nav-link dropdown-toggle" href="#" v-show="ISLOGIN"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
                   </div>
                  
             </div>
@@ -70,11 +71,23 @@ export default {
   // props: ["isLogin"],
 
   components: [],
+  computed:{
+    ISLOGIN:function(){
+      return this.isLogin
+      }
+  },
   data() {
     return {
-      isLogin : false,
+      isLogin : sessionStorage.getItem("isLogin") != null ? sessionStorage.getItem("isLogin") : false,
       loginModal: null,
     };
+  },
+  watch: {
+    '$route' (to,from) {
+      console.log(to,from)
+      this.isLogin=sessionStorage.getItem("isLogin")
+      console.log(this.isLogin)
+    }
   },
   methods: {
     showloginModal() {
