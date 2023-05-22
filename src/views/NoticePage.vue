@@ -5,7 +5,7 @@
     <br />
     <br />
     <br />
-    <h1 class="text-2xl py-4 border-b mb-3">게시판</h1>
+    <h1 class="text-2xl py-4 border-b mb-3">공지사항</h1>
     <div class="mb-4 flex justify-between items-center">
       <!-- searchbar start -->
       <div class="flex-1 pr-4">
@@ -51,12 +51,10 @@
         data-ke-style="style12"
       >
         <thead>
-          <tr bgcolor="#e0eff7">
+          <tr bgcolor="#a3a3a3">
             <!-- <template x-for="heading in headings"> -->
             <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
             <th style="width: 33.6047%; height: 17px; text-align: center">제목</th>
-            <th style="width: 29.3023%; height: 17px; text-align: center">작성자</th>
-            <th style="width: 9.53493%; height: 17px; text-align: center">조회수</th>
             <th style="width: 20%; height: 17px; text-align: center">작성일시</th>
             <!-- </template> -->
           </tr>
@@ -65,8 +63,6 @@
           <tr v-for="(board, index) in list" :key="index" @click="boardDetail(board.boardId)">
             <td style="text-align: center">{{ board.boardId }}</td>
             <td style="padding-left: 100px">{{ board.title }}</td>
-            <td style="text-align: center">{{ board.userName }}</td>
-            <td style="text-align: center">{{ board.readCount }}</td>
             <td style="text-align: center">{{ ListDate(board.regDt.date) }}</td>
           </tr>
         </tbody>
@@ -85,8 +81,6 @@
     </PaginationUI>
 
     <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
-    <detail-modal v-bind:board="board" v-on:call-parent-change-to-update="changeToUpdate" v-on:call-parent-change-to-delete="boardDelete"></detail-modal>
-    <update-modal v-bind:board="board" v-on:call-parent-update="closeAfterUpdate"></update-modal>
   </div>
   <!-- </div> -->
 </template>
@@ -95,21 +89,22 @@
 import http from "@/common/axios";
 import util from "@/common/util";
 
-import InsertModal from "@/components/Board/InsertModal.vue";
-import DetailModal from "@/components/Board/DetailModal.vue";
-import UpdateModal from "@/components/Board/UpdateModal.vue";
+import InsertModal from "@/components/Notice/InsertModal.vue";
+// import DetailModal from "@/components/Notice/DetailModal.vue";
+// import UpdateModal from "@/components/Notice/UpdateModal.vue";
 import PaginationUI from "@/components/PaginationUI.vue";
 
 import { Modal } from "bootstrap";
 
 export default {
-  components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
+  //   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
+  components: { InsertModal, PaginationUI },
   data() {
     return {
       // modal
       insertModal: null,
-      detailModal: null,
-      updateModal: null,
+      //   detailModal: null,
+      //   updateModal: null,
 
       // list
       list: [],
@@ -168,39 +163,6 @@ export default {
       this.currentPageIndex = pageIndex;
       this.boardList();
     },
-    async boardDetail(boardId) {
-      let response = await http.get("/boards/" + boardId);
-      let { data } = response;
-
-      console.log(data);
-
-      //
-      let { regDt } = data.dto;
-      let boardNew = {
-        regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
-        regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
-        ...data.dto,
-      };
-
-      this.board = boardNew;
-
-      this.detailModal.show();
-
-      // if (data.result == "login") {
-      //   this.$router.push("/login");
-      // } else {
-      //   let { regDt } = data.dto;
-      //   let boardNew = {
-      //     regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
-      //     regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
-      //     ...data.dto,
-      //   };
-
-      //   this.board = boardNew;
-
-      //   this.detailModal.show();
-      // }
-    },
     showInsertModal() {
       this.insertModal.show();
     },
@@ -208,57 +170,14 @@ export default {
       this.insertModal.hide();
       this.boardList();
     },
-    closeAfterUpdate() {
-      this.updateModal.hide();
-      this.boardList();
-    },
-    changeToUpdate() {
-      this.detailModal.hide();
-      this.updateModal.show();
-    },
-    changeAfterUpdate() {
-      this.updateModal.hide();
-      this.boardList();
-    },
-    changeToDelete() {
-      this.detailModal.hide();
-
-      var $this = this;
-      this.$alertify.confirm(
-        "이 글을 삭제하시겠습니까?",
-        function () {
-          $this.boardDelete();
-        },
-        function () {
-          console.log("cancel");
-        }
-      );
-    },
-    async boardDelete() {
-      try {
-        console.log("board delete");
-        let response = await http.delete("/boards/" + this.board.boardId);
-        let { data } = response;
-        console.log(data);
-
-        if (data.result == "login") {
-          this.$router.push("/login");
-        } else {
-          this.$alertify.success("글이 삭제되었습니다.");
-          this.boardList();
-        }
-      } catch (error) {
-        console.log("error");
-      }
-    },
   },
   created() {
     this.boardList();
   },
   mounted() {
     this.insertModal = new Modal(document.querySelector("#insertModal"));
-    this.detailModal = new Modal(document.querySelector("#detailModal"));
-    this.updateModal = new Modal(document.querySelector("#updateModal"));
+    // this.detailModal = new Modal(document.querySelector("#detailModal"));
+    // this.updateModal = new Modal(document.querySelector("#updateModal"));
   },
 };
 </script>
@@ -268,7 +187,7 @@ button.button_1 {
   border: 0;
   outline: none;
   font-size: 15px;
-  background: #4298f3;
+  background: #f34242;
   color: #e7ecef;
   padding: 8px;
   cursor: pointer;
