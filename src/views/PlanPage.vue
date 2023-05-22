@@ -72,6 +72,9 @@ export default {
 </script>
 
 <style scoped>
+span.title {
+  font-size: 25px;
+}
 button.button_1 {
   border: 0;
   outline: none;
@@ -83,6 +86,7 @@ button.button_1 {
   border-radius: 10px;
 }
 .page-name {
+  margin: 0 30px;
   display: flex;
   justify-content: space-between;
 }

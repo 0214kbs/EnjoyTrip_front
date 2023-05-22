@@ -36,7 +36,7 @@ export default {
     },
     loginSuccess(userInfo) {
       alert("로그인이용");
-      localStorage.setItem("isLogin",true);
+      localStorage.setItem("isLogin", true);
       this.isLogin = true;
       this.userInfo = userInfo;
     },
