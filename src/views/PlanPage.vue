@@ -5,7 +5,7 @@
       <div class="container">
         <div class="page-name">
           <span class="title">나의 일정</span>
-          <button class="button_1" @click="showInsertModal">글쓰기</button>
+          <button class="button_1" @click="showInsertModal">+</button>
         </div>
         <hr />
         <div class="card-container wrap">
