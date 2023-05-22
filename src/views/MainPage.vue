@@ -1,13 +1,13 @@
 <template>
   <div>
     <!-- Start Banner Hero -->
-    <section class="py-1" id="top" style="margin-top: 65px">
+    <section class="py-1" id="top">
       <div id="front" class="bg-holder d-none d-md-block"></div>
       <!--/.bg-holder-->
 
       <div class="container position-relative">
-        <div class="row align-items-center min-vh-75 my-lg-7">
-          <div class="col-md-7 col-lg-6 text-center text-md-start py-8">
+        <div class="row align-items-center justify-content-end min-vh-75 my-lg-7">
+          <div class="col-md-7 col-lg-6 text-center text-md-end py-8">
             <h1 class="mb-4 display-1 lh-sm">
               Getting Around <br class="d-block d-lg-none d-xl-block" />
               Korea!
@@ -51,8 +51,9 @@ export default {
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap";
 
 #front {
-  background-image: url("@/assets/img/illustrations/hero.png");
-  background-position: right bottom;
-  background-size: contain;
+  background-image: url("@/assets/img/여행.jpg");
+  /*background-position: right bottom;*/
+  background-size: cover;
+  width: 100%;
 }
 </style>
