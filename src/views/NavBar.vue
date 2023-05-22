@@ -19,7 +19,7 @@
                 <router-link to="/" class="nav-link btn-outline-primary rounded-pill px-3" href="#Korea-trip">국내여행</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/map" class="nav-link btn-outline-primary rounded-pill px-3">지역찾기</router-link>
+                <router-link to="/spot" class="nav-link btn-outline-primary rounded-pill px-3">지역찾기</router-link>
               </li>
               <li class="nav-item">
                 <span v-if="ISLOGIN"> <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link></span>
