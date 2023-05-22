@@ -19,6 +19,7 @@
             <div id="divEditorInsert"></div>
             <!-- / New for FileUpload, CKEditor -->
           </div>
+
           <div class="mb-3">
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert" />

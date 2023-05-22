@@ -9,12 +9,12 @@
         <div class="row align-items-center min-vh-75 my-lg-7">
           <div class="col-md-7 col-lg-6 text-center text-md-start py-8">
             <h1 class="mb-4 display-1 lh-sm">
-              Getting Around <br class="d-block d-lg-none d-xl-block" /> Korea!
+              Getting Around <br class="d-block d-lg-none d-xl-block" />
+              Korea!
             </h1>
             <p class="mt-4 mb-5 fs-1 lh-base">
-              Plan perfect trip with a travel tips, 
-              <br class="d-none d-lg-block" />recommended course and
-              <br class="d-none d-lg-block" />destination information from us.
+              Plan perfect trip with a travel tips,
+              <br class="d-none d-lg-block" />recommended course and <br class="d-none d-lg-block" />destination information from us.
             </p>
             <!-- <a
               class="btn btn-lg btn-primary hover-top regist-btn"

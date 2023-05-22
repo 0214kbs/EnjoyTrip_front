@@ -15,7 +15,7 @@
             @keyup.enter="boardList"
           />
           <div class="absolute top-0 left-0 inline-flex items-center p-2">
-          <!-- 검색 아이콘 -->
+            <!-- 검색 아이콘 -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-6 h-6 text-gray-400"
@@ -35,30 +35,36 @@
       </div>
       <!-- searchbar end -->
 
-<button class="button_1" @click="showInsertModal">글쓰기</button>
+      <button class="button_1" @click="showInsertModal">글쓰기</button>
     </div>
 
     <!-- table start-->
     <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
-      <table class="table table-hover" style="border-collapse: collapse; width: 100%; height: 102px; " border="1" data-ke-align="alignLeft" data-ke-style="style12">
+      <table
+        class="table table-hover"
+        style="border-collapse: collapse; width: 100%; height: 102px"
+        border="1"
+        data-ke-align="alignLeft"
+        data-ke-style="style12"
+      >
         <thead>
           <tr bgcolor="#e0eff7">
             <!-- <template x-for="heading in headings"> -->
-            <th style="width: 7.55811%; height: 17px; text-align: center;">#</th>
-            <th style="width:  33.6047%; height: 17px; text-align: center;">제목</th>
-            <th style="width:  29.3023%; height: 17px; text-align: center;">작성자</th>
-            <th style="width: 9.53493%; height: 17px; text-align: center;">조회수</th>
-            <th style="width: 20%; height: 17px; text-align: center;">작성일시</th>
+            <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
+            <th style="width: 33.6047%; height: 17px; text-align: center">제목</th>
+            <th style="width: 29.3023%; height: 17px; text-align: center">작성자</th>
+            <th style="width: 9.53493%; height: 17px; text-align: center">조회수</th>
+            <th style="width: 20%; height: 17px; text-align: center">작성일시</th>
             <!-- </template> -->
           </tr>
         </thead>
         <tbody>
           <tr v-for="(board, index) in list" :key="index" @click="boardDetail(board.boardId)">
-            <td style=" text-align: center;">{{ board.boardId }}</td>
-            <td style="padding-left : 100px"> {{ board.title }}</td>
-            <td style=" text-align: center;">{{ board.userName }}</td>
-            <td style=" text-align: center;">{{ board.readCount }}</td>
-            <td style=" text-align: center;">{{ ListDate(board.regDt.date) }}</td>
+            <td style="text-align: center">{{ board.boardId }}</td>
+            <td style="padding-left: 100px">{{ board.title }}</td>
+            <td style="text-align: center">{{ board.userName }}</td>
+            <td style="text-align: center">{{ board.readCount }}</td>
+            <td style="text-align: center">{{ ListDate(board.regDt.date) }}</td>
           </tr>
         </tbody>
       </table>
@@ -97,7 +103,6 @@ export default {
   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
   data() {
     return {
-
       // modal
       insertModal: null,
       detailModal: null,
@@ -140,11 +145,11 @@ export default {
       let { data } = response;
 
       console.log(data);
-      
+
       //
       this.list = data.list;
       this.totalListItemCount = data.count;
-      
+
       // if (data.result == "login") {
       //   this.$router.push("/login");
       // } else {
@@ -167,16 +172,16 @@ export default {
       console.log(data);
 
       //
-        let { regDt } = data.dto;
-        let boardNew = {
-          regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
-          regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
-          ...data.dto,
-        };
+      let { regDt } = data.dto;
+      let boardNew = {
+        regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
+        regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
+        ...data.dto,
+      };
 
-        this.board = boardNew;
+      this.board = boardNew;
 
-        this.detailModal.show();
+      this.detailModal.show();
 
       // if (data.result == "login") {
       //   this.$router.push("/login");
@@ -215,7 +220,7 @@ export default {
     changeToDelete() {
       this.detailModal.hide();
 
-      var $this = this; 
+      var $this = this;
       this.$alertify.confirm(
         "이 글을 삭제하시겠습니까?",
         function () {
@@ -260,12 +265,10 @@ button.button_1 {
   border: 0;
   outline: none;
   font-size: 15px;
-  background:#4298F3;
-  color: #E7ECEF;
+  background: #4298f3;
+  color: #e7ecef;
   padding: 8px;
   cursor: pointer;
   border-radius: 10px;
 }
-
-
 </style>
