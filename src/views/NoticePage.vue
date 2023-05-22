@@ -187,7 +187,7 @@ button.button_1 {
   border: 0;
   outline: none;
   font-size: 15px;
-  background: #f34242;
+  background: #4298f3;
   color: #e7ecef;
   padding: 8px;
   cursor: pointer;
