@@ -1,8 +1,8 @@
 <template>
   <div>
     <!-- Start Banner Hero -->
-    <section class="py-1" id="main">
-      <div id="front" class="bg-holder d-none d-md-block" style="background-size: cover"></div>
+    <section class="py-1" id="top" style="margin-top: 65px">
+      <div id="front" class="bg-holder d-none d-md-block"></div>
       <!--/.bg-holder-->
 
       <div class="container position-relative">
@@ -14,7 +14,8 @@
             </h1>
             <p class="mt-4 mb-5 fs-1 lh-base">
               Plan perfect trip with a travel tips,
-              <br class="d-none d-lg-block" />recommended course and <br class="d-none d-lg-block" />destination information from us.
+              <br class="d-none d-lg-block" />recommended course and
+              <br class="d-none d-lg-block" />destination information from us.
             </p>
             <!-- <a
               class="btn btn-lg btn-primary hover-top regist-btn"
@@ -50,6 +51,8 @@ export default {
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap";
 
 #front {
-  background-image: url("@/assets/img/front.jpg");
+  background-image: url("@/assets/img/illustrations/hero.png");
+  background-position: right bottom;
+  background-size: contain;
 }
 </style>
