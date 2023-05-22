@@ -28,16 +28,18 @@
       </div>
     </section>
     <!-- End Banner Hero -->
+    <main-weather></main-weather>
     <korea-trip></korea-trip>
     <video-page></video-page>
   </div>
 </template>
 
 <script>
+import MainWeather from "@/components/main/MainWeather.vue";
 import VideoPage from "../views/VideoPage.vue";
 import KoreaTrip from "./KoreaTrip.vue";
 export default {
-  components: { KoreaTrip, VideoPage },
+  components: { MainWeather, KoreaTrip, VideoPage },
 };
 </script>
 
