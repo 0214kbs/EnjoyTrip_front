@@ -147,8 +147,8 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap");
 #main_nav {
-  /*background-color: #f8f8f8;*/
-  background-color: white;
+  background-color: #f8f8f8;
+  /*background-color: white;*/
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 300;
   line-height: 1.8;
