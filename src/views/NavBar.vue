@@ -33,9 +33,9 @@
               <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3"> 로그인 </router-link>
             </li>
 
-            <li class="nav-item" v-show="ISLOGIN">
+            <!-- <li class="nav-item" v-show="ISLOGIN">
               <router-link to="/plan" class="nav-link btn-outline-primary rounded-pill px-3">일정확인</router-link>
-            </li>
+            </li> -->
             <li class="nav-item" v-show="ISLOGIN">
               <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3">회원정보</router-link>
             </li>
@@ -45,7 +45,7 @@
           </ul>
         </div>
         <div class="navbar align-self-center d-flex">
-          <a class="nav-link" href="#"><i class="bx bx-bell bx-sm bx-tada-hover text-primary"></i></a>
+          <router-link to="/notice" a class="nav-link" href="#"><i class="bx bx-bell bx-sm bx-tada-hover text-primary"> </i></router-link>
           <a class="nav-link dropdown-toggle" href="#" v-show="ISLOGIN"><i class="bx bx-user-circle bx-sm text-primary"></i></a>
         </div>
       </div>
