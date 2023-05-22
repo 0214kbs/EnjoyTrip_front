@@ -21,8 +21,9 @@
             <li class="nav-item">
               <router-link to="/map" class="nav-link btn-outline-primary rounded-pill px-3">지역찾기</router-link>
             </li>
-            <li class="nav-item" v-show="ISLOGIN">
-              <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link>
+            <li class="nav-item">
+              <span v-if="ISLOGIN"> <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link></span>
+              <span v-if="!ISLOGIN"> <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link></span>
             </li>
 
             <li v-show="!ISLOGIN" class="nav-item">

@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 import RegistPage from "@/views/RegistPage";
 import LoginPage from "@/views/LoginPage.vue";
 import MainPage from "@/views/MainPage.vue";
-import BoardPage from "@/components/Board/BoardMain.vue"
+import BoardPage from "@/components/Board/BoardMain.vue";
 import PlanPage from "@/views/PlanPage.vue";
 //import MapPage from "@/components/MapPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
@@ -27,20 +27,6 @@ export default new VueRouter({
       component: RegistPage,
     },
 
-    // board -> 로그인 시에만 보이게! 
-    //   {
-    //   path: "/board",
-    //   component: BoardPage,
-    //   // login 여부에 따라..
-    //   beforeEnter: (to, from, next) => {
-    //     console.log(store.state.login.isLogin);
-    //     if (!store.state.login.isLogin) {
-    //       next("/login");
-    //     } else {
-    //       return next();
-    //     }
-    //   },
-    // },
     {
       path: "/board",
       component: BoardPage,
@@ -56,8 +42,8 @@ export default new VueRouter({
     // },
     {
       name: "UserInfoPage",
-      path: '/userinfo',
-      component: UserInfoPage
-    }
+      path: "/userinfo",
+      component: UserInfoPage,
+    },
   ],
 });
