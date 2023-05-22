@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 import RegistPage from "@/views/RegistPage";
 import LoginPage from "@/views/LoginPage.vue";
 import MainPage from "@/views/MainPage.vue";
-import BoardPage from "@/components/Board/BoardMain.vue";
+import BoardPage from "@/views/BoardPage.vue";
 import PlanPage from "@/views/PlanPage.vue";
 //import MapPage from "@/components/MapPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
