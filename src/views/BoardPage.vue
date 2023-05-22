@@ -2,6 +2,9 @@
   <div class="container mt-3">
     <!-- <div class="container mx-auto py-6 px-4" x-data="data()" x-cloak> -->
     <!-- datatables() -->
+    <br />
+    <br />
+    <br />
     <h1 class="text-2xl py-4 border-b mb-3">게시판</h1>
     <div class="mb-4 flex justify-between items-center">
       <!-- searchbar start -->

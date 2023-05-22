@@ -2,7 +2,10 @@
   <div class="container mt-3">
     <!-- <div class="container mx-auto py-6 px-4" x-data="data()" x-cloak> -->
     <!-- datatables() -->
-    <h1 class="text-2xl py-4 border-b mb-3">게시판</h1>
+    <br />
+    <br />
+    <br />
+    <h1 class="text-2xl py-4 border-b mb-3">공지사항</h1>
     <div class="mb-4 flex justify-between items-center">
       <!-- searchbar start -->
       <div class="flex-1 pr-4">
@@ -78,8 +81,6 @@
     </PaginationUI>
 
     <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
-    <detail-modal v-bind:board="board" v-on:call-parent-change-to-update="changeToUpdate" v-on:call-parent-change-to-delete="boardDelete"></detail-modal>
-    <update-modal v-bind:board="board" v-on:call-parent-update="closeAfterUpdate"></update-modal>
   </div>
   <!-- </div> -->
 </template>
