@@ -3,7 +3,7 @@
     <!-- ======= Blog Section ======= -->
     <section>
       <!--<div class="container">-->
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between" style="background-color: white">
           <div class="col-lg-8 entries ">
             <!-- 검색버튼-->
             <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
@@ -409,6 +409,6 @@ export default {
   color: #fff;
   transition: 0.3s;
   border-radius: 4px 4px 4px 4px;
-  line-height: 0;
+  line-height: 1;
 }
 </style>
