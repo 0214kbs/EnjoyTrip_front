@@ -11,42 +11,48 @@
 
             <div class="signin-form">
               <h2 class="form-title">Log in</h2>
-                <div class="form-group">
-                  <label for="your_name"
-                    ><i class="zmdi zmdi-account material-icons-name"></i
-                  ></label>
-                  <input
-                    type="text"
-                    name="userId"
-                    id="userId"
-                    value="ssafy"
-                    placeholder="userId"
-                    v-model="userId"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                  <input
-                    type="password"
-                    name="userPwd"
-                    id="userPwd"
-                    value="1234"
-                    placeholder="Password"
-                    v-model="userPassword"
-                  />
-                </div>
+              <div class="form-group">
+                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <input
+                  type="text"
+                  name="userId"
+                  id="userId"
+                  value="ssafy"
+                  placeholder="userId"
+                  v-model="userId"
+                />
+              </div>
+              <div class="form-group">
+                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
+                <input
+                  type="password"
+                  name="userPwd"
+                  id="userPwd"
+                  value="1234"
+                  placeholder="Password"
+                  v-model="userPassword"
+                />
+              </div>
 
-                <div class="form-group form-button">
-                  <input
-                    @click="login"
-                    type="submit"
-                    value="Login"
-                    name="signin"
-                    id="signin"
-                    class="form-submit"
-                  />
-                </div>
-              
+              <div class="form-group form-button">
+                <input
+                  @click="login"
+                  type="submit"
+                  value="Login"
+                  name="signin"
+                  id="signin"
+                  class="form-submit"
+                />
+                <input
+                  @click="findpwd"
+                  type="submit"
+                  value="비밀번호찾기"
+                  name="signin"
+                  id="signin"
+                  class="form-submit"
+                />
+              </div>
+
               <!-- <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
@@ -61,7 +67,6 @@
                   </li>
                 </ul>
               </div> -->
-              
             </div>
           </div>
         </div>
@@ -99,13 +104,13 @@ export default {
         let { data } = response;
         console.log(data.userDto);
 
-        if(data.result == "login"){
+        if (data.result == "login") {
           this.$router.push("/login");
-        } else{
-          sessionStorage.setItem("isLogin",true);
+        } else {
+          sessionStorage.setItem("isLogin", true);
           sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
           this.$router.push("/");
-          alertify.success("로그인되었습니다.",1.5);
+          alertify.success("로그인되었습니다.", 1.5);
         }
       } catch (error) {
         console.error(error);
@@ -113,45 +118,22 @@ export default {
       }
     },
 
-    // async login() {
-    //   // axios 비동기 통신
-    //   try {
-    //     let response = await http.post("/login", {
-    //       userId: this.userId,
-    //       userPwd: this.userPwd,
-    //     });
-    //     let { data } = response;
-    //     console.log(data);
-    //     if (data.result == "success") {
-    //       this.$emit("call-parent-loginSuccess", {
-    //         userName: data.name,
-    //         userId: data.id,
-    //         userEmail: data.email,
-    //         userAdd: data.address,
-    //         // userProfileImageUrl: data.userProfileImageUrl,
-    //       });
-    //       // main 이동
-    //       this.$router.push("/");
-    //     } else if (data.result == "fail") {
-    //       this.$alertify.error("이메일 또는 비밀번호가 올바르지 않습니다.");
-    //     }
-    //   } catch (error) {
-    //     console.error(error);
-    //     this.$alertify.error("로그인 과정에서 오류가 발생했습니다.");
-    //   }
-    // },
-    // // 비밀번호 찾기
-    // async findpwd() {
-    //   try {
-    //     let response = await http.get("/user/" + this.userId);
-    //     let { data } = response;
-    //     console.log(data);
-    //     alert(data.userPwd);
-    //   } catch (error) {
-    //     console.error(error);
-    //     this.$alertify.error("비밀번호를 찾는 과정에서 오류 발생.");
-    //   }
-    // },
+    // 비밀번호 찾기
+    async findpwd() {
+      const result = prompt("아이디를 입력하세요");
+
+      console.log(result);
+
+      try {
+        let response = await http.get("/user/findpwd/" + result);
+        let { data } = response;
+        console.log(data);
+        alert(data.userPassword);
+      } catch (error) {
+        console.error(error);
+        this.$alertify.error("비밀번호를 찾는 과정에서 오류 발생.");
+      }
+    },
   },
 };
 </script>
@@ -165,5 +147,4 @@ export default {
   background-color: #ffffff;
   margin: auto;
 }
-
 </style>
