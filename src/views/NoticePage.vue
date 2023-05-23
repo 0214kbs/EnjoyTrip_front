@@ -15,7 +15,7 @@
             class="w-full pl-10 pr-4 py-2 rounded-lg shadow focus:outline-none focus:shadow-outline text-gray-600 font-medium"
             placeholder="Search..."
             v-model="searchWord"
-            @keyup.enter="boardList"
+            @keyup.enter="noticeList"
           />
           <div class="absolute top-0 left-0 inline-flex items-center p-2">
             <!-- 검색 아이콘 -->
@@ -38,7 +38,7 @@
       </div>
       <!-- searchbar end -->
 
-      <button class="button_1" @click="showInsertModal">글쓰기</button>
+      <!-- <button class="button_1" @click="showInsertModal">글쓰기</button> -->
     </div>
 
     <!-- table start-->
@@ -51,7 +51,7 @@
         data-ke-style="style12"
       >
         <thead>
-          <tr bgcolor="#a3a3a3">
+          <tr bgcolor="#e0eff7">
             <!-- <template x-for="heading in headings"> -->
             <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
             <th style="width: 33.6047%; height: 17px; text-align: center">제목</th>
@@ -60,10 +60,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(board, index) in list" :key="index" @click="boardDetail(board.boardId)">
-            <td style="text-align: center">{{ board.boardId }}</td>
-            <td style="padding-left: 100px">{{ board.title }}</td>
-            <td style="text-align: center">{{ ListDate(board.regDt.date) }}</td>
+          <tr v-for="(notice, index) in list" :key="index" @click="noticeDetail(notice.noticeId)">
+            <td style="text-align: center">{{ notice.noticeId }}</td>
+            <td style="padding-left: 100px">{{ notice.title }}</td>
+            <td style="text-align: center">{{ ListDate(notice.regDt.date) }}</td>
           </tr>
         </tbody>
       </table>
@@ -80,7 +80,7 @@
     >
     </PaginationUI>
 
-    <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
+    <detail-modal v-bind:notice="notice"></detail-modal>
   </div>
   <!-- </div> -->
 </template>
@@ -89,8 +89,8 @@
 import http from "@/common/axios";
 import util from "@/common/util";
 
-import InsertModal from "@/components/Notice/InsertModal.vue";
-// import DetailModal from "@/components/Notice/DetailModal.vue";
+// import InsertModal from "@/components/Notice/InsertModal.vue";
+import DetailModal from "@/components/Notice/DetailModal.vue";
 // import UpdateModal from "@/components/Notice/UpdateModal.vue";
 import PaginationUI from "@/components/PaginationUI.vue";
 
@@ -98,12 +98,12 @@ import { Modal } from "bootstrap";
 
 export default {
   //   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
-  components: { InsertModal, PaginationUI },
+  components: { DetailModal, PaginationUI },
   data() {
     return {
       // modal
-      insertModal: null,
-      //   detailModal: null,
+      // insertModal: null,
+      detailModal: null,
       //   updateModal: null,
 
       // list
@@ -119,27 +119,24 @@ export default {
       totalListItemCount: 0,
 
       // detail
-      board: {
-        boardId: 0,
+      notice: {
+        noticeId: 0,
         title: "",
         content: "",
-        userName: "",
         regDate: "",
         regTime: "",
-        readCount: 0,
-        fileList: [],
-        sameUser: false,
+        isAdmin: false,
       },
     };
   },
   methods: {
-    async boardList() {
+    async noticeList() {
       let params = {
         limit: this.limit,
         offset: this.offset,
         searchWord: this.searchWord,
       };
-      let response = await http.get("/boards", { params });
+      let response = await http.get("/notices", { params });
       let { data } = response;
 
       console.log(data);
@@ -161,22 +158,33 @@ export default {
     movePage(pageIndex) {
       this.offset = (pageIndex - 1) * this.listRowCount;
       this.currentPageIndex = pageIndex;
-      this.boardList();
+      this.noticeList();
     },
-    showInsertModal() {
-      this.insertModal.show();
-    },
-    closeAfterInsert() {
-      this.insertModal.hide();
-      this.boardList();
+    async noticeDetail(noticeId) {
+      let response = await http.get("/notices/" + noticeId);
+      let { data } = response;
+
+      console.log(data);
+
+      //
+      let { regDt } = data.dto;
+      let noticeNew = {
+        regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
+        regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
+        ...data.dto,
+      };
+
+      this.notice = noticeNew;
+
+      this.detailModal.show();
     },
   },
   created() {
-    this.boardList();
+    this.noticeList();
   },
   mounted() {
-    this.insertModal = new Modal(document.querySelector("#insertModal"));
-    // this.detailModal = new Modal(document.querySelector("#detailModal"));
+    //this.insertModal = new Modal(document.querySelector("#insertModal"));
+    this.detailModal = new Modal(document.querySelector("#detailModal"));
     // this.updateModal = new Modal(document.querySelector("#updateModal"));
   },
 };
