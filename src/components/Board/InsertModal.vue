@@ -14,13 +14,12 @@
           </div>
           <div class="mb-3">
             <h5 for="contentInsert" class="form-label">내용</h5>
-
-            <!-- New for FileUpload, CKEditor -->
             <div id="divEditorInsert"></div>
             <!-- / New for FileUpload, CKEditor -->
           </div>
 
           <div class="mb-3">
+            <h5>첨부 파일</h5>
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert" />
               <label class="form-check-label" for="chkFileUploadInsert">파일 추가</label>
@@ -139,5 +138,9 @@ export default {
   width: 100px !important;
   margin-right: 5px;
   max-width: 100%;
+}
+
+label {
+  position: static;
 }
 </style>

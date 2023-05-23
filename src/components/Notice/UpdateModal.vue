@@ -10,11 +10,12 @@
         </div>
         <div class="modal-body">
           <div class="mb-3">
-            <label for="titleUpdate" class="form-label">제목</label>
+            <h5 for="titleUpdate" class="form-label">제목</h5>
             <input type="text" class="form-control" id="titleUpdate" v-model="title" />
           </div>
 
           <div class="mb-3">
+            <h5 for="contentUpdate" class="form-label">내용</h5>
             <div id="divEditorUpdate"></div>
           </div>
           <button @click="noticeUpdate" id="btnNoticeUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">
@@ -98,16 +99,5 @@ export default {
   width: 100%;
   height: 200px;
   overflow-y: scroll;
-}
-
-/*파일업로드 thumbnail*/
-.modal >>> .thumbnail-wrapper {
-  margin-top: 5px;
-}
-
-.modal >>> .thumbnail-wrapper img {
-  width: 100px !important;
-  margin-right: 5px;
-  max-width: 100%;
 }
 </style>
