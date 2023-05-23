@@ -132,8 +132,8 @@ export default {
 
 .tags ul a:hover {
   color: #fff;
-  border: 1px solid #1bbd36;
-  background: #1bbd36;
+  border: 1px solid #4298f3;
+  background: #4298f3;
 }
 
 .tags ul a span {
@@ -144,8 +144,8 @@ export default {
 
 .hover:hover {
   color: #fff;
-  border: 1px solid #1bbd36;
-  background: #1bbd36;
+  border: 1px solid #4298f3;
+  background: #4298f3;
 }
 .x-button {
   display: flex;

@@ -390,6 +390,7 @@ export default {
   justify-content: space-around !important;
 }
 .btns .btn-success {
+  background: #4298f3;
   width: 100%;
 }
 .searchbtn {
@@ -404,7 +405,7 @@ export default {
   background: none;
   font-size: 20px;
 
-  background: #1bbd36;
+  background: #4298f3;
   color: #fff;
   transition: 0.3s;
   border-radius: 4px 4px 4px 4px;

@@ -38,7 +38,7 @@
       </div>
       <!-- searchbar end -->
 
-      <button v-if="isAdmin==true" class="button_1" @click="showInsertModal">글쓰기</button>
+      <button v-if="isAdmin==true" class="button_1" @click="showInsertModal">공지 등록</button>
     </div>
 
     <!-- table start-->
