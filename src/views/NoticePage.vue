@@ -51,7 +51,7 @@
         data-ke-style="style12"
       >
         <thead>
-          <tr bgcolor="#e0eff7">
+          <tr bgcolor="#dddddd">
             <!-- <template x-for="heading in headings"> -->
             <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
             <th style="width: 33.6047%; height: 17px; text-align: center">제목</th>

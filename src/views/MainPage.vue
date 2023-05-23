@@ -14,8 +14,7 @@
             </h1>
             <p class="mt-4 mb-5 fs-1 lh-base">
               Plan perfect trip with a travel tips,
-              <br class="d-none d-lg-block" />recommended course and
-              <br class="d-none d-lg-block" />destination information from us.
+              <br class="d-none d-lg-block" />recommended course and <br class="d-none d-lg-block" />destination information from us.
             </p>
             <!-- <a
               class="btn btn-lg btn-primary hover-top regist-btn"

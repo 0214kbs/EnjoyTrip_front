@@ -6,12 +6,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글 상세</h4>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
@@ -52,13 +47,7 @@
                     <div v-for="(file, index) in board.fileList" :key="index">
                       <span class="fileName">{{ file.fileName }}</span>
                       &nbsp;&nbsp;
-                      <a
-                        type="button"
-                        class="btn btn-outline btn-default btn-xs"
-                        v-bind:href="file.fileUrl"
-                        v-bind:download="file.fileName"
-                        >내려받기</a
-                      >
+                      <a type="button" class="btn btn-outline btn-default btn-xs" v-bind:href="file.fileUrl" v-bind:download="file.fileName">내려받기</a>
                     </div>
                   </td>
                 </tr>
@@ -66,22 +55,10 @@
               </tbody>
             </table>
           </div>
-          <button
-            v-show="board.sameUser"
-            @click="changeToUpdate"
-            class="btn btn-sm btn-primary btn-outline"
-            data-bs-dismiss="modal"
-            type="button"
-          >
+          <button v-show="board.sameUser" @click="changeToUpdate" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">
             글 수정하기
           </button>
-          <button
-            v-show="board.sameUser"
-            @click="changeToDelete"
-            class="btn btn-sm btn-warning btn-outline"
-            data-bs-dismiss="modal"
-            type="button"
-          >
+          <button v-show="board.sameUser" @click="changeToDelete" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">
             글 삭제하기
           </button>
         </div>

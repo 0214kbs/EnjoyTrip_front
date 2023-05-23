@@ -13,10 +13,9 @@
             <label for="titleUpdate" class="form-label">제목</label>
             <input type="text" class="form-control" id="titleUpdate" v-model="title" />
           </div>
+
           <div class="mb-3">
-            <!-- New for FileUpload, CKEditor -->
             <div id="divEditorUpdate"></div>
-            <!-- New for FileUpload -->
           </div>
           <div class="mb-3">
             첨부파일 :
