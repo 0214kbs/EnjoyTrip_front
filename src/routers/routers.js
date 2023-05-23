@@ -10,6 +10,7 @@ import BoardPage from "@/views/BoardPage.vue";
 import NoticePage from "@/views/NoticePage.vue";
 import PlanPage from "@/views/PlanPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
+import SpotPage from "@/views/SpotPage.vue";
 // import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({

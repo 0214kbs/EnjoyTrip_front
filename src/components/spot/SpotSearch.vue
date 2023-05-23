@@ -3,7 +3,7 @@
     <sub-nav :items="items" :title="title"></sub-nav>
 
     <!-- ======= Blog Section ======= -->
-    <section id="blog" class="blog">
+    <section style="width: 100%; hight: 100hv">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 entries">
