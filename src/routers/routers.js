@@ -10,11 +10,7 @@ import BoardPage from "@/views/BoardPage.vue";
 import NoticePage from "@/views/NoticePage.vue";
 import PlanPage from "@/views/PlanPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
-<<<<<<< HEAD
 import MapPage from "@/components/spot/MapPage.vue";
-=======
-import SpotPage from "@/views/SpotPage.vue";
->>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
 // import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({
