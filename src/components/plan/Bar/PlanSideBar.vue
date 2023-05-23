@@ -1,5 +1,5 @@
 <template>
-  <main id="main">
+  <main id="main" >
     <section>
       <div class="sidebar sidebar-fix">
         <h3 class="sidebar-title">Search</h3>
@@ -90,7 +90,14 @@ export default {
 #main {
   position: absolute;
   width: 500px;
+  height: 100%;
   z-index: 2;
+}
+section{
+  background-color: rgba( 255, 255, 255, 0.76 );
+  height: 100%;
+  padding-top: 90px;
+  padding-bottom: 30px;
 }
 .sortable-ghost {
   background: yellow;

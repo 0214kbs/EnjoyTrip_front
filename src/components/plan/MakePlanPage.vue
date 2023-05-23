@@ -55,4 +55,5 @@ export default {
   position: relative;
   width: 100hv;
 }
+
 </style>

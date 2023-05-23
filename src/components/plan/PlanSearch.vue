@@ -1,7 +1,7 @@
 <template>
   <main id="main">
     <!-- ======= Blog Section ======= -->
-    <section style="background-color: white">
+    <section>
       <!--<div class="container">-->
       <div class="row d-flex justify-content-between" style="height:100%; padding-left: 15px;
     width: 100%; ">
@@ -344,6 +344,7 @@ export default {
   z-index: 2;
 }
 section{
+  background-color: rgba( 255, 255, 255, 0.75 );
   height: 100%;
   padding-top: 90px;
   padding-bottom: 30px;
