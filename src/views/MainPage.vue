@@ -7,21 +7,17 @@
 
       <div class="container position-relative">
         <div class="row align-items-center justify-content-end min-vh-75 my-lg-7">
-          <div class="col-md-7 col-lg-6 text-center text-md-end py-8">
-            <h1 class="mb-4 display-1 lh-sm">
-              Getting Around <br class="d-block d-lg-none d-xl-block" />
-              Korea!
-            </h1>
-            <p class="mt-4 mb-5 fs-1 lh-base">
+          <div class="col-md-7 col-lg-6 text-center text-md-end py-6">
+            <h3 class="mb-4 display-1 lh-sm">Getting Around Korea!</h3>
+            <br />
+            <br />
+            <!-- <p class="mt-4 mb-5 fs-1 lh-base">
               Plan perfect trip with a travel tips,
               <br class="d-none d-lg-block" />recommended course and <br class="d-none d-lg-block" />destination information from us.
-            </p>
-            <!-- <a
-              class="btn btn-lg btn-primary hover-top regist-btn"
-              href="#"
-              role="button"
-              id="sign-up-now"
-              >Sign Up Now</a> -->
+            </p> -->
+            <a class="btn btn-lg btn-primary hover-top regist-btn" href="#" role="button" id="sign-up-now" style="background-color: #4298f3; border: none"
+              ><router-link to="/map" class="nav-link">Join Now !</router-link></a
+            >
           </div>
         </div>
       </div>
@@ -52,7 +48,7 @@ export default {
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap";
 
 #front {
-  background-image: url("@/assets/img/여행.jpg");
+  background-image: url("@/assets/img/real_main.jpg");
   /*background-position: right bottom;*/
   background-size: cover;
   width: 100%;
