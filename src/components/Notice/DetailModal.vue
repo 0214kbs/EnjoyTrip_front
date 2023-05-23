@@ -33,8 +33,12 @@
             </table>
           </div>
           <!-- click event 넣기!! -->
-          <button v-show="notice.isAdmin" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">글 수정하기</button>
-          <button v-show="notice.isAdmin" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">글 삭제하기</button>
+          <button v-show="notice.isAdmin" @click="changeToUpdate" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">
+            글 수정하기
+          </button>
+          <button v-show="notice.isAdmin" @click="changeToDelete" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">
+            글 삭제하기
+          </button>
         </div>
       </div>
     </div>
@@ -46,12 +50,12 @@
 export default {
   props: ["notice"],
   methods: {
-    // changeToUpdate() {
-    //   this.$emit("call-parent-change-to-update");
-    // },
-    // changeToDelete() {
-    //   this.$emit("call-parent-change-to-delete");
-    // },
+    changeToUpdate() {
+      this.$emit("call-parent-change-to-update");
+    },
+    changeToDelete() {
+      this.$emit("call-parent-change-to-delete");
+    },
   },
 };
 </script>
