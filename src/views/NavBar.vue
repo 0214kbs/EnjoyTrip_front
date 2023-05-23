@@ -41,9 +41,6 @@
               <li class="nav-item" v-show="ISLOGIN">
                 <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3">회원정보</router-link>
               </li>
-              <li class="nav-item" v-show="ISLOGIN">
-                <a class="nav-link btn-outline-primary rounded-pill px-3" id="logout" @click="logout">로그아웃</a>
-              </li>
             </ul>
           </div>
           <div class="navbar align-self-center d-flex">
@@ -53,9 +50,13 @@
             <!-- dropdown start-->
             <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret v-show="ISLOGIN">
               <template #button-content> &#9970;<span class="sr-only">Profile</span> </template>
-              <b-dropdown-item href="#">마이 페이지 </b-dropdown-item>
-              <b-dropdown-item href="#">회원 정보 수정</b-dropdown-item>
-              <b-dropdown-item href="#">회원 탈퇴</b-dropdown-item>
+              <b-dropdown-item href="#">
+                <router-link to="/plan" class="nav-link">나의 일정</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item>
+                <router-link to="/userinfo" class="nav-link">회원정보</router-link>
+              </b-dropdown-item>
+              <b-dropdown-item id="logout" @click="logout">로그아웃</b-dropdown-item>
             </b-dropdown>
             <!-- dropdown end-->
           </div>
@@ -109,6 +110,7 @@ export default {
         console.log(data);
 
         sessionStorage.clear();
+        this.$router.push("/");
         this.$router.go(0);
       } catch (error) {
         console.error(error);
