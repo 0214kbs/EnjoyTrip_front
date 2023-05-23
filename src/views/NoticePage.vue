@@ -125,7 +125,7 @@ export default {
         content: "",
         regDate: "",
         regTime: "",
-        isAdmin: false,
+        admin: false,
       },
     };
   },
