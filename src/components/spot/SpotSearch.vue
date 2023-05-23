@@ -6,60 +6,64 @@
       <div class="row d-flex justify-content-between">
         <div class="col-lg-8 entries">
           <!-- 검색버튼-->
-          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
-            <!-- 시도 -->
-            <div style="float: left; margin-right: 10px">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ areaCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
+          <div>
+            <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
+              <!-- 시도 -->
+              <div>
+                <div style="float: left; margin-right: 10px">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ areaCodeN }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
+                      <a class="dropdown-item">{{ area.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div style="float: left">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ sigunguCodeN }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
+                      <a class="dropdown-item">{{ area.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <div style="float: left; margin-right: 10px">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ cat1N }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
+                      <a class="dropdown-item">{{ cat.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div style="float: left; margin-right: 10px">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ cat2N }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
+                      <a class="dropdown-item">{{ cat.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+                <div style="float: left">
+                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ cat3N }}
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
+                      <a class="dropdown-item">{{ cat.name }}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ sigunguCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
-            </div>
-
-            <div style="float: left; margin-right: 10px">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat1N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat2N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat3N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-
             <button @click="search" class="bi bi-search searchbtn">검색</button>
           </div>
 
@@ -133,9 +137,9 @@ export default {
 
       areaCodeN: "시도를 선택하세요",
       sigunguCodeN: "구군을 선택하세요",
-      cat1N: "대분류",
-      cat2N: "중분류",
-      cat3N: "소분류",
+      cat1N: "대분류 선택",
+      cat2N: "중분류 선택",
+      cat3N: "소분류 선택",
 
       areaCode: "",
       sigunguCode: "",
