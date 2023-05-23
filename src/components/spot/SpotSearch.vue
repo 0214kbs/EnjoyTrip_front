@@ -1,5 +1,6 @@
 <template>
   <main id="main">
+<<<<<<< HEAD
     <!-- ======= Blog Section ======= -->
     <section>
       <div class="container">
@@ -21,6 +22,31 @@
                 </li>
               </ul>
 
+=======
+    <sub-nav :items="items" :title="title"></sub-nav>
+
+    <!-- ======= Blog Section ======= -->
+    <section style="width: 100%; hight: 100hv">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 entries">
+            <!-- 검색버튼-->
+            <div class="margin btns" role="group" aria-label="Button group with nested dropdown">
+              <button
+                type="button"
+                class="btn btn-success dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                {{ areaCodeN }}
+              </button>
+              <ul class="dropdown-menu">
+                <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
+                  <a class="dropdown-item">{{ area.name }}</a>
+                </li>
+              </ul>
+
+>>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
               <button
                 type="button"
                 class="btn btn-success dropdown-toggle"
@@ -76,6 +102,7 @@
                   <a class="dropdown-item">{{ cat.name }}</a>
                 </li>
               </ul>
+<<<<<<< HEAD
               <button @click="search" class="bi bi-search searchbtn">검색</button>
             </div>
 
@@ -84,6 +111,15 @@
               <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
             </div>-->
 
+=======
+              <button @click="search" class="bi bi-search searchbtn"></button>
+            </div>
+
+            <!--지도-->
+            <div class="map-section" style="width: 100%; height: 100%">
+              <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
+            </div>
+>>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
             <div id="trip-list" class="row"></div>
             <table class="shortest-route-table">
               <thead>
@@ -111,10 +147,18 @@
               <tbody></tbody>
             </table>
           </div>
+<<<<<<< HEAD
 
           <div class="col-lg-4">
             <map-side-bar :routes="routes"></map-side-bar>
           </div>
+=======
+          <!--
+          <div class="col-lg-4">
+            <map-side-bar :routes="routes"></map-side-bar>
+          </div>
+          -->
+>>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
         </div>
       </div>
     </section>
@@ -124,12 +168,19 @@
 //import SubNav from "@/components/common/SubNav.vue";
 //import MapSideBar from "@/components/TripPlan/MapSideBar.vue";
 import http from "@/common/axios";
+<<<<<<< HEAD
 import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
+=======
+>>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
 
 export default {
   components: {
     //SubNav,
+<<<<<<< HEAD
     MapSideBar,
+=======
+    //MapSideBar,
+>>>>>>> b48759a27d67ccd42e35a40e8927e9f517104b1f
   },
   data() {
     return {

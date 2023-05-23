@@ -14,24 +14,9 @@
           </div>
           <div class="mb-3">
             <h5 for="contentInsert" class="form-label">내용</h5>
-            <div id="divEditorInsert"></div>
-            <!-- / New for FileUpload, CKEditor -->
           </div>
-
-          <div class="mb-3">
-            <h5>첨부 파일</h5>
-            <div class="form-check">
-              <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadInsert" />
-              <label class="form-check-label" for="chkFileUploadInsert">파일 추가</label>
-            </div>
-          </div>
-          <div v-show="attachFile" class="mb-3" style="display: none" id="imgFileUploadInsertWrapper">
-            <input @change="changeFile" type="file" id="inputFileUploadInsert" multiple />
-            <div id="imgFileUploadInsertThumbnail" class="thumbnail-wrapper">
-              <img v-for="(file, index) in fileList" v-bind:key="index" v-bind:src="file" />
-            </div>
-          </div>
-          <button id="btnBoardInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="boardInsert">
+          <div id="divEditorInsert"></div>
+          <button id="btnNoticeInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="noticeInsert">
             등록
           </button>
         </div>
@@ -55,41 +40,24 @@ export default {
     return {
       title: "",
       CKEditor: "",
-      attachFile: false,
-      fileList: [],
     };
   },
   methods: {
     initUI() {
       this.title = "";
       this.CKEditor.setData("");
-      this.attachFile = false;
-      this.fileList = [];
-      document.querySelector("#inputFileUploadInsert").value = "";
     },
-    changeFile(fileEvent) {
-      this.fileList = [];
-      const fileArray = Array.from(fileEvent.target.files); // Array 로 변환 가능
-      fileArray.forEach((file) => {
-        this.fileList.push(URL.createObjectURL(file));
-      });
-    },
-    async boardInsert() {
+    async noticeInsert() {
       // file upload - multipart/form-data
       let formData = new FormData();
       formData.append("title", this.title);
       formData.append("content", this.CKEditor.getData());
 
-      let files = document.querySelector("#inputFileUploadInsert").files;
-
-      const fileArray = Array.from(files); // Array 로 변환 가능
-      fileArray.forEach((file) => formData.append("file", file));
-
       let options = {
         headers: { "Content-Type": "multipart/form-data" },
       };
 
-      let response = await http.post("/boards", formData, options);
+      let response = await http.post("/notices", formData, options);
       let { data } = response;
 
       console.log(data);
@@ -138,9 +106,5 @@ export default {
   width: 100px !important;
   margin-right: 5px;
   max-width: 100%;
-}
-
-label {
-  position: static;
 }
 </style>

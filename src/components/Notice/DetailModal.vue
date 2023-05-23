@@ -37,23 +37,25 @@
               </tbody>
             </table>
           </div>
-          <!-- click event 넣기!! -->
-          <div v-show="ISDAMIN">
-            <button
-              class="btn btn-sm btn-primary btn-outline"
-              data-bs-dismiss="modal"
-              type="button"
-            >
-              글 수정하기
-            </button>
-            <button
-              class="btn btn-sm btn-warning btn-outline"
-              data-bs-dismiss="modal"
-              type="button"
-            >
-              글 삭제하기
-            </button>
-          </div>
+          <!-- v-show="notice.isAdmin" 이거 문제 생김 -->
+          <button
+            v-show="notice.admin"
+            @click="changeToUpdate"
+            class="btn btn-sm btn-primary btn-outline"
+            data-bs-dismiss="modal"
+            type="button"
+          >
+            글 수정하기
+          </button>
+          <button
+            v-show="notice.admin"
+            @click="changeToDelete"
+            class="btn btn-sm btn-warning btn-outline"
+            data-bs-dismiss="modal"
+            type="button"
+          >
+            글 삭제하기
+          </button>
         </div>
       </div>
     </div>
@@ -76,12 +78,12 @@ export default {
     };
   },
   methods: {
-    // changeToUpdate() {
-    //   this.$emit("call-parent-change-to-update");
-    // },
-    // changeToDelete() {
-    //   this.$emit("call-parent-change-to-delete");
-    // },
+    changeToUpdate() {
+      this.$emit("call-parent-change-to-update");
+    },
+    changeToDelete() {
+      this.$emit("call-parent-change-to-delete");
+    },
   },
 };
 </script>

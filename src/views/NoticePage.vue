@@ -5,7 +5,7 @@
     <br />
     <br />
     <br />
-    <h1 class="text-2xl py-4 border-b mb-3">공지사항</h1>
+    <h1 class="text-2xl py-4 border-b mb-3">공지 사항</h1>
     <div class="mb-4 flex justify-between items-center">
       <!-- searchbar start -->
       <div class="flex-1 pr-4">
@@ -37,8 +37,8 @@
         </div>
       </div>
       <!-- searchbar end -->
-      <!--@click="showInsertModal"-->
-      <button v-show="ISADMIN" class="button_1">글쓰기</button>
+
+      <button class="button_1" @click="showInsertModal">글쓰기</button>
     </div>
 
     <!-- table start-->
@@ -80,7 +80,13 @@
     >
     </PaginationUI>
 
-    <detail-modal v-bind:notice="notice"></detail-modal>
+    <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
+    <detail-modal
+      v-bind:notice="notice"
+      v-on:call-parent-change-to-update="changeToUpdate"
+      v-on:call-parent-change-to-delete="noticeDelete"
+    ></detail-modal>
+    <update-modal v-bind:notice="notice" v-on:call-parent-update="closeAfterUpdate"></update-modal>
   </div>
   <!-- </div> -->
 </template>
@@ -89,27 +95,22 @@
 import http from "@/common/axios";
 import util from "@/common/util";
 
-// import InsertModal from "@/components/Notice/InsertModal.vue";
+import InsertModal from "@/components/Notice/InsertModal.vue";
 import DetailModal from "@/components/Notice/DetailModal.vue";
-// import UpdateModal from "@/components/Notice/UpdateModal.vue";
+import UpdateModal from "@/components/Notice/UpdateModal.vue";
 import PaginationUI from "@/components/PaginationUI.vue";
 
 import { Modal } from "bootstrap";
 
 export default {
-  //   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
-  components: { DetailModal, PaginationUI },
-  computed: {
-    ISADMIN: function () {
-      return this.isAdmin;
-    },
-  },
+  components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
+
   data() {
     return {
       // modal
-      // insertModal: null,
+      insertModal: null,
       detailModal: null,
-      //   updateModal: null,
+      updateModal: null,
 
       isAdmin: sessionStorage.getItem("admin") != null ? sessionStorage.getItem("admin") : false,
 
@@ -151,13 +152,6 @@ export default {
       //
       this.list = data.list;
       this.totalListItemCount = data.count;
-
-      // if (data.result == "login") {
-      //   this.$router.push("/login");
-      // } else {
-      //   this.list = data.list;
-      //   this.totalListItemCount = data.count;
-      // }
     },
     ListDate: function (date) {
       return util.makeDateStr(date.year, date.month, date.day, ".");
@@ -184,14 +178,64 @@ export default {
 
       this.detailModal.show();
     },
+    showInsertModal() {
+      this.insertModal.show();
+    },
+    closeAfterInsert() {
+      this.insertModal.hide();
+      this.noticeList();
+    },
+    closeAfterUpdate() {
+      this.updateModal.hide();
+      this.noticeList();
+    },
+    changeToUpdate() {
+      this.detailModal.hide();
+      this.updateModal.show();
+    },
+    changeAfterUpdate() {
+      this.updateModal.hide();
+      this.noticeList();
+    },
+    changeToDelete() {
+      this.detailModal.hide();
+
+      var $this = this;
+      this.$alertify.confirm(
+        "이 글을 삭제하시겠습니까?",
+        function () {
+          $this.noticeDelete();
+        },
+        function () {
+          console.log("cancel");
+        }
+      );
+    },
+    async noticeDelete() {
+      try {
+        console.log("notice delete");
+        let response = await http.delete("/notices/" + this.notice.noticeId);
+        let { data } = response;
+        console.log(data);
+
+        if (data.result == "login") {
+          this.$router.push("/login");
+        } else {
+          this.$alertify.success("글이 삭제되었습니다.");
+          this.noticeList();
+        }
+      } catch (error) {
+        console.log("error");
+      }
+    },
   },
   created() {
     this.noticeList();
   },
   mounted() {
-    //this.insertModal = new Modal(document.querySelector("#insertModal"));
+    this.insertModal = new Modal(document.querySelector("#insertModal"));
     this.detailModal = new Modal(document.querySelector("#detailModal"));
-    // this.updateModal = new Modal(document.querySelector("#updateModal"));
+    this.updateModal = new Modal(document.querySelector("#updateModal"));
   },
 };
 </script>
