@@ -11,6 +11,7 @@ import NoticePage from "@/views/NoticePage.vue";
 import PlanPage from "@/views/PlanPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
 import MapPage from "@/components/spot/MapPage.vue";
+import MakePlanPage from "@/components/plan/MakePlanPage";
 // import store from "@/store/store.js"; // 나중에 추가
 
 export default new VueRouter({
@@ -26,6 +27,10 @@ export default new VueRouter({
     {
       path: "/map",
       component: MapPage,
+    },
+    {
+      path: "/test",
+      component: MakePlanPage,
     },
     {
       path: "/regist",
