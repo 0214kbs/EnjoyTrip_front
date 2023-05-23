@@ -108,6 +108,11 @@ export default {
           this.$router.push("/login");
         } else {
           sessionStorage.setItem("isLogin", true);
+
+          if (this.userId == "admin") {
+            sessionStorage.setItem("admin", true);
+          }
+
           sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
           this.$router.push("/");
           alertify.success("로그인되었습니다.", 1.5);

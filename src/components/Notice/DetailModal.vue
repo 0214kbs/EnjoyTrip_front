@@ -6,7 +6,12 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">상세보기</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
 
         <div class="modal-body">
@@ -33,8 +38,22 @@
             </table>
           </div>
           <!-- click event 넣기!! -->
-          <button v-show="notice.isAdmin" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">글 수정하기</button>
-          <button v-show="notice.isAdmin" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">글 삭제하기</button>
+          <div v-show="ISDAMIN">
+            <button
+              class="btn btn-sm btn-primary btn-outline"
+              data-bs-dismiss="modal"
+              type="button"
+            >
+              글 수정하기
+            </button>
+            <button
+              class="btn btn-sm btn-warning btn-outline"
+              data-bs-dismiss="modal"
+              type="button"
+            >
+              글 삭제하기
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -45,6 +64,17 @@
 <script>
 export default {
   props: ["notice"],
+  computed: {
+    ISADMIN: function () {
+      return this.isAdmin;
+    },
+  },
+
+  data() {
+    return {
+      sAdmin: sessionStorage.getItem("admin") != null ? sessionStorage.getItem("admin") : false,
+    };
+  },
   methods: {
     // changeToUpdate() {
     //   this.$emit("call-parent-change-to-update");

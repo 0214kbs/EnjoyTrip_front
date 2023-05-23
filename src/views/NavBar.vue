@@ -4,42 +4,71 @@
     <nav id="main_nav" class="navbar navbar-expand-lg fixed-top navbar-light shadow">
       <div class="container d-flex justify-content-between align-items-center">
         <router-link to="/" class="navbar-brand d-flex align-items-center fw-bold fs-2">
-          <img class="d-inline-block align-top img-fluid" src="@/assets/img/gallery/logo-icon.png" alt="" width="50" /><span class="text-primary fs-4 ps-2"
-            >Trip</span
-          ></router-link
+          <img
+            class="d-inline-block align-top img-fluid"
+            src="@/assets/img/gallery/logo-icon.png"
+            alt=""
+            width="50"
+          /><span class="text-primary fs-4 ps-2">Trip</span></router-link
         >
 
-        <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+        <div
+          class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between"
+          id="navbar-toggler-success"
+        >
           <div class="flex-fill mx-xl-5">
             <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
               <li class="nav-item">
                 <!-- <a class="nav-link btn-outline-primary rounded-pill px-3" aria-current="page" href="#main">Home</a> -->
               </li>
               <li class="nav-item">
-                <router-link to="/" class="nav-link btn-outline-primary rounded-pill px-3" href="#Korea-trip">국내여행</router-link>
+                <router-link
+                  to="/"
+                  class="nav-link btn-outline-primary rounded-pill px-3"
+                  href="#Korea-trip"
+                  >국내여행</router-link
+                >
               </li>
               <li class="nav-item">
-                <router-link to="/spot" class="nav-link btn-outline-primary rounded-pill px-3">지역찾기</router-link>
+                <router-link to="/map" class="nav-link btn-outline-primary rounded-pill px-3"
+                  >지역찾기</router-link
+                >
               </li>
               <li class="nav-item">
-                <span v-if="ISLOGIN"> <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link></span>
-                <span v-if="!ISLOGIN"> <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">게시판</router-link></span>
+                <span v-if="ISLOGIN">
+                  <router-link to="/board" class="nav-link btn-outline-primary rounded-pill px-3"
+                    >게시판</router-link
+                  ></span
+                >
+                <span v-if="!ISLOGIN">
+                  <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3"
+                    >게시판</router-link
+                  ></span
+                >
               </li>
               <li class="nav-item">
-                <router-link to="/notice" class="nav-link btn-outline-primary rounded-pill px-3">공지사항</router-link>
+                <router-link to="/notice" class="nav-link btn-outline-primary rounded-pill px-3"
+                  >공지사항</router-link
+                >
               </li>
               <li v-show="!ISLOGIN" class="nav-item">
-                <router-link to="/regist" class="nav-link btn-outline-primary rounded-pill px-3">회원가입</router-link>
+                <router-link to="/regist" class="nav-link btn-outline-primary rounded-pill px-3"
+                  >회원가입</router-link
+                >
               </li>
               <li class="nav-item" v-show="!ISLOGIN">
-                <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3"> 로그인 </router-link>
+                <router-link to="/login" class="nav-link btn-outline-primary rounded-pill px-3">
+                  로그인
+                </router-link>
               </li>
 
               <!-- <li class="nav-item" v-show="ISLOGIN">
               <router-link to="/plan" class="nav-link btn-outline-primary rounded-pill px-3">일정확인</router-link>
             </li> -->
               <li class="nav-item" v-show="ISLOGIN">
-                <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3">회원정보</router-link>
+                <router-link to="/userinfo" class="nav-link btn-outline-primary rounded-pill px-3"
+                  >회원정보</router-link
+                >
               </li>
             </ul>
           </div>
@@ -48,7 +77,13 @@
 
             <!-- <a class="nav-link dropdown-toggle" href="#" v-show="ISLOGIN"><i class="bx bx-user-circle bx-sm text-primary"></i></a> -->
             <!-- dropdown start-->
-            <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret v-show="ISLOGIN">
+            <b-dropdown
+              size="lg"
+              variant="link"
+              toggle-class="text-decoration-none"
+              no-caret
+              v-show="ISLOGIN"
+            >
               <template #button-content> &#9970;<span class="sr-only">Profile</span> </template>
               <b-dropdown-item href="#">
                 <router-link to="/plan" class="nav-link">나의 일정</router-link>
@@ -84,7 +119,8 @@ export default {
   },
   data() {
     return {
-      isLogin: sessionStorage.getItem("isLogin") != null ? sessionStorage.getItem("isLogin") : false,
+      isLogin:
+        sessionStorage.getItem("isLogin") != null ? sessionStorage.getItem("isLogin") : false,
       loginModal: null,
     };
   },

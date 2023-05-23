@@ -37,8 +37,8 @@
         </div>
       </div>
       <!-- searchbar end -->
-
-      <!-- <button class="button_1" @click="showInsertModal">글쓰기</button> -->
+      <!--@click="showInsertModal"-->
+      <button v-show="ISADMIN" class="button_1">글쓰기</button>
     </div>
 
     <!-- table start-->
@@ -99,12 +99,19 @@ import { Modal } from "bootstrap";
 export default {
   //   components: { InsertModal, DetailModal, UpdateModal, PaginationUI },
   components: { DetailModal, PaginationUI },
+  computed: {
+    ISADMIN: function () {
+      return this.isAdmin;
+    },
+  },
   data() {
     return {
       // modal
       // insertModal: null,
       detailModal: null,
       //   updateModal: null,
+
+      isAdmin: sessionStorage.getItem("admin") != null ? sessionStorage.getItem("admin") : false,
 
       // list
       list: [],
@@ -166,7 +173,6 @@ export default {
 
       console.log(data);
 
-      //
       let { regDt } = data.dto;
       let noticeNew = {
         regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
