@@ -38,7 +38,7 @@
       </div>
       <!-- searchbar end -->
 
-      <button class="button_1" @click="showInsertModal">글쓰기</button>
+      <button v-if="isAdmin==true" class="button_1" @click="showInsertModal">글쓰기</button>
     </div>
 
     <!-- table start-->
@@ -112,7 +112,7 @@ export default {
       detailModal: null,
       updateModal: null,
 
-      isAdmin: sessionStorage.getItem("admin") != null ? sessionStorage.getItem("admin") : false,
+      isAdmin: sessionStorage.getItem("admin") != null ? true : false,
 
       // list
       list: [],

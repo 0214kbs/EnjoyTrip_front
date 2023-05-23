@@ -37,7 +37,6 @@
               </tbody>
             </table>
           </div>
-          <!-- v-show="notice.isAdmin" 이거 문제 생김 -->
           <button
             v-show="notice.admin"
             @click="changeToUpdate"
@@ -66,17 +65,6 @@
 <script>
 export default {
   props: ["notice"],
-  computed: {
-    ISADMIN: function () {
-      return this.isAdmin;
-    },
-  },
-
-  data() {
-    return {
-      sAdmin: sessionStorage.getItem("admin") != null ? sessionStorage.getItem("admin") : false,
-    };
-  },
   methods: {
     changeToUpdate() {
       this.$emit("call-parent-change-to-update");
