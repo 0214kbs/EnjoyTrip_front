@@ -1,4 +1,6 @@
 <template>
+  <main id="main">
+    <section>
   <div class="sidebar sidebar-fix">
     <h3 class="sidebar-title">Search</h3>
     <div class="sidebar-item search-form">
@@ -38,6 +40,8 @@
 
     <!-- End sidebar tags-->
   </div>
+</section>
+</main>
   <!-- End sidebar -->
 </template>
 
@@ -45,9 +49,10 @@
 //import { mapActions } from "vuex";
 
 import draggable from "vuedraggable";
+import {eventBus} from "@/main.js";
 
 export default {
-  props: ["routes"],
+  //props: ["routes"],
   name: "SideBar",
   components: {
     draggable,
@@ -57,7 +62,7 @@ export default {
   data() {
     return {
       searchWord: "",
-      routeData: this.routes,
+      routeData: [],
     };
   },
 
@@ -73,7 +78,6 @@ export default {
       this.detailPost(post);
       this.$router.push("/tripPlanDetail");
     },
-
     searchword() {
       //오류
       //결과를 받아와서  store의 detail을 수정하면
@@ -86,10 +90,20 @@ export default {
       console.log(this.routeData);
     },
   },
+  created(){
+    eventBus.$on('send-routes',routes =>{
+      this.routeData = routes;
+    });
+  }
 };
 </script>
 
 <style scoped>
+#main {
+  position: absolute;
+  width: 500px;
+  z-index: 2;
+}
 .sortable-ghost {
   background: yellow;
 }

@@ -1,18 +1,23 @@
 <template>
   <div class="mapPage">
     <spot-search></spot-search>
+    <div class="col-lg-4 sidebar float-end">
+      <map-side-bar></map-side-bar>
+    </div>
     <div>
-      <div id="map" class="mt-3" style="width: 100%; height: 950px"></div>
+      <div id="map" class="mt-3" style="width: 100vw; height: 980px"></div>
     </div>
   </div>
 </template>
 
 <script>
 import SpotSearch from "@/components/spot/SpotSearch.vue";
+import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
 
 export default {
   components: {
     SpotSearch,
+    MapSideBar
   },
   methods: {
     initMap() {
@@ -48,6 +53,6 @@ export default {
 <style scoped>
 .mapPage {
   position: relative;
-  width: 100%;
+  width: 100hv;
 }
 </style>

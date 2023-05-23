@@ -2,11 +2,11 @@
   <main id="main">
     <!-- ======= Blog Section ======= -->
     <section>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 entries">
+      <!--<div class="container">-->
+        <div class="row d-flex justify-content-between">
+          <div class="col-lg-8 entries ">
             <!-- 검색버튼-->
-            <div class="margin btns" role="group" aria-label="Button group with nested dropdown">
+            <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
               <button
                 type="button"
                 class="btn btn-success dropdown-toggle"
@@ -112,11 +112,13 @@
             </table>
           </div>
 
-          <div class="col-lg-4">
+          <!--
+          <div class="col-lg-4 sidebar">
             <map-side-bar :routes="routes"></map-side-bar>
           </div>
+          -->
         </div>
-      </div>
+      <!--</div>-->
     </section>
   </main>
 </template>
@@ -124,12 +126,13 @@
 //import SubNav from "@/components/common/SubNav.vue";
 //import MapSideBar from "@/components/TripPlan/MapSideBar.vue";
 import http from "@/common/axios";
-import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
-
+//import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
+import {eventBus} from "@/main.js";
 export default {
+  
   components: {
     //SubNav,
-    MapSideBar,
+    //MapSideBar,
   },
   data() {
     return {
@@ -173,7 +176,7 @@ export default {
     selectSpot(item) {
       //기존마커 제거
 
-      console.log(item.title);
+      //console.log(item.title);
 
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);
@@ -187,6 +190,7 @@ export default {
 
       // 현재 값을 경로로 선택한다.
       this.routes.push(item);
+      eventBus.$emit('send-routes',this.routes);
     },
     initMap() {
       var container = document.getElementById("map");
@@ -203,7 +207,7 @@ export default {
       this.marker.setMap(this.map);
     },
     async search() {
-      console.log("search");
+      //console.log("search");
 
       let urlParams =
         "?numOfRows=" +
@@ -224,11 +228,11 @@ export default {
 
       let { data } = await http.get("/trip/list" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
-      console.log(res);
+      //console.log(res);
 
       this.itemList = res;
       this.shortestRouteList = JSON.parse(data.shortestRoute);
-      console.log(this.shortestRouteList);
+      //console.log(this.shortestRouteList);
     },
     // async search(){
     //   await this.getList();
@@ -237,7 +241,7 @@ export default {
     setArea2(code) {
       this.areaCode = code.code;
       this.areaCodeN = code.name;
-      console.log(code);
+      //console.log(code);
       this.getArea2List();
     },
 
@@ -245,27 +249,27 @@ export default {
       this.sigunguCode = code.code;
       this.sigunguCodeN = code.name;
 
-      console.log(code);
+      //console.log(code);
     },
 
     setCat1(code) {
       this.cat1 = code.code;
       this.cat1N = code.name;
-      console.log(code);
+      //console.log(code);
       this.getCat2List();
     },
 
     setCat2(code) {
       this.cat2 = code.code;
       this.cat2N = code.name;
-      console.log(code);
+      //console.log(code);
       this.getCat3List();
     },
 
     setCat3(code) {
       this.cat3 = code.code;
       this.cat3N = code.name;
-      console.log(code);
+      //console.log(code);
     },
 
     async getArea1List() {
@@ -276,7 +280,7 @@ export default {
 
       let codeList = res.response.body.items.item;
       this.area1List = codeList;
-      console.log(this.area1List);
+      //console.log(this.area1List);
     },
 
     async getArea2List() {
@@ -288,7 +292,7 @@ export default {
 
       let codeList = res.response.body.items.item;
 
-      console.log(codeList);
+      //console.log(codeList);
       // this.area2List = this.area2List.concat(...codeList);
       // codeList.forEach(el => {
       //   this.area2List.push(el)
@@ -299,7 +303,7 @@ export default {
       //   this.$set(this.area2List,i,el);
       // });
       // this.$set(this.area2List,codeList);
-      console.log(this.area2List);
+      //console.log(this.area2List);
     },
 
     async getCat1List() {
@@ -324,9 +328,9 @@ export default {
 
       let codeList = res.response.body.items.item;
 
-      console.log(codeList);
+      //console.log(codeList);
       this.category2List = codeList;
-      console.log(this.category2List);
+      //console.log(this.category2List);
     },
 
     async getCat3List() {
@@ -345,9 +349,9 @@ export default {
 
       let codeList = res.response.body.items.item;
 
-      console.log(codeList);
+      //console.log(codeList);
       this.category3List = codeList;
-      console.log(this.category3List);
+      //console.log(this.category3List);
     },
   },
   mounted() {
@@ -370,8 +374,12 @@ export default {
 <style scoped>
 #main {
   position: absolute;
-  width: 100%;
+  width: 500px;
   z-index: 2;
+}
+.entries{
+  width:500px;
+  
 }
 .margin {
   margin-bottom: 20px;
