@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="hegith: 100%">
     <spot-search></spot-search>
   </div>
 </template>

@@ -82,7 +82,7 @@
             </div>
 
             <!--지도-->
-            <div class="map-section">
+            <div class="map-section" style="width: 100%; height: 100%">
               <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
             </div>
             <div id="trip-list" class="row"></div>
