@@ -9,8 +9,6 @@ import MainPage from "@/views/MainPage.vue";
 import BoardPage from "@/views/BoardPage.vue";
 import NoticePage from "@/views/NoticePage.vue";
 import PlanPage from "@/views/PlanPage.vue";
-import SpotPage from "@/views/SpotView.vue";
-import SpotDetailPage from "@/views/SpotDetailView.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
 // import store from "@/store/store.js"; // 나중에 추가
 
@@ -47,14 +45,9 @@ export default new VueRouter({
       component: UserInfoPage,
     },
     {
-      path: "/spot",
-      name: "spot",
+      path: "/trip",
+      name: "trip",
       component: SpotPage,
-    },
-    {
-      path: "/spotDetail",
-      name: "spotDetail",
-      component: SpotDetailPage,
     },
   ],
 });
