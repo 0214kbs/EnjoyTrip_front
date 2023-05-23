@@ -1,123 +1,98 @@
 <template>
   <main id="main">
     <!-- ======= Blog Section ======= -->
-    <section>
+    <section style="background-color: white">
       <!--<div class="container">-->
-        <div class="row d-flex justify-content-between" style="background-color: white">
-          <div class="col-lg-8 entries ">
-            <!-- 검색버튼-->
-            <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
-              <button
-                type="button"
-                class="btn btn-success dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {{ areaCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
+      <div class="row d-flex justify-content-between">
+        <div class="col-lg-8 entries">
+          <!-- 검색버튼-->
+          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ areaCodeN }}
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
+                <a class="dropdown-item">{{ area.name }}</a>
+              </li>
+            </ul>
 
-              <button
-                type="button"
-                class="btn btn-success dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {{ sigunguCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ sigunguCodeN }}
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
+                <a class="dropdown-item">{{ area.name }}</a>
+              </li>
+            </ul>
 
-              <button
-                type="button"
-                class="btn btn-success dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {{ cat1N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ cat1N }}
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
+                <a class="dropdown-item">{{ cat.name }}</a>
+              </li>
+            </ul>
 
-              <button
-                type="button"
-                class="btn btn-success dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {{ cat2N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ cat2N }}
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
+                <a class="dropdown-item">{{ cat.name }}</a>
+              </li>
+            </ul>
 
-              <button
-                type="button"
-                class="btn btn-success dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {{ cat3N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-              <button @click="search" class="bi bi-search searchbtn">검색</button>
-            </div>
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ cat3N }}
+            </button>
+            <ul class="dropdown-menu">
+              <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
+                <a class="dropdown-item">{{ cat.name }}</a>
+              </li>
+            </ul>
+            <button @click="search" class="bi bi-search searchbtn">검색</button>
+          </div>
 
-            <!--지도
+          <!--지도
             <div class="map-section" style="width: 100%; height: 100%">
               <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
             </div>-->
 
-            <div id="trip-list" class="row"></div>
-            <table class="shortest-route-table">
-              <thead>
-                <tr>
-                  <th scope="col">순번</th>
-                  <th scope="col">이름</th>
-                  <th scope="col">장소</th>
-                </tr>
-              </thead>
-              <tbody v-for="(item, index) in itemList" :key="index">
-                <tr data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
-                  <td>{{ item.title }}</td>
-                  <td>{{ item.addr1 }}</td>
-                  <td><img :src="item.firstimage" alt="default" width="100px" /></td>
-                </tr>
-              </tbody>
-            </table>
-            <table class="list-table">
-              <thead>
-                <tr>
-                  <th scope="col">이름</th>
-                  <th scope="col">장소</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <div id="trip-list" class="row"></div>
+          <table class="shortest-route-table">
+            <thead>
+              <tr>
+                <th scope="col">순번</th>
+                <th scope="col">이름</th>
+                <th scope="col">장소</th>
+              </tr>
+            </thead>
+            <tbody v-for="(item, index) in itemList" :key="index">
+              <tr data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
+                <td>{{ item.title }}</td>
+                <td>{{ item.addr1 }}</td>
+                <td><img :src="item.firstimage" alt="default" width="100px" /></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="list-table">
+            <thead>
+              <tr>
+                <th scope="col">이름</th>
+                <th scope="col">장소</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
 
-          <!--
+        <!--
           <div class="col-lg-4 sidebar">
             <map-side-bar :routes="routes"></map-side-bar>
           </div>
           -->
-        </div>
+      </div>
       <!--</div>-->
     </section>
   </main>
@@ -127,9 +102,8 @@
 //import MapSideBar from "@/components/TripPlan/MapSideBar.vue";
 import http from "@/common/axios";
 //import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
-import {eventBus} from "@/main.js";
+import { eventBus } from "@/main.js";
 export default {
-  
   components: {
     //SubNav,
     //MapSideBar,
@@ -190,7 +164,7 @@ export default {
 
       // 현재 값을 경로로 선택한다.
       this.routes.push(item);
-      eventBus.$emit('send-routes',this.routes);
+      eventBus.$emit("send-routes", this.routes);
     },
     initMap() {
       var container = document.getElementById("map");
@@ -284,8 +258,7 @@ export default {
     },
 
     async getArea2List() {
-      let urlParams =
-        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
       let { data } = await http.get("/trip/areaCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -320,8 +293,7 @@ export default {
     },
 
     async getCat2List() {
-      let urlParams =
-        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -334,15 +306,7 @@ export default {
     },
 
     async getCat3List() {
-      let urlParams =
-        "?numOfRows=" +
-        this.numOfRows +
-        "&pageNo=" +
-        this.pageNo +
-        "&cat1=" +
-        this.cat1 +
-        "&cat2=" +
-        this.cat2;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1 + "&cat2=" + this.cat2;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -364,8 +328,7 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
+      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
       document.head.appendChild(script);
     }
   },
@@ -377,9 +340,8 @@ export default {
   width: 500px;
   z-index: 2;
 }
-.entries{
-  width:500px;
-  
+.entries {
+  width: 500px;
 }
 .margin {
   margin-bottom: 20px;

@@ -1,47 +1,35 @@
 <template>
   <main id="main">
     <section>
-  <div class="sidebar sidebar-fix">
-    <h3 class="sidebar-title">Search</h3>
-    <div class="sidebar-item search-form">
-      <input type="text" v-model="searchWord" />
-      <button @click="searchword"><i class="bi bi-search"></i></button>
-    </div>
+      <div class="sidebar sidebar-fix">
+        <h3 class="sidebar-title">Search</h3>
+        <div class="sidebar-item search-form">
+          <input type="text" v-model="searchWord" />
+          <button @click="searchword"><i class="bi bi-search"></i></button>
+        </div>
 
-    <h3 class="sidebar-title">선택된 경로</h3>
-    <div class="list-group mb-3">
-      <draggable v-model="routeData" draggable=".record_list" @change="print">
-        <!-- <div > -->
+        <h3 class="sidebar-title">선택된 경로</h3>
+        <div class="list-group mb-3">
+          <draggable v-model="routeData" draggable=".record_list" @change="print">
+            <!-- <div > -->
 
-        <a
-          href="#"
-          class="list-group-item list-group-item-action record_list hover"
-          v-for="(item, index) in routeData"
-          :key="index"
-        >
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ item.title }}</h5>
-            <small
-              ><button
-                type="button"
-                class="btn-close x-button"
-                aria-label="Close"
-                @click="routesDelete(index)"
-              ></button
-            ></small>
-          </div>
-          <p class="mb-1">{{ item.addr1 }}</p>
-          <!-- <small>{{item.title}}</small> -->
-        </a>
-      </draggable>
-    </div>
+            <a href="#" class="list-group-item list-group-item-action record_list hover" v-for="(item, index) in routeData" :key="index">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ item.title }}</h5>
+                <small><button type="button" class="btn-close x-button" aria-label="Close" @click="routesDelete(index)"></button></small>
+              </div>
+              <p class="mb-1">{{ item.addr1 }}</p>
+              <!-- <small>{{item.title}}</small> -->
+            </a>
+          </draggable>
+        </div>
 
-    <!-- End sidebar search formn-->
+        <!-- End sidebar search formn-->
 
-    <!-- End sidebar tags-->
-  </div>
-</section>
-</main>
+        <!-- End sidebar tags-->
+      </div>
+    </section>
+  </main>
   <!-- End sidebar -->
 </template>
 
@@ -49,7 +37,7 @@
 //import { mapActions } from "vuex";
 
 import draggable from "vuedraggable";
-import {eventBus} from "@/main.js";
+import { eventBus } from "@/main.js";
 
 export default {
   //props: ["routes"],
@@ -90,11 +78,11 @@ export default {
       console.log(this.routeData);
     },
   },
-  created(){
-    eventBus.$on('send-routes',routes =>{
+  created() {
+    eventBus.$on("send-routes", (routes) => {
       this.routeData = routes;
     });
-  }
+  },
 };
 </script>
 
