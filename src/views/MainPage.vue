@@ -35,8 +35,8 @@
 
 <script>
 import MainWeather from "@/components/main/MainWeather.vue";
-import VideoPage from "../views/VideoPage.vue";
-import KoreaTrip from "./KoreaTrip.vue";
+import VideoPage from "@/components/main/VideoPage.vue";
+import KoreaTrip from "@/components/main/KoreaTrip.vue";
 export default {
   components: { MainWeather, KoreaTrip, VideoPage },
 };
