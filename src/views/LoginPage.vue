@@ -13,44 +13,16 @@
               <h2 class="form-title">Log in</h2>
               <div class="form-group">
                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input
-                  type="text"
-                  name="userId"
-                  id="userId"
-                  value="ssafy"
-                  placeholder="userId"
-                  v-model="userId"
-                />
+                <input type="text" name="userId" id="userId" value="ssafy" placeholder="userId" v-model="userId" />
               </div>
               <div class="form-group">
                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                <input
-                  type="password"
-                  name="userPwd"
-                  id="userPwd"
-                  value="1234"
-                  placeholder="Password"
-                  v-model="userPassword"
-                />
+                <input type="password" name="userPwd" id="userPwd" value="1234" placeholder="Password" v-model="userPassword" />
               </div>
 
               <div class="form-group form-button">
-                <input
-                  @click="login"
-                  type="submit"
-                  value="Login"
-                  name="signin"
-                  id="signin"
-                  class="form-submit"
-                />
-                <input
-                  @click="findpwd"
-                  type="submit"
-                  value="비밀번호찾기"
-                  name="signin"
-                  id="signin"
-                  class="form-submit"
-                />
+                <input @click="login" type="submit" value="Login" name="signin" id="signin" class="form-submit" />
+                <input @click="findpwd" type="submit" value="비밀번호찾기" name="signin" id="signin" class="form-submit" />
               </div>
 
               <!-- <div class="social-login">
@@ -109,6 +81,7 @@ export default {
         } else {
           sessionStorage.setItem("isLogin", true);
           sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
+
           this.$router.push("/");
           alertify.success("로그인되었습니다.", 1.5);
         }
