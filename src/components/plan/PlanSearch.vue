@@ -3,64 +3,97 @@
     <!-- ======= Blog Section ======= -->
     <section>
       <!--<div class="container">-->
-      <div class="row d-flex justify-content-between" style="height:100%; padding-left: 15px;
-    width: 100%; ">
+      <div
+        class="row d-flex justify-content-between"
+        style="height: 100%; padding-left: 15px; width: 100%"
+      >
         <div class="col-lg-8 entries scrollBar">
           <!-- 검색버튼-->
-          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
+          <div
+            class="margin btns d-flex flex-wrap"
+            role="group"
+            aria-label="Button group with nested dropdown"
+          >
             <!-- 시도 -->
-            <div style="float: left; margin-right: 10px">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ areaCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
+            <div class="button1 d-flex justify-content-between">
+              <div style="float: left; margin-right: 10px">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ areaCodeN }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
+                    <a class="dropdown-item">{{ area.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ sigunguCodeN }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
+                    <a class="dropdown-item">{{ area.name }}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ sigunguCodeN }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
-                  <a class="dropdown-item">{{ area.name }}</a>
-                </li>
-              </ul>
+            <div class="button2 d-flex justify-content-between">
+              <div style="float: left; margin-right: 10px">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ cat1N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left; margin-right: 10px">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ cat2N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  {{ cat3N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-
-            <div style="float: left; margin-right: 10px">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat1N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat2N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-            <div style="float: left">
-              <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                {{ cat3N }}
-              </button>
-              <ul class="dropdown-menu">
-                <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
-                  <a class="dropdown-item">{{ cat.name }}</a>
-                </li>
-              </ul>
-            </div>
-
             <button @click="search" class="bi bi-search searchbtn">검색</button>
           </div>
 
@@ -86,7 +119,6 @@
               </tr>
             </tbody>
           </table>
-
         </div>
 
         <!--
@@ -260,7 +292,8 @@ export default {
     },
 
     async getArea2List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
+      let urlParams =
+        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
       let { data } = await http.get("/trip/areaCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -295,7 +328,8 @@ export default {
     },
 
     async getCat2List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
+      let urlParams =
+        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -308,7 +342,15 @@ export default {
     },
 
     async getCat3List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1 + "&cat2=" + this.cat2;
+      let urlParams =
+        "?numOfRows=" +
+        this.numOfRows +
+        "&pageNo=" +
+        this.pageNo +
+        "&cat1=" +
+        this.cat1 +
+        "&cat2=" +
+        this.cat2;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -330,7 +372,8 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
+      script.src =
+        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
       document.head.appendChild(script);
     }
   },
@@ -343,8 +386,8 @@ export default {
   height: 100%;
   z-index: 2;
 }
-section{
-  background-color: rgba( 255, 255, 255, 0.75 );
+section {
+  background-color: rgba(255, 255, 255, 0.75);
   height: 100%;
   padding-top: 90px;
   padding-bottom: 30px;
@@ -354,10 +397,24 @@ section{
   height: 100%;
   padding-left: 10px;
 }
-
-button{
-  width:200px;
-  border:#4298f3;
+.button1 {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.button1 button {
+  width: 180px;
+}
+.button2 {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.button2 button {
+  width: 120px;
+}
+button {
+  border: #4298f3;
 }
 .margin {
   margin-bottom: 20px;
@@ -389,23 +446,23 @@ button{
   line-height: 1;
 }
 
-.scrollBar { 
+.scrollBar {
   overflow-y: scroll;
 }
 
 /* 아래의 모든 코드는 영역::코드로 사용 */
 .scrollBar::-webkit-scrollbar {
-    width: 10px;  /* 스크롤바의 너비 */
+  width: 10px; /* 스크롤바의 너비 */
 }
 
 .scrollBar::-webkit-scrollbar-thumb {
-    height: 30%; /* 스크롤바의 길이 */
-    background: #adcfff; /* 스크롤바의 색상 */
-    
-    border-radius: 10px;
+  height: 30%; /* 스크롤바의 길이 */
+  background: #adcfff; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
 }
 
 .scrollBar::-webkit-scrollbar-track {
-    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 </style>

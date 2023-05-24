@@ -1,5 +1,5 @@
 <template>
-  <main id="main" >
+  <main id="main" style="float: right">
     <section>
       <div class="sidebar sidebar-fix">
         <h3 class="sidebar-title">Search</h3>
@@ -13,10 +13,48 @@
           <draggable v-model="routeData" draggable=".record_list" @change="print">
             <!-- <div > -->
 
-            <a href="#" class="list-group-item list-group-item-action record_list hover" v-for="(item, index) in routeData" :key="index">
+            <!--firstimage-->
+
+            <a
+              href="#"
+              class="list-group-item list-group-item-action record_list hover team"
+              v-for="(item, index) in routeData"
+              :key="index"
+            >
+              <div class="member d-flex align-items-start">
+                <div class="pic">
+                  <img src="@/assets/img/서울.jpg" class="img-fluid" alt="" />
+                </div>
+                <div class="member-info">
+                  <h4>{{ item.title }}</h4>
+                  <span>Chief Executive Officer</span>
+                  <p>{{ item.addr1 }}</p>
+                  <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!---->
+            <a
+              href="#"
+              class="list-group-item list-group-item-action record_list hover"
+              v-for="(item, index) in routeData"
+              :key="index"
+            >
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ item.title }}</h5>
-                <small><button type="button" class="btn-close x-button" aria-label="Close" @click="routesDelete(index)"></button></small>
+                <small
+                  ><button
+                    type="button"
+                    class="btn-close x-button"
+                    aria-label="Close"
+                    @click="routesDelete(index)"
+                  ></button
+                ></small>
               </div>
               <p class="mb-1">{{ item.addr1 }}</p>
               <!-- <small>{{item.title}}</small> -->
@@ -87,14 +125,19 @@ export default {
 </script>
 
 <style scoped>
+@import "@/assets/css/card.css";
+
 #main {
   position: absolute;
+  left: 100%;
+  transform: translate(-100%, 0%);
   width: 500px;
   height: 100%;
   z-index: 2;
 }
-section{
-  background-color: rgba( 255, 255, 255, 0.76 );
+
+section {
+  background-color: rgba(255, 255, 255, 0.76);
   height: 100%;
   padding-top: 90px;
   padding-bottom: 30px;
