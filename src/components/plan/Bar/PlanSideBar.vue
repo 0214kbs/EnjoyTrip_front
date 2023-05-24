@@ -145,14 +145,14 @@ export default {
   position: absolute;
   left: 100%;
   transform: translate(-100%, 0%);
-  width: 500px;
+  width: 400px;
   height: 100%;
   z-index: 2;
+  padding-top: 60px;
 }
 section {
   background-color: rgba(255, 255, 255, 0.75);
   height: 100%;
-  padding: 90px, 0;
 }
 .picture {
   border-radius: 70%;
