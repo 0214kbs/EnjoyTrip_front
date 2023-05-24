@@ -202,6 +202,7 @@ export default {
 
       // 현재 값을 경로로 선택한다.
       this.routes.push(item);
+      eventBus.$emit("send-plan", item);
 
       //클릭시 인포윈도우
          var content = document.createElement("div");
@@ -255,7 +256,6 @@ export default {
       kakao.maps.event.addListener(this.marker, "mouseover", this.makeOverListener(this.map, this.marker, infowindow));
       kakao.maps.event.addListener(this.marker, "click", this.makeOutListener(infowindow));
       //kakao.maps.event.addListener(this.marker, "contextmenu ", this.favorite(item));
-      eventBus.$emit("send-plan", this.routes);
     },
     makeOverListener(map, marker, infowindow) {
       return function () {

@@ -10,16 +10,19 @@
 
         <h3 class="sidebar-title">선택된 경로</h3>
         <div class="list-group mb-3">
-          <draggable v-model="routeData" draggable=".record_list" @change="print">
             <!-- <div > -->
 
             <!--tab-->
+      
+            <ul id="tab-btn">
+              <li @click="changeTab(0)">경로보기</li>              
+              <li @click="changeTab(1)">즐겨찾기</li>
+            </ul>
+            <br>
 
-            <div class = "tab">
-
-
-            <!--firstimage-->
-
+            <!--경로찾기-->
+            <div v-show="activeTab">
+            <draggable v-model="routeData" draggable=".record_list" @change="print">
             <a
               href="#"
               class="list-group-item list-group-item-action record_list team"
@@ -36,7 +39,7 @@
                     @click="routesDelete(index)"
                   ></button
                 ></small>
- 
+
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span>Chief Executive Officer</span>
@@ -50,11 +53,13 @@
                 </div>
               </div>
             </a>
+            </draggable>
+          </div>
 
-            <!-- 즐겨찾기 -->
-            <h3>즐겨찾기</h3>
-
-             <a
+          <!--즐겨찾기-->
+          <div v-show="!activeTab">
+          <draggable v-model="favoriteData" draggable=".record_list" @change="print">
+          <a
               href="#"
               class="list-group-item list-group-item-action record_list team"
               v-for="(item, index) in favoriteData"
@@ -70,7 +75,7 @@
                     @click="favoriteDelete(index)"
                   ></button
                 ></small>
- 
+
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span>Chief Executive Officer</span>
@@ -84,33 +89,9 @@
                 </div>
               </div>
             </a>
-            <!--
-            <a
-              href="#"
-              class="list-group-item list-group-item-action record_list hover"
-              v-for="(item, index) in routeData"
-              :key="index"
-            >
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{ item.title }}</h5>
-                <small
-                  ><button
-                    type="button"
-                    class="btn-close x-button"
-                    aria-label="Close"
-                    @click="routesDelete(index)"
-                  ></button
-                ></small>
-              </div>
-              <p class="mb-1">{{ item.addr1 }}</p>
-               <small>{{item.title}}</small> 
-            </a>-->
-          </draggable>
+            </draggable>
+          </div>
         </div>
-
-        <!-- End sidebar search formn-->
-
-        <!-- End sidebar tags-->
       </div>
     </section>
   </main>
@@ -136,10 +117,22 @@ export default {
       searchWord: "",
       routeData: [],
       favoriteData: [],
+      activeTab: true,
+      tabBtns: ["Button 1", "Button 2", "Button 3"], // 각 버튼의 텍스트를 배열로 저장
+      tabConts: ["Content 1", "Content 2", "Content 3"], // 각 콘텐츠의 텍스트를 배열로 저장
+      
     };
   },
 
   methods: {
+    changeTab(num) {
+      if(num == 1){
+        this.activeTab = false;
+      }
+      else if(num == 0){
+        this.activeTab = true;
+      }
+    },
     routesDelete(index) {
       this.routeData.splice(index, 1);
     },
@@ -168,7 +161,7 @@ export default {
   },
   created() {
     eventBus.$on("send-plan", (routes) => {
-      this.routeData = routes;
+      this.routeData.push(routes);
     });
     eventBus.$on("send-favorit", (favoriteList) => {
       this.favoriteData = favoriteList;
@@ -180,6 +173,62 @@ export default {
 <style scoped>
 @import "@/assets/css/card.css";
 
+/*----------------------     */
+
+
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
+* {padding: 0; margin: 0;}
+a {text-decoration: none; color: #666;}
+li {list-style: none;}
+body {
+  background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg) no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Abel', sans-serif;
+  font-size: 14px;
+  line-height: 1.6em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body::before {
+  content:'';
+  position: fixed; top: 0; left: 0;
+  z-index: -1;
+  background: rgba(50,37,11,0.9);
+  width: 100%; height: 100%;
+}
+#tab-menu {
+  width: 600px; 
+  background : #eaa110;
+  position: absolute; left: 50%; top: 100px;
+  transform: translatex(-50%);
+  border-radius: 4px;
+}
+#tab-btn ul {
+  overflow: hidden;
+}
+#tab-btn li {
+  float: left; width: 90px; text-align: center;
+}
+#tab-btn li a {
+  display: block; color: #fff; 
+  padding: 15px 20px; 
+  font-weight: bold;
+}
+#tab-btn li.active a {
+  border-bottom: 3px solid #2b210e;
+  color: #2b210e;
+}
+
+#tab-cont {
+  width: 100%; 
+  background: #fff; padding: 20px; 
+  box-sizing: border-box;
+  border-radius: 0 0 4px 4px;
+}
+
+
+/*--------------------------*/
 #main {
   position: absolute;
   left: 100%;
