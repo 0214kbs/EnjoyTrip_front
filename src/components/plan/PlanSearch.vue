@@ -3,26 +3,14 @@
     <!-- ======= Blog Section ======= -->
     <section>
       <!--<div class="container">-->
-      <div
-        class="row d-flex justify-content-between"
-        style="height: 100%; padding-left: 15px; width: 100%"
-      >
+      <div class="row d-flex justify-content-between" style="height: 100%; padding-left: 15px; width: 100%">
         <div class="col-lg-8 entries scrollBar">
           <!-- 검색버튼-->
-          <div
-            class="margin btns d-flex flex-wrap"
-            role="group"
-            aria-label="Button group with nested dropdown"
-          >
+          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
             <!-- 시도 -->
             <div class="button1 d-flex justify-content-between">
               <div style="float: left; margin-right: 10px">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ areaCodeN }}
                 </button>
                 <ul class="dropdown-menu">
@@ -32,12 +20,7 @@
                 </ul>
               </div>
               <div style="float: left">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ sigunguCodeN }}
                 </button>
                 <ul class="dropdown-menu">
@@ -49,12 +32,7 @@
             </div>
             <div class="button2 d-flex justify-content-between">
               <div style="float: left; margin-right: 10px">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ cat1N }}
                 </button>
                 <ul class="dropdown-menu">
@@ -64,12 +42,7 @@
                 </ul>
               </div>
               <div style="float: left; margin-right: 10px">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ cat2N }}
                 </button>
                 <ul class="dropdown-menu">
@@ -79,12 +52,7 @@
                 </ul>
               </div>
               <div style="float: left">
-                <button
-                  type="button"
-                  class="btn btn-success dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                   {{ cat3N }}
                 </button>
                 <ul class="dropdown-menu">
@@ -115,7 +83,8 @@
               <tr data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
                 <td>{{ item.title }}</td>
                 <td>{{ item.addr1 }}</td>
-                <td><img :src="item.firstimage" alt="default" width="100px" /></td>
+                <td v-if="item.firstimage"><img :src="item.firstimage" alt="default" width="100px" /></td>
+                <td v-else><img src="@/assets/img/no-image.png" alt="default" width="100px" /></td>
               </tr>
             </tbody>
           </table>
@@ -182,14 +151,11 @@ export default {
       //즐겨찾기
       favoriteList: [],
       fMaker: [],
-      fMakerPosition:null,
-
+      fMakerPosition: null,
     };
   },
   methods: {
-    
     selectSpot(item) {
-
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);
       this.map.setCenter(point);
@@ -205,48 +171,43 @@ export default {
       eventBus.$emit("send-plan", item);
 
       //클릭시 인포윈도우
-         var content = document.createElement("div");
-         content.classList.add("card");
-         content.style.width = "15rem";
+      var content = document.createElement("div");
+      content.classList.add("card");
+      content.style.width = "15rem";
 
-         var img = document.createElement("img");
-         img.src = item.firstimage;
-         img.classList.add("card-img-top");
+      var img = document.createElement("img");
+      img.src = item.firstimage;
+      img.classList.add("card-img-top");
 
-         content.appendChild(img);
+      content.appendChild(img);
 
-         var body = document.createElement("div");
-         body.classList.add("card-body");
+      var body = document.createElement("div");
+      body.classList.add("card-body");
 
-         var title = document.createElement("h5");
-         title.classList.add("card-title");
-         title.innerHTML=item.title;
-         body.appendChild(title);
+      var title = document.createElement("h5");
+      title.classList.add("card-title");
+      title.innerHTML = item.title;
+      body.appendChild(title);
 
-         var text = document.createElement("p");
-         text.classList.add("card-text");
-         text.innerHTML=item.addr1;
-         body.appendChild(text);
+      var text = document.createElement("p");
+      text.classList.add("card-text");
+      text.innerHTML = item.addr1;
+      body.appendChild(text);
 
-        var button = document.createElement("button");
-        button.innerHTML = "즐겨찾기 추가";
-        button.onclick = ()=>{
-          this.favorite(item);
-          console.log(this.favoriteList);
-          //확인
-          this.favoriteList.forEach(el =>{
-            console.log(el);
-            console.log(el.mapx + " " + el.mapy);
+      var button = document.createElement("button");
+      button.innerHTML = "즐겨찾기 추가";
+      button.onclick = () => {
+        this.favorite(item);
+        console.log(this.favoriteList);
+        //확인
+        this.favoriteList.forEach((el) => {
+          console.log(el);
+          console.log(el.mapx + " " + el.mapy);
+        });
+      };
 
-            
-
-
-          })
-        }
-
-
-        content.appendChild(body);
-        content.appendChild(button);
+      content.appendChild(body);
+      content.appendChild(button);
 
       var infowindow = new kakao.maps.InfoWindow({
         //map: this.map, // 인포윈도우가 표시될 지도
@@ -268,9 +229,9 @@ export default {
         infowindow.close();
       };
     },
-     //즐겨찾기 항목추가
+    //즐겨찾기 항목추가
     favorite(route) {
-      console.log("즐겨찾기")
+      console.log("즐겨찾기");
       console.log(this.favoriteList);
       this.favoriteList.push(route);
       eventBus.$emit("send-favorit", this.favoriteList);
@@ -367,8 +328,7 @@ export default {
     },
 
     async getArea2List() {
-      let urlParams =
-        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
       let { data } = await http.get("/trip/areaCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -403,8 +363,7 @@ export default {
     },
 
     async getCat2List() {
-      let urlParams =
-        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -417,15 +376,7 @@ export default {
     },
 
     async getCat3List() {
-      let urlParams =
-        "?numOfRows=" +
-        this.numOfRows +
-        "&pageNo=" +
-        this.pageNo +
-        "&cat1=" +
-        this.cat1 +
-        "&cat2=" +
-        this.cat2;
+      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1 + "&cat2=" + this.cat2;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -447,8 +398,7 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
+      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
       document.head.appendChild(script);
     }
   },
