@@ -48,6 +48,7 @@ export default {
 
 <style scoped>
 .mapPage {
+  display: flex;
   position: relative;
   width: 100wv;
   height: 100hv;

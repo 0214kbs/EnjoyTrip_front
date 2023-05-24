@@ -1107,8 +1107,9 @@ body {
   
   .team .member .pic {
     overflow: hidden;
-    width: 180px;
-    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 70%;
   }
   
   .team .member .pic img {
@@ -1116,7 +1117,7 @@ body {
   }
   
   .team .member:hover {
-    transform: translateY(-10px);
+    /*transform: translateY(-10px);*/
   }
   
   .team .member .member-info {
