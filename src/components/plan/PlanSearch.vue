@@ -4,7 +4,7 @@
     <section>
       <!--<div class="container">-->
       <div class="row d-flex justify-content-between" style="height: 100%; padding-left: 15px; width: 100%">
-        <div class="col-lg-8 entries scrollBar" style="height:100%">
+        <div class="col-lg-8 entries scrollBar" style="height: 100%">
           <!-- 검색버튼-->
           <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
             <!-- 시도 -->
@@ -31,17 +31,16 @@
               </div>
             </div>
 
-            <a @click="setCat1direct('A01')"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e;"/></a>
-            <a @click="setCat1direct('A02')"><font-awesome-icon :icon="['fas', 'tree']" size="xl" style="color: #8ac039;" /></a>
-            <a @click="setCat1direct('A03')"><font-awesome-icon :icon="['fas', 'bicycle']" style="color: #568dfb;" /></a>
-            <a @click="setCat1direct('A04')"><font-awesome-icon :icon="['fas', 'cart-shopping']" style="color: #ea5353;" /></a>
-            <a @click="setCat1direct('A05')"><font-awesome-icon :icon="['fas', 'utensils']" style="color: #000000;" /></a>
-            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'hotel']" style="color: #9651ec;" /></a>
-            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'thumbs-up']" /></a>
-            
+            <a @click="setCat1direct('A01')"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
+            <a @click="setCat1direct('A02')"><font-awesome-icon :icon="['fas', 'tree']" size="xl" style="color: #8ac039" /></a>
+            <a @click="setCat1direct('A03')"><font-awesome-icon :icon="['fas', 'bicycle']" style="color: #568dfb" /></a>
+            <a @click="setCat1direct('A04')"><font-awesome-icon :icon="['fas', 'cart-shopping']" style="color: #ea5353" /></a>
+            <a @click="setCat1direct('A05')"><font-awesome-icon :icon="['fas', 'utensils']" style="color: #000000" /></a>
+            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'hotel']" style="color: #9651ec" /></a>
+            <a @click="setCat1direct('C01')"><font-awesome-icon :icon="['fas', 'thumbs-up']" /></a>
+          </div>
 
-
-<!--
+          <!--
             <div class="button2 d-flex justify-content-between">
               <div style="float: left; margin-right: 10px">
                 <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,13 +75,12 @@
             </div>
             <button @click="search" class="bi bi-search searchbtn">검색</button>
           -->
-          </div>
 
           <!--지도
             <div class="map-section" style="width: 100%; height: 100%">
               <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
             </div>-->
-
+          <!--
           <div id="trip-list" class="row"></div>
           <table class="shortest-route-table">
             <thead>
@@ -101,6 +99,27 @@
               </tr>
             </tbody>
           </table>
+        </div>
+-->
+
+          <div>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action record_list team"
+              style="padding: 5px; padding-left: 10px; position: relative"
+              v-for="(item, index) in itemList"
+              :key="index"
+            >
+              <div class="member d-flex align-items-start" style="padding: 10px 10px">
+                <div class="member-info" style="max-width: 250px">
+                  <h4>{{ item.title }}</h4>
+                  <span style="width: 150px"></span>
+                  <p>{{ item.addr1 }}</p>
+                </div>
+                <button data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">경로추가</button>
+              </div>
+            </a>
+          </div>
         </div>
 
         <!--
@@ -291,8 +310,8 @@ export default {
       this.shortestRouteList = JSON.parse(data.shortestRoute);
       //console.log(this.shortestRouteList);
     },
-    setCat1direct(item){
-      this.cat1=item;
+    setCat1direct(item) {
+      this.cat1 = item;
       this.search();
     },
     // async search(){

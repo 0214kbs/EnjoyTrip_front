@@ -1,80 +1,70 @@
 <template>
   <main id="main" style="float: right">
     <section>
-        <div class="list-group mb-3 scrollBar" style="height: 100%;">
-            <!-- <div > -->
+      <div class="list-group mb-3 scrollBar" style="height: 100%">
+        <!-- <div > -->
 
-            <!--tab-->
-      
-            <ul id="tab-btn">
-              <li @click="changeTab(0)">경로보기</li>              
-              <li @click="changeTab(1)">즐겨찾기</li>
-            </ul>
-            <br>
+        <!--tab-->
 
-            <!--경로찾기-->
-            <div v-show="activeTab">
-            <draggable v-model="routeData" draggable=".record_list" @change="print">
+        <ul id="tab-btn">
+          <li @click="changeTab(0)">경로보기</li>
+          <li @click="changeTab(1)">즐겨찾기</li>
+        </ul>
+        <br />
+
+        <!--경로찾기-->
+        <div v-show="activeTab" style="position: relative">
+          <draggable v-model="routeData" draggable=".record_list" @change="print">
             <a
               href="#"
-              class="list-group-item list-group-item-action record_list team" style="padding: 5px; padding-left: 10px;"
+              class="list-group-item list-group-item-action record_list team"
+              style="padding: 5px; padding-left: 10px"
               v-for="(item, index) in routeData"
               :key="index"
             >
-              <div class="member d-flex align-items-start justify-content-between" style="padding: 10px 15px">
+              <div class="member d-flex align-items-start" style="padding: 10px 15px">
                 <small
-                  ><button
-                    type="button"
-                    class="btn-close x-button"
-                    aria-label="Close"
-                    style="margin-right: 10px"
-                    @click="routesDelete(index)"
-                  ></button
+                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="routesDelete(index)"></button
                 ></small>
 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
-                  <span>Chief Executive Officer</span>
+                  <span style="width: 150px"></span>
                   <p>{{ item.addr1 }}</p>
                 </div>
-                <div class="social" style="float:right; margin:0px;">
-                    <a @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e;"/></a>
-                  </div>
+              </div>
+              <div class="social" style="float: right; margin: 0px; position: absolute">
+                <a @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
               </div>
             </a>
-            </draggable>
-          </div>
+          </draggable>
+        </div>
 
-          <!--즐겨찾기-->
-          <div v-show="!activeTab">
+        <!--즐겨찾기-->
+        <div v-show="!activeTab">
           <draggable v-model="favoriteData" draggable=".record_list" @change="print">
-          <a
+            <a
               href="#"
-              class="list-group-item list-group-item-action record_list team" style="padding: 5px; padding-left: 10px;"
+              class="list-group-item list-group-item-action record_list team"
+              style="padding: 5px; padding-left: 10px"
               v-for="(item, index) in favoriteData"
               :key="index"
             >
               <div class="member d-flex align-items-start" style="padding: 10px 15px">
                 <small
-                  ><button
-                    type="button"
-                    class="btn-close x-button"
-                    aria-label="Close"
-                    style="margin-right: 10px"
-                    @click="favoriteDelete(index)"
-                  ></button
+                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="favoriteDelete(index)"></button
                 ></small>
 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
-                  <hr>
+                  <hr />
                   <p>{{ item.addr1 }}</p>
                 </div>
               </div>
             </a>
-            </draggable>
-          </div>
+          </draggable>
         </div>
+      </div>
     </section>
   </main>
   <!-- End sidebar -->
@@ -105,14 +95,13 @@ export default {
 
   methods: {
     changeTab(num) {
-      if(num == 1){
+      if (num == 1) {
         this.activeTab = false;
-      }
-      else if(num == 0){
+      } else if (num == 0) {
         this.activeTab = true;
       }
     },
-    addfavorit(post){
+    addfavorit(post) {
       this.favoriteData.push(post);
     },
     routesDelete(index) {
@@ -157,32 +146,44 @@ export default {
 
 /*----------------------     */
 
+@import url("https://fonts.googleapis.com/css?family=Abel");
 
-@import url('https://fonts.googleapis.com/css?family=Abel');
-
-* {padding: 0; margin: 0;}
-a {text-decoration: none; color: #666;}
-li {list-style: none;}
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+li {
+  list-style: none;
+}
 body {
   background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg) no-repeat center center fixed;
   background-size: cover;
-  font-family: 'Abel', sans-serif;
+  font-family: "Abel", sans-serif;
   font-size: 14px;
   line-height: 1.6em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 body::before {
-  content:'';
-  position: fixed; top: 0; left: 0;
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: -1;
-  background: rgba(50,37,11,0.9);
-  width: 100%; height: 100%;
+  background: rgba(50, 37, 11, 0.9);
+  width: 100%;
+  height: 100%;
 }
 #tab-menu {
-  width: 600px; 
-  background : #eaa110;
-  position: absolute; left: 50%; top: 100px;
+  width: 600px;
+  background: #eaa110;
+  position: absolute;
+  left: 50%;
+  top: 100px;
   transform: translatex(-50%);
   border-radius: 4px;
 }
@@ -190,11 +191,14 @@ body::before {
   overflow: hidden;
 }
 #tab-btn li {
-  float: left; width: 90px; text-align: center;
+  float: left;
+  width: 90px;
+  text-align: center;
 }
 #tab-btn li a {
-  display: block; color: #fff; 
-  padding: 15px 20px; 
+  display: block;
+  color: #fff;
+  padding: 15px 20px;
   font-weight: bold;
 }
 #tab-btn li.active a {
@@ -203,12 +207,12 @@ body::before {
 }
 
 #tab-cont {
-  width: 100%; 
-  background: #fff; padding: 20px; 
+  width: 100%;
+  background: #fff;
+  padding: 20px;
   box-sizing: border-box;
   border-radius: 0 0 4px 4px;
 }
-
 
 /*--------------------------*/
 #main {
@@ -297,8 +301,8 @@ section {
   background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 
-a{
-  border:none;
+a {
+  border: none;
   background: none;
 }
 </style>
