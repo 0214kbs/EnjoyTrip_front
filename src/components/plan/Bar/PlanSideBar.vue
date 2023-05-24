@@ -5,8 +5,7 @@
         <!-- <div > -->
 
         <!--tab-->
-
-        <ul id="tab-btn">
+        <ul content-class="mt-3" id="tab-btn">
           <li @click="changeTab(0)">경로보기</li>
           <li @click="changeTab(1)">즐겨찾기</li>
         </ul>
@@ -26,15 +25,16 @@
                 <small
                   ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="routesDelete(index)"></button
                 ></small>
-
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span style="width: 150px"></span>
                   <p>{{ item.addr1 }}</p>
                 </div>
-              </div>
-              <div class="social" style="float: right; margin: 0px; position: absolute">
-                <a @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
+                <div class="social" style="float: right; margin: 0px; position: absolute">
+                  <!-- v-if 부분 바꾸기!!! 즐겨찾기 리스트에 있는 경우로 바꾸기-->
+                  <a v-if="(item, index) in favoriteData"> <font-awesome-icon :icon="['fas', 'star']" style="color: #dddddd" /></a>
+                  <a v-else @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
+                </div>
               </div>
             </a>
           </draggable>
