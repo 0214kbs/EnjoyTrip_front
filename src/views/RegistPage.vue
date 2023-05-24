@@ -8,59 +8,28 @@
             <div class="signup-form">
               <h2 class="form-title">Register</h2>
               <div class="form-group">
-                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Your Name"
-                  v-model="userName"
-                />
+                <label for="name"><font-awesome-icon :icon="['fas', 'user']" /></label>
+                <input type="text" name="name" id="name" placeholder="Your Name" v-model="userName" />
               </div>
               <div class="form-group">
-                <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                <label for="id"><font-awesome-icon :icon="['fas', 'fingerprint']" /></label>
                 <input type="text" name="id" id="id" placeholder="Your Id" v-model="userId" />
               </div>
               <div class="form-group">
                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Your Email"
-                  v-model="userEmail"
-                />
+                <input type="email" name="email" id="email" placeholder="Your Email" v-model="userEmail" />
               </div>
               <div class="form-group">
-                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  v-model="userPwd"
-                />
+                <label for="pass"><font-awesome-icon :icon="['fas', 'lock']" /></label>
+                <input type="password" name="password" id="password" placeholder="Password" v-model="userPwd" />
               </div>
               <div class="form-group">
-                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  placeholder="Your Address"
-                  v-model="userAddress"
-                />
+                <label for="name"><font-awesome-icon :icon="['fas', 'map']" /></label>
+                <input type="text" name="address" id="address" placeholder="Your Address" v-model="userAddress" />
               </div>
 
               <div class="form-group form-button">
-                <input
-                  type="submit"
-                  name="signup"
-                  id="signup"
-                  class="form-submit"
-                  value="Register"
-                  @click="regist"
-                />
+                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" @click="regist" />
               </div>
             </div>
             <div class="signup-image">
@@ -94,16 +63,13 @@ export default {
       // axios 비동기 통신
       try {
         console.log(this.userName);
-        let response = await http.post(
-          "/users",
-          {
-            userName: this.userName,
-            userId: this.userId,
-            userPassword: this.userPwd,
-            userEmail: this.userEmail,
-            userAddress: this.userAddress,
-          },
-        );
+        let response = await http.post("/users", {
+          userName: this.userName,
+          userId: this.userId,
+          userPassword: this.userPwd,
+          userEmail: this.userEmail,
+          userAddress: this.userAddress,
+        });
         let { data } = response;
         console.log(data);
         if (data.result == "success") {
