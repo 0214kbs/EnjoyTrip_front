@@ -13,6 +13,11 @@
           <draggable v-model="routeData" draggable=".record_list" @change="print">
             <!-- <div > -->
 
+            <!--tab-->
+
+            <div class = "tab">
+
+
             <!--firstimage-->
 
             <a
@@ -31,14 +36,41 @@
                     @click="routesDelete(index)"
                   ></button
                 ></small>
-                <div class="picture" style="width: 150px; overflow: hidden">
-                  <img
-                    :src="item.firstimage"
-                    style="width: 150px; height: auto; object-fit: cover"
-                    class="img-fluid"
-                    alt=""
-                  />
+ 
+                <div class="member-info">
+                  <h4>{{ item.title }}</h4>
+                  <span>Chief Executive Officer</span>
+                  <p>{{ item.addr1 }}</p>
+                  <div class="social">
+                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a href=""><i class="ri-facebook-fill"></i></a>
+                    <a href=""><i class="ri-instagram-fill"></i></a>
+                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                  </div>
                 </div>
+              </div>
+            </a>
+
+            <!-- 즐겨찾기 -->
+            <h3>즐겨찾기</h3>
+
+             <a
+              href="#"
+              class="list-group-item list-group-item-action record_list team"
+              v-for="(item, index) in favoriteData"
+              :key="index"
+            >
+              <div class="member d-flex align-items-start">
+                <small
+                  ><button
+                    type="button"
+                    class="btn-close x-button"
+                    aria-label="Close"
+                    style="margin-right: 10px"
+                    @click="favoriteDelete(index)"
+                  ></button
+                ></small>
+ 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span>Chief Executive Officer</span>
@@ -103,12 +135,16 @@ export default {
     return {
       searchWord: "",
       routeData: [],
+      favoriteData: [],
     };
   },
 
   methods: {
     routesDelete(index) {
       this.routeData.splice(index, 1);
+    },
+    favoriteDelete(index) {
+      this.favoriteData.splice(index, 1);
     },
     searchTag(tagcode) {
       console.log(tagcode);
@@ -133,6 +169,9 @@ export default {
   created() {
     eventBus.$on("send-plan", (routes) => {
       this.routeData = routes;
+    });
+    eventBus.$on("send-favorit", (favoriteList) => {
+      this.favoriteData = favoriteList;
     });
   },
 };
@@ -229,5 +268,10 @@ section {
 
 .scrollBar::-webkit-scrollbar-track {
   background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+}
+
+a{
+  border:none;
+  background: none;
 }
 </style>

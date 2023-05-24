@@ -151,6 +151,7 @@ export default {
       //map
       map: null,
       marker: null,
+      overlay: [],
 
       //
       numOfRows: 10,
@@ -178,13 +179,16 @@ export default {
       shortestRouteList: [],
 
       routes: [],
+      //즐겨찾기
+      favoriteList: [],
+      fMaker: [],
+      fMakerPosition:null,
+
     };
   },
   methods: {
+    
     selectSpot(item) {
-      //기존마커 제거
-
-      //console.log(item.title);
 
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);
@@ -198,7 +202,78 @@ export default {
 
       // 현재 값을 경로로 선택한다.
       this.routes.push(item);
+
+      //클릭시 인포윈도우
+         var content = document.createElement("div");
+         content.classList.add("card");
+         content.style.width = "15rem";
+
+         var img = document.createElement("img");
+         img.src = item.firstimage;
+         img.classList.add("card-img-top");
+
+         content.appendChild(img);
+
+         var body = document.createElement("div");
+         body.classList.add("card-body");
+
+         var title = document.createElement("h5");
+         title.classList.add("card-title");
+         title.innerHTML=item.title;
+         body.appendChild(title);
+
+         var text = document.createElement("p");
+         text.classList.add("card-text");
+         text.innerHTML=item.addr1;
+         body.appendChild(text);
+
+        var button = document.createElement("button");
+        button.innerHTML = "즐겨찾기 추가";
+        button.onclick = ()=>{
+          this.favorite(item);
+          console.log(this.favoriteList);
+          //확인
+          this.favoriteList.forEach(el =>{
+            console.log(el);
+            console.log(el.mapx + " " + el.mapy);
+
+            
+
+
+          })
+        }
+
+
+        content.appendChild(body);
+        content.appendChild(button);
+
+      var infowindow = new kakao.maps.InfoWindow({
+        //map: this.map, // 인포윈도우가 표시될 지도
+        position: this.marker.getPosition(),
+        content: content,
+      });
+      kakao.maps.event.addListener(this.marker, "mouseover", this.makeOverListener(this.map, this.marker, infowindow));
+      kakao.maps.event.addListener(this.marker, "click", this.makeOutListener(infowindow));
+      //kakao.maps.event.addListener(this.marker, "contextmenu ", this.favorite(item));
       eventBus.$emit("send-plan", this.routes);
+    },
+    makeOverListener(map, marker, infowindow) {
+      return function () {
+        infowindow.open(map, marker);
+      };
+    },
+    // 인포윈도우를 닫는 클로저를 만드는 함수입니다
+    makeOutListener(infowindow) {
+      return function () {
+        infowindow.close();
+      };
+    },
+     //즐겨찾기 항목추가
+    favorite(route) {
+      console.log("즐겨찾기")
+      console.log(this.favoriteList);
+      this.favoriteList.push(route);
+      eventBus.$emit("send-favorit", this.favoriteList);
     },
     initMap() {
       var container = document.getElementById("map");
@@ -393,7 +468,7 @@ section {
   padding-top: 90px;
 }
 .entries {
-  width: 500px;
+  width: 100%;
   height: 100%;
   padding-left: 10px;
 }
