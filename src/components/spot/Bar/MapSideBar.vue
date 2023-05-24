@@ -15,10 +15,16 @@
 
             <!--firstimage-->
 
-            <a href="#" class="list-group-item list-group-item-action record_list hover team" v-for="(item, index) in routeData" :key="index">
+            <a href="#" class="list-group-item list-group-item-action record_list team" v-for="(item, index) in routeData" :key="index">
               <div class="member d-flex align-items-start">
-                <div class="pic">
-                  <img src="@/assets/img/서울.jpg" class="img-fluid" alt="" />
+                <small
+                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="routesDelete(index)"></button
+                ></small>
+                <div v-if="item.firstimage" div class="picture" style="width: 150px; overflow: hidden">
+                  <img :src="item.firstimage" style="width: 150px; height: auto; object-fit: cover" class="img-fluid" alt="" />
+                </div>
+                <div v-else div class="picture" style="width: 150px; overflow: hidden">
+                  <img src="@/assets/img/no-image.png" style="width: 150px; height: auto; object-fit: cover" class="img-fluid" alt="" />
                 </div>
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
@@ -33,15 +39,27 @@
                 </div>
               </div>
             </a>
-            <!---->
-            <a href="#" class="list-group-item list-group-item-action record_list hover" v-for="(item, index) in routeData" :key="index">
+            <!--
+            <a
+              href="#"
+              class="list-group-item list-group-item-action record_list hover"
+              v-for="(item, index) in routeData"
+              :key="index"
+            >
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{ item.title }}</h5>
-                <small><button type="button" class="btn-close x-button" aria-label="Close" @click="routesDelete(index)"></button></small>
+                <small
+                  ><button
+                    type="button"
+                    class="btn-close x-button"
+                    aria-label="Close"
+                    @click="routesDelete(index)"
+                  ></button
+                ></small>
               </div>
               <p class="mb-1">{{ item.addr1 }}</p>
-              <!-- <small>{{item.title}}</small> -->
-            </a>
+               <small>{{item.title}}</small> 
+            </a>-->
           </draggable>
         </div>
 
@@ -118,7 +136,14 @@ export default {
   height: 100%;
   z-index: 2;
 }
-
+section {
+  background-color: rgba(255, 255, 255, 0.75);
+  height: 100%;
+  padding: 90px, 0;
+}
+.picture {
+  border-radius: 70%;
+}
 section {
   background-color: rgba(255, 255, 255, 0.76);
   height: 100%;
@@ -171,5 +196,25 @@ section {
 .x-button {
   display: flex;
   right: 2px;
+}
+
+.scrollBar {
+  overflow-y: scroll;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scrollBar::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: #adcfff; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 </style>

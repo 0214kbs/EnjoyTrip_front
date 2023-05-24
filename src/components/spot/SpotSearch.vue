@@ -83,21 +83,25 @@
               <tr data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
                 <td>{{ item.title }}</td>
                 <td>{{ item.addr1 }}</td>
-                <td><img :src="item.firstimage" alt="default" width="100px" /></td>
+                <td v-if="item.firstimage"><img :src="item.firstimage" alt="default" width="100px" /></td>
+                <td v-else><img src="@/assets/img/no-image.png" alt="default" width="100px" /></td>
               </tr>
             </tbody>
           </table>
         </div>
+
+        <!--
+          <div class="col-lg-4 sidebar">
+            <map-side-bar :routes="routes"></map-side-bar>
+          </div>
+          -->
       </div>
       <!--</div>-->
     </section>
   </main>
 </template>
 <script>
-//import SubNav from "@/components/common/SubNav.vue";
-//import MapSideBar from "@/components/TripPlan/MapSideBar.vue";
 import http from "@/common/axios";
-//import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
 import { eventBus } from "@/main.js";
 export default {
   components: {
@@ -146,7 +150,7 @@ export default {
     selectSpot(item) {
       //기존마커 제거
 
-      console.log(item.firstImage);
+      //console.log(item.title);
 
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);
@@ -261,7 +265,18 @@ export default {
 
       let codeList = res.response.body.items.item;
 
+      //console.log(codeList);
+      // this.area2List = this.area2List.concat(...codeList);
+      // codeList.forEach(el => {
+      //   this.area2List.push(el)
+      // });
       this.area2List = codeList;
+      // this.$set(this.area2List,0,...codeList);
+      // codeList.forEach((el, i) => {
+      //   this.$set(this.area2List,i,el);
+      // });
+      // this.$set(this.area2List,codeList);
+      //console.log(this.area2List);
     },
 
     async getCat1List() {
