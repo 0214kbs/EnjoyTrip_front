@@ -4,7 +4,7 @@
     <section>
       <!--<div class="container">-->
       <div class="row d-flex justify-content-between" style="height: 100%; padding-left: 15px; width: 100%">
-        <div class="col-lg-8 entries scrollBar">
+        <div class="col-lg-8 entries scrollBar" style="height:100%">
           <!-- 검색버튼-->
           <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
             <!-- 시도 -->
@@ -415,7 +415,7 @@ export default {
 section {
   background-color: rgba(255, 255, 255, 0.75);
   height: 100%;
-  padding-top: 90px;
+  padding-top: 60px;
 }
 .entries {
   width: 100%;

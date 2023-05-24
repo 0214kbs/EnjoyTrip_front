@@ -1,35 +1,17 @@
 <template>
-  <main id="main" style="float: right">
+  <main id="main" style="float: right; ">
     <section>
-      <div class="sidebar sidebar-fix">
-        <h3 class="sidebar-title">Search</h3>
-        <div class="sidebar-item search-form">
-          <input type="text" v-model="searchWord" />
-          <button @click="searchword"><i class="bi bi-search"></i></button>
-        </div>
-
-        <h3 class="sidebar-title">선택된 경로</h3>
-        <div class="list-group mb-3">
-            <!-- <div > -->
-
-            <!--tab-->
-      
-            <ul id="tab-btn">
-              <li @click="changeTab(0)">경로보기</li>              
-              <li @click="changeTab(1)">즐겨찾기</li>
-            </ul>
-            <br>
-
-            <!--경로찾기-->
-            <div v-show="activeTab">
-            <draggable v-model="routeData" draggable=".record_list" @change="print">
+        <div class="scrollBar" style="height:100%">
+          <b-tabs content-class="mt-3">
+            <b-tab title="경로" active>
+              <draggable v-model="routeData" draggable=".record_list" @change="print">
             <a
               href="#"
               class="list-group-item list-group-item-action record_list team"
               v-for="(item, index) in routeData"
               :key="index"
             >
-              <div class="member d-flex align-items-start">
+              <div class="member d-flex align-items-start" style="margin: 10px 10px; padding: 10px 15px">
                 <small
                   ><button
                     type="button"
@@ -42,10 +24,9 @@
 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
-                  <span>Chief Executive Officer</span>
                   <p>{{ item.addr1 }}</p>
                   <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
+                    <a @click="addfavorit(item)"><i class="ri-twitter-fill"></i></a>
                     <a href=""><i class="ri-facebook-fill"></i></a>
                     <a href=""><i class="ri-instagram-fill"></i></a>
                     <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
@@ -54,18 +35,19 @@
               </div>
             </a>
             </draggable>
-          </div>
+            </b-tab>
 
-          <!--즐겨찾기-->
-          <div v-show="!activeTab">
-          <draggable v-model="favoriteData" draggable=".record_list" @change="print">
+
+            <b-tab title="즐겨찾기">
+            
+            <draggable v-model="favoriteData" draggable=".record_list" @change="print">
           <a
               href="#"
               class="list-group-item list-group-item-action record_list team"
               v-for="(item, index) in favoriteData"
               :key="index"
             >
-              <div class="member d-flex align-items-start">
+              <div class="member d-flex align-items-start" style="margin: 10px 10px; padding: 10px 15px">
                 <small
                   ><button
                     type="button"
@@ -84,15 +66,16 @@
                     <a href=""><i class="ri-twitter-fill"></i></a>
                     <a href=""><i class="ri-facebook-fill"></i></a>
                     <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
+                    <a href=""> <i class="ri-linkev-slotdin-box-fill"></i> </a>
+                    
                   </div>
                 </div>
               </div>
             </a>
             </draggable>
-          </div>
+          </b-tab>
+          </b-tabs>
         </div>
-      </div>
     </section>
   </main>
   <!-- End sidebar -->
@@ -117,21 +100,12 @@ export default {
       searchWord: "",
       routeData: [],
       favoriteData: [],
-      activeTab: true,
-      tabBtns: ["Button 1", "Button 2", "Button 3"], // 각 버튼의 텍스트를 배열로 저장
-      tabConts: ["Content 1", "Content 2", "Content 3"], // 각 콘텐츠의 텍스트를 배열로 저장
-      
     };
   },
 
   methods: {
-    changeTab(num) {
-      if(num == 1){
-        this.activeTab = false;
-      }
-      else if(num == 0){
-        this.activeTab = true;
-      }
+    addfavorit(post){
+      this.favoriteData.push(post);
     },
     routesDelete(index) {
       this.routeData.splice(index, 1);
@@ -248,7 +222,7 @@ section {
 section {
   background-color: rgba(255, 255, 255, 0.76);
   height: 100%;
-  padding-top: 90px;
+  padding-top: 60px;
   padding-bottom: 30px;
 }
 .sortable-ghost {
@@ -323,4 +297,16 @@ a{
   border:none;
   background: none;
 }
+
+.nav-tabs {
+    --bs-nav-tabs-border-width: 2px;
+    --bs-nav-tabs-border-color: #4298f3;
+    --bs-nav-tabs-border-radius: 0.375rem;
+    --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
+    --bs-nav-tabs-link-active-color: #4298f3;
+    --bs-nav-tabs-link-active-bg: #4298f3;
+    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #fdfdfd00;
+    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
+}
+
 </style>
