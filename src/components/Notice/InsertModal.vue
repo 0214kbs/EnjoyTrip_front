@@ -14,6 +14,7 @@
           </div>
           <div class="mb-3">
             <h5 for="contentInsert" class="form-label">내용</h5>
+            <textarea type="text" class="form-control" id="contentInsert" v-model="content" />
           </div>
           <div id="divEditorInsert"></div>
           <button id="btnNoticeInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="noticeInsert">
@@ -26,12 +27,12 @@
 </template>
 
 <script>
-import Vue from "vue";
-import CKEditor from "@ckeditor/ckeditor5-vue2";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import VueAlertify from "vue-alertify";
+// import Vue from "vue";
+// import CKEditor from "@ckeditor/ckeditor5-vue2";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import VueAlertify from "vue-alertify";
 
-Vue.use(CKEditor).use(VueAlertify);
+// Vue.use(CKEditor).use(VueAlertify);
 
 import http from "@/common/axios";
 
@@ -45,13 +46,15 @@ export default {
   methods: {
     initUI() {
       this.title = "";
-      this.CKEditor.setData("");
+      this.content = "";
+      // this.CKEditor.setData("");
     },
     async noticeInsert() {
       // file upload - multipart/form-data
       let formData = new FormData();
       formData.append("title", this.title);
-      formData.append("content", this.CKEditor.getData());
+      formData.append("content", this.content);
+      // formData.append("content", this.CKEditor.getData());
 
       // let options = {
       //   headers: { "Content-Type": "multipart/form-data" },
@@ -74,11 +77,11 @@ export default {
     },
   },
   async mounted() {
-    try {
-      this.CKEditor = await ClassicEditor.create(document.querySelector("#divEditorInsert"));
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   this.CKEditor = await ClassicEditor.create(document.querySelector("#divEditorInsert"));
+    // } catch (error) {
+    //   console.error(error);
+    // }
 
     // 부트스트랩 모달 이벤트 중 show 이벤트를 이용
     let $this = this;
