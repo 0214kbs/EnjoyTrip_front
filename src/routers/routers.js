@@ -10,7 +10,7 @@ import BoardPage from "@/views/BoardPage.vue";
 import NoticePage from "@/views/NoticePage.vue";
 import PlanPage from "@/views/PlanPage.vue";
 import UserInfoPage from "@/views/UserInfoPage.vue";
-import MapPage from "@/components/spot/MapPage.vue";
+import MapPage from "@/components/plan/MakePlanPage.vue";
 import MakePlanPage from "@/components/plan/MakePlanPage";
 // import store from "@/store/store.js"; // 나중에 추가
 

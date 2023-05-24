@@ -38,7 +38,7 @@
       </div>
       <!-- searchbar end -->
 
-      <button v-if="isAdmin==true" class="button_1" @click="showInsertModal">공지 등록</button>
+      <button v-if="isAdmin == true" class="button_1" @click="showInsertModal">공지 등록</button>
     </div>
 
     <!-- table start-->
@@ -53,16 +53,19 @@
         <thead>
           <tr bgcolor="#dddddd">
             <!-- <template x-for="heading in headings"> -->
-            <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
-            <th style="width: 33.6047%; height: 17px; text-align: center">제목</th>
+            <!-- <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
+            <th style="width: 33.6047%; height: 17px; text-align: center">제목</th> -->
+            <th style="width: 20%; height: 17px; text-align: center">제 목</th>
+            <th style="width: 60%; height: 17px; text-align: center">내 용</th>
             <th style="width: 20%; height: 17px; text-align: center">작성일시</th>
             <!-- </template> -->
           </tr>
         </thead>
         <tbody>
           <tr v-for="(notice, index) in list" :key="index" @click="noticeDetail(notice.noticeId)">
-            <td style="text-align: center">{{ notice.noticeId }}</td>
+            <!-- <td style="text-align: center">{{ notice.noticeId }}</td> -->
             <td style="padding-left: 100px">{{ notice.title }}</td>
+            <td style="padding-left: 100px">{{ notice.content }}</td>
             <td style="text-align: center">{{ ListDate(notice.regDt.date) }}</td>
           </tr>
         </tbody>
@@ -81,11 +84,7 @@
     </PaginationUI>
 
     <insert-modal v-on:call-parent-insert="closeAfterInsert"></insert-modal>
-    <detail-modal
-      v-bind:notice="notice"
-      v-on:call-parent-change-to-update="changeToUpdate"
-      v-on:call-parent-change-to-delete="noticeDelete"
-    ></detail-modal>
+    <detail-modal v-bind:notice="notice" v-on:call-parent-change-to-update="changeToUpdate" v-on:call-parent-change-to-delete="noticeDelete"></detail-modal>
     <update-modal v-bind:notice="notice" v-on:call-parent-update="closeAfterUpdate"></update-modal>
   </div>
   <!-- </div> -->

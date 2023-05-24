@@ -53,11 +53,11 @@ export default {
       formData.append("title", this.title);
       formData.append("content", this.CKEditor.getData());
 
-      let options = {
-        headers: { "Content-Type": "multipart/form-data" },
-      };
-
-      let response = await http.post("/notices", formData, options);
+      // let options = {
+      //   headers: { "Content-Type": "multipart/form-data" },
+      // };
+      // let response = await http.post("/notices", formData, options);
+      let response = await http.post("/notices", formData);
       let { data } = response;
 
       console.log(data);
@@ -95,16 +95,5 @@ export default {
   width: 100%;
   height: 200px;
   overflow-y: scroll;
-}
-
-/*파일업로드 thumbnail*/
-.modal >>> .thumbnail-wrapper {
-  margin-top: 5px;
-}
-
-.modal >>> .thumbnail-wrapper img {
-  width: 100px !important;
-  margin-right: 5px;
-  max-width: 100%;
 }
 </style>
