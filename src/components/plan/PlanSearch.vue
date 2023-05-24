@@ -403,7 +403,7 @@ section {
   margin-bottom: 10px;
 }
 .button1 button {
-  width: 180px;
+  width: 220px;
 }
 .button2 {
   display: block;
@@ -411,7 +411,7 @@ section {
   margin-bottom: 10px;
 }
 .button2 button {
-  width: 120px;
+  width: 140px;
 }
 button {
   border: #4298f3;
@@ -428,6 +428,8 @@ button {
   background: #4298f3;
 }
 .searchbtn {
+  width: 100%;
+  height: 35px;
   background: #fff;
   border: 1px solid #ddd;
   padding: 3px 10px;
@@ -437,7 +439,7 @@ button {
   bottom: 0;
   border: 0;
   background: none;
-  font-size: 20px;
+  font-size: 16px;
 
   background: #4298f3;
   color: #fff;
