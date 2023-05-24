@@ -382,15 +382,15 @@ export default {
 <style scoped>
 #main {
   position: absolute;
-  width: 500px;
+  width: 400px;
   height: 100%;
   z-index: 2;
+  padding-top: 60px;
 }
 section {
   background-color: rgba(255, 255, 255, 0.75);
   height: 100%;
   padding-top: 90px;
-  padding-bottom: 30px;
 }
 .entries {
   width: 500px;
@@ -403,7 +403,7 @@ section {
   margin-bottom: 10px;
 }
 .button1 button {
-  width: 220px;
+  width: 175px;
 }
 .button2 {
   display: block;
