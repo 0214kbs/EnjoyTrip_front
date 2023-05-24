@@ -30,6 +30,18 @@
                 </ul>
               </div>
             </div>
+
+            <a @click="setCat1direct('A01')"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e;"/></a>
+            <a @click="setCat1direct('A02')"><font-awesome-icon :icon="['fas', 'tree']" size="xl" style="color: #8ac039;" /></a>
+            <a @click="setCat1direct('A03')"><font-awesome-icon :icon="['fas', 'bicycle']" style="color: #568dfb;" /></a>
+            <a @click="setCat1direct('A04')"><font-awesome-icon :icon="['fas', 'cart-shopping']" style="color: #ea5353;" /></a>
+            <a @click="setCat1direct('A05')"><font-awesome-icon :icon="['fas', 'utensils']" style="color: #000000;" /></a>
+            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'hotel']" style="color: #9651ec;" /></a>
+            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'thumbs-up']" /></a>
+            
+
+
+<!--
             <div class="button2 d-flex justify-content-between">
               <div style="float: left; margin-right: 10px">
                 <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,6 +75,7 @@
               </div>
             </div>
             <button @click="search" class="bi bi-search searchbtn">검색</button>
+          -->
           </div>
 
           <!--지도
@@ -278,6 +291,10 @@ export default {
       this.shortestRouteList = JSON.parse(data.shortestRoute);
       //console.log(this.shortestRouteList);
     },
+    setCat1direct(item){
+      this.cat1=item;
+      this.search();
+    },
     // async search(){
     //   await this.getList();
 
@@ -413,7 +430,7 @@ export default {
   padding-top: 60px;
 }
 section {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.85);
   height: 100%;
   padding-top: 60px;
 }

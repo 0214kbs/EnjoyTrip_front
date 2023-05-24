@@ -1,17 +1,27 @@
 <template>
-  <main id="main" style="float: right; ">
+  <main id="main" style="float: right">
     <section>
-        <div class="scrollBar" style="height:100%">
-          <b-tabs content-class="mt-3">
-            <b-tab title="경로" active>
-              <draggable v-model="routeData" draggable=".record_list" @change="print">
+        <div class="list-group mb-3 scrollBar" style="height: 100%;">
+            <!-- <div > -->
+
+            <!--tab-->
+      
+            <ul id="tab-btn">
+              <li @click="changeTab(0)">경로보기</li>              
+              <li @click="changeTab(1)">즐겨찾기</li>
+            </ul>
+            <br>
+
+            <!--경로찾기-->
+            <div v-show="activeTab">
+            <draggable v-model="routeData" draggable=".record_list" @change="print">
             <a
               href="#"
-              class="list-group-item list-group-item-action record_list team"
+              class="list-group-item list-group-item-action record_list team" style="padding: 5px; padding-left: 10px;"
               v-for="(item, index) in routeData"
               :key="index"
             >
-              <div class="member d-flex align-items-start" style="margin: 10px 10px; padding: 10px 15px">
+              <div class="member d-flex align-items-start justify-content-between" style="padding: 10px 15px">
                 <small
                   ><button
                     type="button"
@@ -24,30 +34,27 @@
 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
+                  <span>Chief Executive Officer</span>
                   <p>{{ item.addr1 }}</p>
-                  <div class="social">
-                    <a @click="addfavorit(item)"><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                  </div>
                 </div>
+                <div class="social" style="float:right; margin:0px;">
+                    <a @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e;"/></a>
+                  </div>
               </div>
             </a>
             </draggable>
-            </b-tab>
+          </div>
 
-
-            <b-tab title="즐겨찾기">
-            
-            <draggable v-model="favoriteData" draggable=".record_list" @change="print">
+          <!--즐겨찾기-->
+          <div v-show="!activeTab">
+          <draggable v-model="favoriteData" draggable=".record_list" @change="print">
           <a
               href="#"
-              class="list-group-item list-group-item-action record_list team"
+              class="list-group-item list-group-item-action record_list team" style="padding: 5px; padding-left: 10px;"
               v-for="(item, index) in favoriteData"
               :key="index"
             >
-              <div class="member d-flex align-items-start" style="margin: 10px 10px; padding: 10px 15px">
+              <div class="member d-flex align-items-start" style="padding: 10px 15px">
                 <small
                   ><button
                     type="button"
@@ -60,21 +67,13 @@
 
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
-                  <span>Chief Executive Officer</span>
+                  <hr>
                   <p>{{ item.addr1 }}</p>
-                  <div class="social">
-                    <a href=""><i class="ri-twitter-fill"></i></a>
-                    <a href=""><i class="ri-facebook-fill"></i></a>
-                    <a href=""><i class="ri-instagram-fill"></i></a>
-                    <a href=""> <i class="ri-linkev-slotdin-box-fill"></i> </a>
-                    
-                  </div>
                 </div>
               </div>
             </a>
             </draggable>
-          </b-tab>
-          </b-tabs>
+          </div>
         </div>
     </section>
   </main>
@@ -100,10 +99,19 @@ export default {
       searchWord: "",
       routeData: [],
       favoriteData: [],
+      activeTab: true,
     };
   },
 
   methods: {
+    changeTab(num) {
+      if(num == 1){
+        this.activeTab = false;
+      }
+      else if(num == 0){
+        this.activeTab = true;
+      }
+    },
     addfavorit(post){
       this.favoriteData.push(post);
     },
@@ -210,19 +218,15 @@ body::before {
   width: 400px;
   height: 100%;
   z-index: 2;
-  padding-top: 60px;
-}
-section {
-  background-color: rgba(255, 255, 255, 0.75);
-  height: 100%;
+  padding-top: 30px;
 }
 .picture {
   border-radius: 70%;
 }
 section {
-  background-color: rgba(255, 255, 255, 0.76);
+  background-color: rgba(255, 255, 255, 0.85);
   height: 100%;
-  padding-top: 60px;
+  padding-top: 90px;
   padding-bottom: 30px;
 }
 .sortable-ghost {
@@ -297,16 +301,4 @@ a{
   border:none;
   background: none;
 }
-
-.nav-tabs {
-    --bs-nav-tabs-border-width: 2px;
-    --bs-nav-tabs-border-color: #4298f3;
-    --bs-nav-tabs-border-radius: 0.375rem;
-    --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
-    --bs-nav-tabs-link-active-color: #4298f3;
-    --bs-nav-tabs-link-active-bg: #4298f3;
-    --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #fdfdfd00;
-    border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
-}
-
 </style>
