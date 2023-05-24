@@ -24,7 +24,7 @@ export default {
       };
 
       this.map = new kakao.maps.Map(container, options);
-      this.map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);
+      this.map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);
       //마커
       var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
       this.marker = new kakao.maps.Marker({ position: markerPosition });
