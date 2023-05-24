@@ -1,12 +1,8 @@
 <template>
   <div class="mapPage">
     <spot-search></spot-search>
-    <div class="col-lg-4 sidebar float-end">
-      <map-side-bar></map-side-bar>
-    </div>
-    <div>
-      <div id="map" class="mt-3" style="width: 100vw; height: 980px"></div>
-    </div>
+    <map-side-bar></map-side-bar>
+    <div id="map" class="mt-3" style="width: 100vw; height: 980px"></div>
   </div>
 </template>
 
@@ -17,7 +13,7 @@ import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
 export default {
   components: {
     SpotSearch,
-    MapSideBar
+    MapSideBar,
   },
   methods: {
     initMap() {
@@ -42,8 +38,7 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      script.src =
-        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
+      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
       document.head.appendChild(script);
     }
   },
@@ -53,6 +48,10 @@ export default {
 <style scoped>
 .mapPage {
   position: relative;
-  width: 100hv;
+  width: 100wv;
+  height: 100hv;
+}
+.sidebar {
+  float: right;
 }
 </style>

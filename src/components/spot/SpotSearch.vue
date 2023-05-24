@@ -1,67 +1,65 @@
 <template>
   <main id="main">
     <!-- ======= Blog Section ======= -->
-    <section style="background-color: white">
+    <section>
       <!--<div class="container">-->
-      <div class="row d-flex justify-content-between">
-        <div class="col-lg-8 entries">
+      <div class="row d-flex justify-content-between" style="height: 100%; padding-left: 15px; width: 100%">
+        <div class="col-lg-8 entries scrollBar">
           <!-- 검색버튼-->
-          <div>
-            <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
-              <!-- 시도 -->
-              <div>
-                <div style="float: left; margin-right: 10px">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ areaCodeN }}
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
-                      <a class="dropdown-item">{{ area.name }}</a>
-                    </li>
-                  </ul>
-                </div>
-                <div style="float: left">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ sigunguCodeN }}
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
-                      <a class="dropdown-item">{{ area.name }}</a>
-                    </li>
-                  </ul>
-                </div>
+          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
+            <!-- 시도 -->
+            <div class="button1 d-flex justify-content-between">
+              <div style="float: left; margin-right: 10px">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ areaCodeN }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(area, index) in area1List" :key="index" @click="setArea2(area)">
+                    <a class="dropdown-item">{{ area.name }}</a>
+                  </li>
+                </ul>
               </div>
-              <div>
-                <div style="float: left; margin-right: 10px">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ cat1N }}
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
-                      <a class="dropdown-item">{{ cat.name }}</a>
-                    </li>
-                  </ul>
-                </div>
-                <div style="float: left; margin-right: 10px">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ cat2N }}
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
-                      <a class="dropdown-item">{{ cat.name }}</a>
-                    </li>
-                  </ul>
-                </div>
-                <div style="float: left">
-                  <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ cat3N }}
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
-                      <a class="dropdown-item">{{ cat.name }}</a>
-                    </li>
-                  </ul>
-                </div>
+              <div style="float: left">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ sigunguCodeN }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(area, index) in area2List" :key="index" @click="setArea3(area)">
+                    <a class="dropdown-item">{{ area.name }}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="button2 d-flex justify-content-between">
+              <div style="float: left; margin-right: 10px">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ cat1N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left; margin-right: 10px">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ cat2N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
+              </div>
+              <div style="float: left">
+                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ cat3N }}
+                </button>
+                <ul class="dropdown-menu">
+                  <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
+                    <a class="dropdown-item">{{ cat.name }}</a>
+                  </li>
+                </ul>
               </div>
             </div>
             <button @click="search" class="bi bi-search searchbtn">검색</button>
@@ -89,22 +87,7 @@
               </tr>
             </tbody>
           </table>
-          <table class="list-table">
-            <thead>
-              <tr>
-                <th scope="col">이름</th>
-                <th scope="col">장소</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
         </div>
-
-        <!--
-          <div class="col-lg-4 sidebar">
-            <map-side-bar :routes="routes"></map-side-bar>
-          </div>
-          -->
       </div>
       <!--</div>-->
     </section>
@@ -137,9 +120,9 @@ export default {
 
       areaCodeN: "시도를 선택하세요",
       sigunguCodeN: "구군을 선택하세요",
-      cat1N: "대분류 선택",
-      cat2N: "중분류 선택",
-      cat3N: "소분류 선택",
+      cat1N: "대분류",
+      cat2N: "중분류",
+      cat3N: "소분류",
 
       areaCode: "",
       sigunguCode: "",
@@ -163,7 +146,7 @@ export default {
     selectSpot(item) {
       //기존마커 제거
 
-      //console.log(item.title);
+      console.log(item.firstImage);
 
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);
@@ -177,7 +160,7 @@ export default {
 
       // 현재 값을 경로로 선택한다.
       this.routes.push(item);
-      eventBus.$emit("send-routes", this.routes);
+      eventBus.$emit("send-plan", this.routes);
     },
     initMap() {
       var container = document.getElementById("map");
@@ -278,18 +261,7 @@ export default {
 
       let codeList = res.response.body.items.item;
 
-      //console.log(codeList);
-      // this.area2List = this.area2List.concat(...codeList);
-      // codeList.forEach(el => {
-      //   this.area2List.push(el)
-      // });
       this.area2List = codeList;
-      // this.$set(this.area2List,0,...codeList);
-      // codeList.forEach((el, i) => {
-      //   this.$set(this.area2List,i,el);
-      // });
-      // this.$set(this.area2List,codeList);
-      //console.log(this.area2List);
     },
 
     async getCat1List() {
@@ -351,10 +323,38 @@ export default {
 #main {
   position: absolute;
   width: 500px;
+  height: 100%;
   z-index: 2;
+}
+section {
+  background-color: rgba(255, 255, 255, 0.75);
+  height: 100%;
+  padding-top: 90px;
+  padding-bottom: 30px;
 }
 .entries {
   width: 500px;
+  height: 100%;
+  padding-left: 10px;
+}
+.button1 {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.button1 button {
+  width: 220px;
+}
+.button2 {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.button2 button {
+  width: 140px;
+}
+button {
+  border: #4298f3;
 }
 .margin {
   margin-bottom: 20px;
@@ -366,9 +366,10 @@ export default {
 }
 .btns .btn-success {
   background: #4298f3;
-  width: 100%;
 }
 .searchbtn {
+  width: 100%;
+  height: 35px;
   background: #fff;
   border: 1px solid #ddd;
   padding: 3px 10px;
@@ -378,12 +379,32 @@ export default {
   bottom: 0;
   border: 0;
   background: none;
-  font-size: 20px;
+  font-size: 16px;
 
   background: #4298f3;
   color: #fff;
   transition: 0.3s;
   border-radius: 4px 4px 4px 4px;
   line-height: 1;
+}
+
+.scrollBar {
+  overflow-y: scroll;
+}
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scrollBar::-webkit-scrollbar {
+  width: 10px; /* 스크롤바의 너비 */
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: #adcfff; /* 스크롤바의 색상 */
+
+  border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 </style>
