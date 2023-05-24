@@ -6,12 +6,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">상세보기</h4>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
@@ -37,22 +32,10 @@
               </tbody>
             </table>
           </div>
-          <button
-            v-show="notice.admin"
-            @click="changeToUpdate"
-            class="btn btn-sm btn-primary btn-outline"
-            data-bs-dismiss="modal"
-            type="button"
-          >
+          <button v-show="notice.admin" @click="changeToUpdate" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">
             글 수정하기
           </button>
-          <button
-            v-show="notice.admin"
-            @click="changeToDelete"
-            class="btn btn-sm btn-warning btn-outline"
-            data-bs-dismiss="modal"
-            type="button"
-          >
+          <button v-show="notice.admin" @click="changeToDelete" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">
             글 삭제하기
           </button>
         </div>
