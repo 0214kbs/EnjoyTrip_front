@@ -110,7 +110,6 @@ export default {
         console.log(data);
 
         sessionStorage.clear();
-        this.$router.push("/");
         this.$router.go(0);
       } catch (error) {
         console.error(error);

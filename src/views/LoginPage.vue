@@ -68,6 +68,8 @@ export default {
     async login() {
       // axios 비동기 통신
       try {
+        console.log(this.userId);
+        console.log(this.userPassword);
         let response = await http.post("/login", {
           userId: this.userId,
           userPassword: this.userPassword,
