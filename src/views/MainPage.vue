@@ -24,8 +24,9 @@
     </section>
     <!-- End Banner Hero -->
     <main-weather></main-weather>
-    <korea-trip></korea-trip>
+    <br /><br /><br />
     <video-page></video-page>
+    <korea-trip></korea-trip>
     <main-notice></main-notice>
   </div>
 </template>
