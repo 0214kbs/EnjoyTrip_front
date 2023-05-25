@@ -113,6 +113,7 @@ import http from "@/common/axios";
 //import MapSideBar from "@/components/spot/Bar/MapSideBar.vue";
 import { eventBus } from "@/main.js";
 export default {
+  props:["favoriteData","routeData"],
   components: {
     //SubNav,
     //MapSideBar,
@@ -168,8 +169,9 @@ export default {
     };
   },
   methods: {
-    onMakeEvent(routeData) {
-      this.routes = routeData;
+    onMakeEvent() {
+      this.deleteMaker();
+      this.routes = this.routeData;
       //기존에 떠있던 마커, 오버레이는 제거한다.
       this.selectMakers.forEach((el) => {
         el.setMap(null);
@@ -178,18 +180,6 @@ export default {
       this.lines.forEach((el) => {
         el.setMap(null);
       });
-
-      // this.selectMakerInfo.forEach((el)=>{
-      //   el.setMap(null);
-      // })
-
-      //this.removeOverlays();
-
-      //routes의 순서로 마커와 순서, 이름을 알려주는 인포윈도우를 띄운다
-      // 마커가 가진 정보를 이용해 Route선을 그려준다.
-
-      console.log("경로 생성");
-      console.log(routeData);
 
       var linePath = [];
       //1.마커들
@@ -235,17 +225,21 @@ export default {
     },
 
     //즐겨찾기 마크 표시
-    fmakerEvent(favoriteData) {
-      console.log(favoriteData);
+    fmakerEvent() {
+      console.log("favoriteData");
+      //기존에 떠있던 마커, 오버레이는 제거한다.
+      this.selectMakers.forEach((el) => {
+        el.setMap(null);
+      });
+
+      this.lines.forEach((el) => {
+        el.setMap(null);
+      });
 
       this.deleteMaker();
       this.fMakerPosition = [];
       //this.favoriteList.forEach((el) => {
-      favoriteData.forEach((el) => {
-        // console.log(el);
-        // console.log(el.mapx + " " + el.mapy);
-
-        //즐겨찾기 마커표시 - favoriteList와 연동되는 상태여야한다.
+      this.favoriteData.forEach((el) => {
 
         this.fMakerPosition.push({
           title: el.title,

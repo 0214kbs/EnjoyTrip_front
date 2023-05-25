@@ -103,7 +103,7 @@ Vue.use(VueAlertify);
 
 
 export default {
-  emit: ["fmakerevent"],
+  //emit: ["fmakerevent"],
   //props: ["routes"],
   name: "SideBar",
   components: {
@@ -130,8 +130,11 @@ export default {
 
     makeRoute() {
       this.$emit("makeRoute", this.routeData);
+      //eventBus.$emit("make-Route", this.routeData);
+      //console.log("makeRoute");
     },
     fmaker() {
+      //eventBus.$emit("fmaker-event", this.favoriteData);
       this.$emit("fmakerevent", this.favoriteData);
     },
     changeTab(num) {
@@ -181,33 +184,7 @@ export default {
       this.favoriteData = data;
     },
 
-    // 즐겨찾기 insert
-    // async insertfavorit(post) {
-    //   this.favoriteData.push(post.);
-    // },
 
-    
-
-    // //백엔드로 일반 코스 정보 보내기
-    // async courseInsert() {
-    //   var num = this.routeData.length;
-    //   console.log(num);
-
-    //   let response = await http.post("/course", {
-    //     num: num,
-    //     Allcourse: this.routeData,
-    //   });
-
-    //   let { data } = response;
-
-    //   console.log(data);
-
-    //   if (data.result == "fail") {
-    //     this.$alertify.success("경로 등록이 실패했습니다.");
-    //   } else {
-    //     this.$alertify.success("경로가 등록되었습니다.");
-    //   }
-    // },
     //즐겨찾기 insert
     async insertfavorit(post) {
       console.log("작동한다");
@@ -249,6 +226,7 @@ export default {
   created() {
     eventBus.$on("send-plan", (routes) => {
       this.routeData.push(routes);
+      console.log("출력하라");
     });
     this.userSeq = this.data.userSeq;
     this.startList();

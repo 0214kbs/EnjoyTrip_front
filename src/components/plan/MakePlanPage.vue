@@ -1,7 +1,7 @@
 <template>
   <div class="mapPage">
-    <spot-search></spot-search>
-    <map-side-bar v-on:insetPlan="showInsertModal"></map-side-bar>
+    <spot-search :favoriteData = "favoriteData" :routeData = "routeData" ref="spot_search"></spot-search>
+    <map-side-bar v-on:insetPlan="showInsertModal" v-on:fmakerevent="getfdata"  v-on:makeRoute="makeRoute"></map-side-bar>
     <div id="map" class="mt-3" style="width: 100vw; height: 980px"></div>
     <insert-modal v-on:call-parent-insert="closeAfterInsert" :routeData = "this.routeData"></insert-modal>
   </div>
@@ -22,9 +22,19 @@ export default {
   data(){
     return{
       routeData:[], 
+      favoriteData:[],
     }
   },
   methods:{ 
+    makeRoute(routeData){
+      this.routeData = routeData;
+      this.$refs.spot_search.onMakeEvent();
+
+    },
+    getfdata(favoriteData){
+      this.favoriteData = favoriteData;
+      this.$refs.spot_search.fmakerEvent();
+    },
     showInsertModal(routeData) {
       this.routeData = routeData;
        this.insertModal.show();
