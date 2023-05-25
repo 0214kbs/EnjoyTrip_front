@@ -31,14 +31,14 @@
               </tr>
               <tr style="height: 20px">
                 <td style="height: 20px; text-align: left" colspan="6"><b>&nbsp; &nbsp; 첨부 파일</b></td>
-                <td v-if="board.fileList.length > 0">
-                  <tr>
-                    <div v-for="(file, index) in board.fileList" :key="index">
-                      <span class="fileName">{{ file.fileName }}</span>
-                      &nbsp;&nbsp;
-                      <a type="button" class="btn btn-outline btn-default btn-xs" v-bind:href="file.fileUrl" v-bind:download="file.fileName">내려받기</a>
-                    </div>
-                  </tr>
+              </tr>
+              <tr>
+                <td v-if="board.fileList.length > 0" colspan="2">
+                  <div v-for="(file, index) in board.fileList" :key="index">
+                    <span class="fileName">{{ file.fileName }}</span>
+                    &nbsp;&nbsp;
+                    <a type="button" class="btn btn-outline btn-default btn-xs" v-bind:href="file.fileUrl" v-bind:download="file.fileName">내려받기</a>
+                  </div>
                 </td>
               </tr>
               <!-- <tr v-if="board.fileList.length > 0">
