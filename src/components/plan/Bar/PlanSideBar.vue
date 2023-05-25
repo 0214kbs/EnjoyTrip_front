@@ -8,6 +8,7 @@
         <ul content-class="mt-3" id="tab-btn">
           <li @click="changeTab(0)">경로보기</li>
           <li @click="changeTab(1)">즐겨찾기</li>
+          <button @click="courseInsert">경로 보내기</button>
         </ul>
         <br />
 
@@ -165,6 +166,32 @@ export default {
       this.List = data;
     },
 
+    // 즐겨찾기 insert
+    // async insertfavorit(post) {
+    //   this.favoriteData.push(post.);
+    // },
+
+    //백엔드로 일반 코스 정보 보내기
+     async courseInsert() {
+       var num = this.routeData.length;
+      console.log(num);
+
+    
+     let response = await http.post("/course", {
+          num : num,
+          Allcourse : this.routeData,
+        });
+
+      let { data } = response;
+
+      console.log(data);
+
+      if (data.result == "fail") {
+        this.$alertify.success("경로 등록이 실패했습니다.");
+      } else {
+        this.$alertify.success("경로가 등록되었습니다.");
+      }
+     },
     //즐겨찾기 insert
     async insertfavorit(post) {
       console.log("작동한다");
