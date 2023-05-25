@@ -19,28 +19,26 @@
             <div id="divEditorUpdate"></div>
           </div>
 
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <h5>첨부 파일</h5>
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate" />
               <label class="form-check-label" for="chkFileUploadUpdate">파일 변경</label>
             </div>
-            <!-- 첨부파일 : -->
-            <!-- props board에서 이전 첨부된 file list -->
-            <span v-for="(file, index) in board.fileList" :key="index">{{ file.fileName }}</span>
-          </div>
+           <span v-for="(file, index) in board.fileList" :key="index">{{ file.fileName }}</span>
+          </div>  -->
           <!-- <div class="mb-3">
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate" />
               <label class="form-check-label" for="chkFileUploadUpdate">파일 변경</label>
             </div>
           </div> -->
-          <div v-show="attachFile" class="mb-3" id="imgFileUploadUpdateWrapper">
+          <!-- <div v-show="attachFile" class="mb-3" id="imgFileUploadUpdateWrapper">
             <input @change="changeFile" type="file" id="inputFileUploadUpdate" multiple />
             <div id="imgFileUploadUpdateThumbnail" class="thumbnail-wrapper">
               <img v-for="(file, index) in fileList" v-bind:key="index" v-bind:src="file" />
             </div>
-          </div>
+          </div> -->
 
           <!-- button -->
           <button @click="boardUpdate" id="btnBoardUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">
@@ -128,8 +126,8 @@ export default {
       this.title = this.board.title;
       this.CKEditor.setData(this.board.content);
 
-      this.attachFile = false;
-      (this.fileList = []), (document.querySelector("#inputFileUploadUpdate").value = "");
+      // this.attachFile = false;
+      // (this.fileList = []), (document.querySelector("#inputFileUploadUpdate").value = "");
     },
   },
 };

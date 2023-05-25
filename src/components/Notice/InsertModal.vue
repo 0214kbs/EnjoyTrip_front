@@ -5,7 +5,6 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글쓰기</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="mb-3">
@@ -17,9 +16,10 @@
             <textarea rows="7" type="text" class="form-control" id="contentInsert" v-model="content" />
           </div>
           <div id="divEditorInsert"></div>
-          <button id="btnNoticeInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="noticeInsert">
-            등록
-          </button>
+          <div class="container">
+            <button id="btnNoticeInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeInsert">등록</button>
+            <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
+          </div>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       title: "",
-      CKEditor: "",
+      content: "",
     };
   },
   methods: {
@@ -74,4 +74,43 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-outline {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
+}
+
+.w-btn-gray {
+  background-color: #828a93;
+  color: #deeaf2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

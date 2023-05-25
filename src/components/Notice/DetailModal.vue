@@ -32,12 +32,10 @@
               </tbody>
             </table>
           </div>
-          <button v-show="notice.admin" @click="changeToUpdate" class="btn btn-sm btn-primary btn-outline" data-bs-dismiss="modal" type="button">
-            글 수정하기
-          </button>
-          <button v-show="notice.admin" @click="changeToDelete" class="btn btn-sm btn-warning btn-outline" data-bs-dismiss="modal" type="button">
-            글 삭제하기
-          </button>
+          <div v-show="notice.admin" class="container">
+            <button v-show="notice.admin" @click="changeToUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button">글 수정하기</button>
+            <button v-show="notice.admin" @click="changeToDelete" class="w-btn w-btn-red" data-bs-dismiss="modal" type="button">글 삭제하기</button>
+          </div>
         </div>
       </div>
     </div>
@@ -59,4 +57,43 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-outline {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
+}
+
+.w-btn-red {
+  background-color: #f34242;
+  color: #deeaf2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+</style>

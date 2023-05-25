@@ -5,7 +5,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글쓰기</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
           <div class="mb-3">
@@ -31,9 +31,10 @@
               <img v-for="(file, index) in fileList" v-bind:key="index" v-bind:src="file" />
             </div>
           </div>
-          <button id="btnBoardInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="boardInsert">
-            등록
-          </button>
+          <div class="container">
+            <button id="btnNoticeInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeInsert">등록</button>
+            <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
+          </div>
         </div>
       </div>
     </div>

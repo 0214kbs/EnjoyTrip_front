@@ -6,7 +6,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글수정</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
           <div class="mb-3">
@@ -18,9 +18,10 @@
             <h5 for="contentUpdate" class="form-label">내용</h5>
             <div id="divEditorUpdate"></div>
           </div>
-          <button @click="noticeUpdate" id="btnNoticeUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">
-            수정
-          </button>
+          <div class="container">
+            <button id="btnNoticeInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeInsert">수정</button>
+            <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
+          </div>
         </div>
       </div>
     </div>
@@ -99,5 +100,44 @@ export default {
   width: 100%;
   height: 200px;
   overflow-y: scroll;
+}
+
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-outline {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
+}
+
+.w-btn-gray {
+  background-color: #828a93;
+  color: #deeaf2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
