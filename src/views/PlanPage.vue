@@ -5,18 +5,31 @@
       <div class="container">
         <div class="page-name">
           <span class="title">나의 일정</span>
-          <button class="button_1" @click="showInsertModal">+</button>
+          <button class="button_1">+</button>
         </div>
         <hr />
         <div class="card-container wrap">
-          <div class="card" v-for="card in cards" :key="card.id">
+
+          <div class="card" v-for="(card,index) in this.routeList" :key="index">
             <div class="card-header">
               <h2 class="card-title">{{ card.title }}</h2>
             </div>
             <div class="card-body">
-              <p class="card-text">{{ card.content }}</p>
+              <p class="card-text" v-html = card.content ></p>
+
+              <div class="card-text" v-for="(route ,index) in card.Allcourse" :key="index">
+                <img :src= route.firstimage width="100px"/>
+                <p>
+                  {{ route.spotTitle }}
+                </p>
+                <p>
+                  {{ route.addr1 }}
+                </p>
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -24,49 +37,36 @@
 </template>
 
 <script>
+import http from "@/common/axios";
+
 export default {
   data() {
     return {
-      cards: [
-        {
-          id: 1,
-          title: "Card 1",
-          content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-          image: "https://via.placeholder.com/300",
-        },
-        {
-          id: 2,
-          title: "Card 2",
-          content: "Praesent non lorem ac ante commodo suscipit eget quis ipsum.",
-          image: "https://via.placeholder.com/300",
-        },
-        {
-          id: 3,
-          title: "Card 3",
-          content: "Sed at felis pretium, tempus tortor ac, elementum lacus.",
-          image: "https://via.placeholder.com/300",
-        },
-        {
-          id: 4,
-          title: "Card 4",
-          content: "Sed at felis pretium, tempus tortor ac, elementum lacus.",
-          image: "https://via.placeholder.com/300",
-        },
-        {
-          id: 4,
-          title: "Card 4",
-          content: "Sed at felis pretium, tempus tortor ac, elementum lacus.",
-          image: "https://via.placeholder.com/300",
-        },
-        {
-          id: 4,
-          title: "Card 4",
-          content: "Sed at felis pretium, tempus tortor ac, elementum lacus.",
-          image: "https://via.placeholder.com/300",
-        },
-      ],
+      routeList:[],
     };
   },
+  methods:{
+
+    async planList(){
+      console.log("sdfs")
+     
+      let response = await http.get("/course");
+
+      let { data } = response;
+      console.log(data.data);
+      this.routeList = data.data;
+
+
+
+    },
+
+  },
+
+  mounted(){
+    this.planList();
+  },
+
+  
 };
 </script>
 
