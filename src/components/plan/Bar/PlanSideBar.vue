@@ -23,9 +23,6 @@
               :key="index"
             >
               <div class="member d-flex align-items-start" style="padding: 10px 15px">
-                <small
-                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="routesDelete(index)"></button
-                ></small>
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span style="width: 150px"></span>
@@ -34,6 +31,7 @@
                 <div class="social" style="float: right; margin: 0px; position: absolute">
                   <a @click="insertfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
                 </div>
+                <small><button type="button" class="btn-close x-button" aria-label="Close" @click="routesDelete(index)"></button></small>
               </div>
             </a>
           </draggable>
