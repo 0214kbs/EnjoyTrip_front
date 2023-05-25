@@ -9,12 +9,7 @@
               <h2 class="form-title">회원정보</h2>
               <div class="form-group">
                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  v-model="userName"
-                />
+                <input type="text" name="name" id="name" v-model="userName" />
               </div>
               <div class="form-group">
                 <label for="id"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -22,42 +17,26 @@
               </div>
               <div class="form-group">
                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  v-model="userEmail"
-                />
+                <input type="email" name="email" id="email" v-model="userEmail" />
               </div>
               <div class="form-group">
                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                <input
-                  type="text"
-                  name="address"
-                  id="address"
-                  v-model="userAddress"
-                />
+                <input type="text" name="address" id="address" v-model="userAddress" />
               </div>
 
-              
-              <div class="form-group form-button">
+              <div class="form-group form-button" style="display: flex">
                 <input
                   type="submit"
-                  name="signup"
-                  id="signup"
-                  class="form-submit"
-                  value="수정하기"
+                  value="수정"
                   @click="update"
+                  style="width: 200px; background-color: #4298f3; color: white; border: none; border-radius: 10px"
                 />
                 <input
                   type="submit"
-                  name="signup"
-                  id="signup"
-                  class="form-submit"
-                  value="탈퇴하기"
+                  value="탈퇴"
                   @click="userdelete"
+                  style="width: 200px; background-color: #4298f3; color: white; border: none; border-radius: 10px"
                 />
-
               </div>
             </div>
             <div class="signup-image">
@@ -84,22 +63,18 @@ export default {
       userName: "",
       userId: "",
       userEmail: "",
-      userAddress: ""
+      userAddress: "",
     };
   },
-  methods:{
-
-    async update(){
+  methods: {
+    async update() {
       try {
-        let response = await http.put(
-          "/user/" + this.userId,
-          {
-            userName: this.userName,
-            userId: this.userId,
-            userEmail: this.userEmail,
-            userAddress: this.userAddress,
-          },
-        );
+        let response = await http.put("/user/" + this.userId, {
+          userName: this.userName,
+          userId: this.userId,
+          userEmail: this.userEmail,
+          userAddress: this.userAddress,
+        });
         let { data } = response;
         if (data == 1) {
           this.detail();
@@ -112,43 +87,41 @@ export default {
         this.$alertify.error("회원정보 수정과정에서 문제 발생.");
       }
     },
-    async detail(){
-      try{
-        let response = await http.get(
-          "/user/" + this.userId
-        );
+    async detail() {
+      try {
+        let response = await http.get("/user/" + this.userId);
         let { data } = response;
 
-        if(data.result == "login"){
+        if (data.result == "login") {
           this.$router.push("/login");
-        } else{
+        } else {
           sessionStorage.setItem("userDto", JSON.stringify(data.userDto));
           this.$router.go(0);
         }
-      } catch(error){
+      } catch (error) {
         console.error(error);
         this.$alertify.error("회원정보 수정과정에서 문제 발생.");
       }
     },
-    async userdelete(){
+    async userdelete() {
       var answer = confirm("탈퇴하시겠습니까?");
-      if(answer){
-        try{
-          let response = await http.delete("/user/" + this.userId)
-          let {data} = response;
+      if (answer) {
+        try {
+          let response = await http.delete("/user/" + this.userId);
+          let { data } = response;
           console.log(data);
-          if(data == 1){
+          if (data == 1) {
             localStorage.clear();
             this.$router.push("/");
           }
-        }catch(error){
+        } catch (error) {
           console.error(error);
           this.$alertify.error("탈퇴 과정에서 문제 발생.");
         }
-      } else{
+      } else {
         alert("취소되었습니다.");
       }
-    }
+    },
   },
   created() {
     this.userName = this.data.userName;
@@ -166,7 +139,7 @@ export default {
   background-color: #ffffff;
   margin: auto;
 }
-input{
+input {
   margin-right: 10px;
 }
 </style>
