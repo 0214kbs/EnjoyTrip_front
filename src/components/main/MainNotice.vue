@@ -27,14 +27,14 @@
           <table class="table">
             <tbody>
               <tr>
-                <td style="color: #95a3b9; font-size: x-large; width: 20%;">제목</td>
+                <td style="color: #1e1e27; font-size: x-large; width: 20%;">제목</td>
                 <!-- <td style="color: #95a3b9; font-size: large;"> 공지사항3 </td> -->
-                <td style="color: #95a3b9; font-size: large;">{{ notice.title }}</td>
+                <td style="color: #1e1e27; font-size: large;">{{ notice.title }}</td>
               </tr>
               <tr>
-                <td style="color: #95a3b9; font-size: x-large; width: 20%;">내용</td>
+                <td style="color: #1e1e27; font-size: x-large; width: 20%;">내용</td>
                 <!-- <td style="color: #95a3b9; font-size: large;"> 가장 최근 공지사항 내용 <br>랄랄랄랄 </td> -->
-                <td style="color: #95a3b9; font-size: large;" v-html="notice.content"></td>
+                <td style="color: #1e1e27; font-size: large;" v-html="notice.content"></td>
               </tr>
             </tbody>
           </table>
@@ -102,8 +102,9 @@ details {
   display: flex;
   flex-direction: column;
 }
-details div {
-  background-color: #1e1e27;
+/* 1e1e27 */
+details div { 
+  background-color: #4298f3a1;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
   padding: 1.25rem;
   border-radius: 8px;
@@ -135,7 +136,7 @@ details div p > code {
   font-family: monospace;
 }
 details div h2 {
-  color: #95a3b9;
+  color: #1e1e27;
 }
 
 details div pre {

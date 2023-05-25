@@ -98,6 +98,7 @@
 
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="width: 800px">
         <div class="carousel-inner">
+          <!-- 부산 -->
           <div class="carousel-item active" data-bs-interval="10000">
             <iframe
               width="760"
@@ -109,22 +110,48 @@
               allowfullscreen
             ></iframe>
           </div>
+          <!-- 대전 -->
           <div class="carousel-item" data-bs-interval="2000">
             <iframe
               width="760"
               height="515"
-              src="https://www.youtube.com/embed/NnTEZCxhxF4"
+              src="https://www.youtube.com/embed/-0LHggNGP4A"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
           </div>
+          <!-- 서울 -->
           <div class="carousel-item">
             <iframe
               width="760"
               height="515"
               src="https://www.youtube.com/embed/3P1CnWI62Ik"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <!-- 인천 -->
+          <div class="carousel-item">
+            <iframe
+              width="760"
+              height="515"
+              src="https://www.youtube.com/embed/24iEAmpWn-0"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <!-- 대구 -->
+          <div class="carousel-item">
+            <iframe
+              width="760"
+              height="515"
+              src="https://www.youtube.com/embed/u1yKAaW5_vc"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
