@@ -11,92 +11,11 @@
         </div>
       </div>
 
-      <!--
-      <div class="row flex-center">
-        <div class="col-12">
-          <div class="carousel slide" id="carouselExampleIndicators" data-bs-touch="false" data-bs-interval="false">
-            <div class="row align-items-center">
-              <div>
-                <div class="carousel-inner">
-                  <div class="carousel-item active h-100">
-                    <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY">
-                      <iframe
-                        src="https://www.youtube.com/embed/zLeLttVbFs8"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY">
-                      <iframe
-                        src="https://www.youtube.com/embed/nUI8f_hvKZw"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY">
-                      <iframe
-                        src="https://www.youtube.com/embed/xf86EzuLXu0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <div class="player" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY">
-                      <iframe
-                        src="https://www.youtube.com/embed/YkEd_aorIiI"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen=""
-                      ></iframe>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-6 content order-last order-lg-first">
-                <div class="carousel-indicators">
-                  <div class="row h-100 w-100">
-                    <div class="col-12 px-1">
-                      <button
-                        class="active"
-                        type="button"
-                        data-bs-target="#carouselExampleIndicators"
-                        data-bs-slide-to="0"
-                        aria-current="true"
-                        aria-label="Slide 1"
-                      >
-                        <img class="d-block" src="@/assets/img/부산.jpg" alt="..." />
-                      </button>
-                    </div>
-                    <div class="col-12 px-1">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">
-                        <img class="d-block" src="@/assets/img/부산.jpg" alt="..." />
-                      </button>
-                    </div>
-                    <div class="col-12 px-1">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">
-                        <img class="d-block" src="@/assets/img/부산.jpg" alt="..." />
-                      </button>
-                    </div>
-                    <div class="col-12 px-1">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4">
-                        <img class="d-block" src="@/assets/img/부산.jpg" alt="..." />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      -->
-
-      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="width: 800px">
+      <div id="carouselExampleInterval" class="carousel slide d-flex justify-content-center" data-bs-ride="carousel" style="max-width: 800px; margin: 0 auto">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
         <div class="carousel-inner">
           <!-- 부산 -->
           <div class="carousel-item active" data-bs-interval="10000">
@@ -159,10 +78,7 @@
             ></iframe>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
+
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>

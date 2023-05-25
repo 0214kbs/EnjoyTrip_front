@@ -11,10 +11,6 @@
             <h3 class="mb-4 display-1 lh-sm">Getting Around Korea!</h3>
             <br />
             <br />
-            <!-- <p class="mt-4 mb-5 fs-1 lh-base">
-              Plan perfect trip with a travel tips,
-              <br class="d-none d-lg-block" />recommended course and <br class="d-none d-lg-block" />destination information from us.
-            </p> -->
             <a class="btn btn-lg btn-primary hover-top regist-btn" href="#" role="button" id="sign-up-now" style="background-color: #4298f3; border: none"
               ><router-link to="/map" class="nav-link">Join Now !</router-link></a
             >
@@ -25,6 +21,7 @@
     <!-- End Banner Hero -->
     <main-weather></main-weather>
     <br /><br /><br />
+    <main-card></main-card>
     <video-page></video-page>
     <korea-trip></korea-trip>
     <main-notice></main-notice>
@@ -38,9 +35,10 @@ import VideoPage from "@/components/main/VideoPage.vue";
 import KoreaTrip from "@/components/main/KoreaTrip.vue";
 import MainNotice from "@/components/main/MainNotice.vue";
 import MainFooter from "@/components/main/MainFooter.vue";
+import MainCard from "@/components/main/MainCard";
 
 export default {
-  components: { MainWeather, KoreaTrip, VideoPage, MainNotice, MainFooter },
+  components: { MainWeather, KoreaTrip, VideoPage, MainNotice, MainCard, MainFooter },
 };
 </script>
 

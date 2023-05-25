@@ -51,10 +51,10 @@
             <b-dropdown size="lg" variant="link" toggle-class="text-decoration-none" no-caret v-show="ISLOGIN">
               <template #button-content> &#9970;<span class="sr-only">Profile</span> </template>
               <b-dropdown-item href="#">
-                <router-link to="/plan" class="nav-link">나의 일정</router-link>
+                <router-link to="/plan" class="nav-link">나의 코스</router-link>
               </b-dropdown-item>
               <b-dropdown-item>
-                <router-link to="/userinfo" class="nav-link">회원정보</router-link>
+                <router-link to="/userinfo" class="nav-link">회원 정보</router-link>
               </b-dropdown-item>
               <b-dropdown-item id="logout" @click="logout">로그아웃</b-dropdown-item>
             </b-dropdown>
