@@ -8,7 +8,7 @@
         <ul content-class="mt-3" id="tab-btn">
           <li @click="changeTab(0)">경로보기</li>
           <li @click="changeTab(1)">즐겨찾기</li>
-          <button @click="courseInsert">경로 보내기</button>
+          <button @click="InsertPlan">일정작성</button>
         </ul>
         <br />
 
@@ -83,6 +83,7 @@
         </div>
       </div>
     </section>
+    
   </main>
   <!-- End sidebar -->
 </template>
@@ -96,7 +97,10 @@ import { eventBus } from "@/main.js";
 import Vue from "vue";
 import VueAlertify from "vue-alertify";
 import alertify from "alertifyjs";
+
+
 Vue.use(VueAlertify);
+
 
 export default {
   emit: ["fmakerevent"],
@@ -104,6 +108,7 @@ export default {
   name: "SideBar",
   components: {
     draggable,
+    
   },
   computed: {},
 
@@ -119,6 +124,10 @@ export default {
   },
 
   methods: {
+    InsertPlan(){
+      this.$emit("insetPlan", this.routeData);
+    },
+
     makeRoute() {
       this.$emit("makeRoute", this.routeData);
     },
@@ -177,26 +186,28 @@ export default {
     //   this.favoriteData.push(post.);
     // },
 
-    //백엔드로 일반 코스 정보 보내기
-    async courseInsert() {
-      var num = this.routeData.length;
-      console.log(num);
+    
 
-      let response = await http.post("/course", {
-        num: num,
-        Allcourse: this.routeData,
-      });
+    // //백엔드로 일반 코스 정보 보내기
+    // async courseInsert() {
+    //   var num = this.routeData.length;
+    //   console.log(num);
 
-      let { data } = response;
+    //   let response = await http.post("/course", {
+    //     num: num,
+    //     Allcourse: this.routeData,
+    //   });
 
-      console.log(data);
+    //   let { data } = response;
 
-      if (data.result == "fail") {
-        this.$alertify.success("경로 등록이 실패했습니다.");
-      } else {
-        this.$alertify.success("경로가 등록되었습니다.");
-      }
-    },
+    //   console.log(data);
+
+    //   if (data.result == "fail") {
+    //     this.$alertify.success("경로 등록이 실패했습니다.");
+    //   } else {
+    //     this.$alertify.success("경로가 등록되었습니다.");
+    //   }
+    // },
     //즐겨찾기 insert
     async insertfavorit(post) {
       console.log("작동한다");
@@ -242,6 +253,7 @@ export default {
     this.userSeq = this.data.userSeq;
     this.startList();
   },
+  
 };
 </script>
 
