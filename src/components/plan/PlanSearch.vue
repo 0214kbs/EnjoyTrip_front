@@ -3,14 +3,26 @@
     <!-- ======= Blog Section ======= -->
     <section>
       <!--<div class="container">-->
-      <div class="row d-flex justify-content-between" style="height: 100%; padding-left: 15px; width: 100%">
+      <div
+        class="row d-flex justify-content-between"
+        style="height: 100%; padding-left: 15px; width: 100%"
+      >
         <div class="col-lg-8 entries scrollBar" style="height: 100%">
           <!-- 검색버튼-->
-          <div class="margin btns d-flex flex-wrap" role="group" aria-label="Button group with nested dropdown">
+          <div
+            class="margin btns d-flex flex-wrap"
+            role="group"
+            aria-label="Button group with nested dropdown"
+          >
             <!-- 시도 -->
             <div class="button1 d-flex justify-content-between">
               <div style="float: left; margin-right: 10px">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   {{ areaCodeN }}
                 </button>
                 <ul class="dropdown-menu">
@@ -20,7 +32,12 @@
                 </ul>
               </div>
               <div style="float: left">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <button
+                  type="button"
+                  class="btn btn-success dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   {{ sigunguCodeN }}
                 </button>
                 <ul class="dropdown-menu">
@@ -31,12 +48,24 @@
               </div>
             </div>
 
-            <a @click="setCat1direct('A01')"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
-            <a @click="setCat1direct('A02')"><font-awesome-icon :icon="['fas', 'tree']" size="xl" style="color: #8ac039" /></a>
-            <a @click="setCat1direct('A03')"><font-awesome-icon :icon="['fas', 'bicycle']" style="color: #568dfb" /></a>
-            <a @click="setCat1direct('A04')"><font-awesome-icon :icon="['fas', 'cart-shopping']" style="color: #ea5353" /></a>
-            <a @click="setCat1direct('A05')"><font-awesome-icon :icon="['fas', 'utensils']" style="color: #000000" /></a>
-            <a @click="setCat1direct('B02')"><font-awesome-icon :icon="['fas', 'hotel']" style="color: #9651ec" /></a>
+            <a @click="setCat1direct('A01')"
+              ><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e"
+            /></a>
+            <a @click="setCat1direct('A02')"
+              ><font-awesome-icon :icon="['fas', 'tree']" size="xl" style="color: #8ac039"
+            /></a>
+            <a @click="setCat1direct('A03')"
+              ><font-awesome-icon :icon="['fas', 'bicycle']" style="color: #568dfb"
+            /></a>
+            <a @click="setCat1direct('A04')"
+              ><font-awesome-icon :icon="['fas', 'cart-shopping']" style="color: #ea5353"
+            /></a>
+            <a @click="setCat1direct('A05')"
+              ><font-awesome-icon :icon="['fas', 'utensils']" style="color: #000000"
+            /></a>
+            <a @click="setCat1direct('B02')"
+              ><font-awesome-icon :icon="['fas', 'hotel']" style="color: #9651ec"
+            /></a>
             <a @click="setCat1direct('C01')"><font-awesome-icon :icon="['fas', 'thumbs-up']" /></a>
           </div>
 
@@ -110,13 +139,20 @@
               v-for="(item, index) in itemList"
               :key="index"
             >
-              <div class="member d-flex align-items-start" style="padding: 10px 10px">
-                <div class="member-info" style="max-width: 250px">
+              <div
+                class="member d-flex align-items-start justify-content-between"
+                style="padding: 10px 10px"
+              >
+                <div class="member-info" style="max-width: 250px; padding-left: 0px">
                   <h4>{{ item.title }}</h4>
                   <span style="width: 150px"></span>
                   <p>{{ item.addr1 }}</p>
                 </div>
-                <button data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">경로추가</button>
+                <button data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
+                  <a style="background-color: blue"
+                    ><font-awesome-icon :icon="['fas', 'plus']" style="color: #ffffff"
+                  /></a>
+                </button>
               </div>
             </a>
           </div>
@@ -246,7 +282,11 @@ export default {
         position: this.marker.getPosition(),
         content: content,
       });
-      kakao.maps.event.addListener(this.marker, "mouseover", this.makeOverListener(this.map, this.marker, infowindow));
+      kakao.maps.event.addListener(
+        this.marker,
+        "mouseover",
+        this.makeOverListener(this.map, this.marker, infowindow)
+      );
       kakao.maps.event.addListener(this.marker, "click", this.makeOutListener(infowindow));
       //kakao.maps.event.addListener(this.marker, "contextmenu ", this.favorite(item));
     },
@@ -364,7 +404,8 @@ export default {
     },
 
     async getArea2List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
+      let urlParams =
+        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&areaCode=" + this.areaCode;
       let { data } = await http.get("/trip/areaCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -399,7 +440,8 @@ export default {
     },
 
     async getCat2List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
+      let urlParams =
+        "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -412,7 +454,15 @@ export default {
     },
 
     async getCat3List() {
-      let urlParams = "?numOfRows=" + this.numOfRows + "&pageNo=" + this.pageNo + "&cat1=" + this.cat1 + "&cat2=" + this.cat2;
+      let urlParams =
+        "?numOfRows=" +
+        this.numOfRows +
+        "&pageNo=" +
+        this.pageNo +
+        "&cat1=" +
+        this.cat1 +
+        "&cat2=" +
+        this.cat2;
       let { data } = await http.get("/trip/categoryCode" + urlParams);
       let res = JSON.parse(data.result); //이래야 문자열이 객체로 변환된다.
       //console.log(res);
@@ -434,7 +484,8 @@ export default {
       const script = document.createElement("script");
       /* global kakao */
       script.onload = () => kakao.maps.load(this.initMap);
-      script.src = "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
+      script.src =
+        "http://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=7c42e0103f913ac2760f8ba8e7810307";
       document.head.appendChild(script);
     }
   },
