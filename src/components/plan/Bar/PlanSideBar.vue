@@ -23,7 +23,13 @@
             >
               <div class="member d-flex align-items-start" style="padding: 10px 15px">
                 <small
-                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="routesDelete(index)"></button
+                  ><button
+                    type="button"
+                    class="btn-close x-button"
+                    aria-label="Close"
+                    style="margin-right: 10px"
+                    @click="routesDelete(index)"
+                  ></button
                 ></small>
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
@@ -32,8 +38,12 @@
                 </div>
                 <div class="social" style="float: right; margin: 0px; position: absolute">
                   <!-- v-if 부분 바꾸기!!! 즐겨찾기 리스트에 있는 경우로 바꾸기-->
-                  <a v-if="(item, index) in favoriteData"> <font-awesome-icon :icon="['fas', 'star']" style="color: #dddddd" /></a>
-                  <a v-else @click="addfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
+                  <a v-if="(item, index) in favoriteData">
+                    <font-awesome-icon :icon="['fas', 'star']" style="color: #dddddd"
+                  /></a>
+                  <a v-else @click="addfavorit(item)"
+                    ><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e"
+                  /></a>
                 </div>
               </div>
             </a>
@@ -52,7 +62,13 @@
             >
               <div class="member d-flex align-items-start" style="padding: 10px 15px">
                 <small
-                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="favoriteDelete(index)"></button
+                  ><button
+                    type="button"
+                    class="btn-close x-button"
+                    aria-label="Close"
+                    style="margin-right: 10px"
+                    @click="favoriteDelete(index)"
+                  ></button
                 ></small>
 
                 <div class="member-info">
@@ -72,7 +88,7 @@
 
 <script>
 //import { mapActions } from "vuex";
-
+import http from "@/common/axios";
 import draggable from "vuedraggable";
 import { eventBus } from "@/main.js";
 
@@ -86,10 +102,14 @@ export default {
 
   data() {
     return {
+      data: JSON.parse(sessionStorage.getItem("userDto")),
+      userSeq: "",
       searchWord: "",
       routeData: [],
       favoriteData: [],
       activeTab: true,
+
+      List: [], // 이게 favoriteData가 되어야 함
     };
   },
 
@@ -129,6 +149,20 @@ export default {
     print() {
       console.log(this.routeData);
     },
+
+    // 즐겨찾기 목록 가져오기
+    async startList() {
+      let response = await http.get("/star/" + this.userSeq);
+      let { data } = response;
+      console.log(data);
+
+      this.List = data;
+    },
+
+    // 즐겨찾기 insert
+    // async insertfavorit(post) {
+    //   this.favoriteData.push(post.);
+    // },
   },
   created() {
     eventBus.$on("send-plan", (routes) => {
@@ -137,6 +171,8 @@ export default {
     eventBus.$on("send-favorit", (favoriteList) => {
       this.favoriteData = favoriteList;
     });
+    this.userSeq = this.data.userSeq;
+    this.startList();
   },
 };
 </script>
@@ -160,7 +196,8 @@ li {
   list-style: none;
 }
 body {
-  background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg) no-repeat center center fixed;
+  background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg)
+    no-repeat center center fixed;
   background-size: cover;
   font-family: "Abel", sans-serif;
   font-size: 14px;
