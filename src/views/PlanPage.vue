@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- Start Recent Work -->
-    <section class="py-4 mt-6" id="Korea-trip">
+    <section class="py-4 mt-7" id="Korea-trip">
       <div class="container">
         <div class="page-name">
           <span class="title">나의 일정</span>
@@ -14,7 +14,6 @@
               <h2 class="card-title">{{ card.title }}</h2>
             </div>
             <div class="card-body">
-              <img :src="card.image" alt="Card Image" class="card-image" />
               <p class="card-text">{{ card.content }}</p>
             </div>
           </div>

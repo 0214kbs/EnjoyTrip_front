@@ -29,7 +29,7 @@
               </div>
 
               <div class="form-group form-button">
-                <input type="submit" name="signup" id="signup" class="form-submit" value="Register" @click="regist" />
+                <input type="submit" name="signup" id="signup" class="form-submit form-wide w-btn w-btn-blue" value="Register" @click="regist" />
               </div>
             </div>
             <div class="signup-image">
@@ -137,5 +137,22 @@ export default {
 }
 .input-danger {
   border-bottom: 1px solid red !important;
+}
+
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 109px;
+  border-radius: 5px;
+  font-family: "paybooc-Light", sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
 }
 </style>

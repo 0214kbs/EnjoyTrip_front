@@ -4,12 +4,12 @@
       <div class="list-group mb-3 scrollBar" style="height: 100%">
         <!-- <div > -->
 
-        <!--tab-->
-        <ul content-class="mt-3" id="tab-btn">
-          <li @click="changeTab(0)">경로보기</li>
-          <li @click="changeTab(1)">즐겨찾기</li>
+        <div class="tab-buttons" style="border-bottom: 1px solid #4298f3">
+          <button @click="changeTab(0)" :class="{ check: ischeck_1 }">경로보기</button>
+          <button @click="changeTab(1)" :class="{ check: ischeck_2 }">즐겨찾기</button>
           <button @click="InsertPlan">일정작성</button>
-        </ul>
+        </div>
+
         <br />
 
         <!--경로찾기-->
@@ -23,25 +23,15 @@
               :key="index"
             >
               <div class="member d-flex align-items-start" style="padding: 10px 15px">
-                <small
-                  ><button
-                    type="button"
-                    class="btn-close x-button"
-                    aria-label="Close"
-                    style="margin-right: 10px"
-                    @click="routesDelete(index)"
-                  ></button
-                ></small>
                 <div class="member-info">
                   <h4>{{ item.title }}</h4>
                   <span style="width: 150px"></span>
                   <p>{{ item.addr1 }}</p>
                 </div>
                 <div class="social" style="float: right; margin: 0px; position: absolute">
-                  <a @click="insertfavorit(item)"
-                    ><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e"
-                  /></a>
+                  <a @click="insertfavorit(item)"><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e" /></a>
                 </div>
+                <small><button type="button" class="btn-close x-button" aria-label="Close" @click="routesDelete(index)"></button></small>
               </div>
             </a>
           </draggable>
@@ -57,19 +47,9 @@
               v-for="(item, index) in favoriteData"
               :key="index"
             >
-              <div
-                class="member d-flex align-items-start"
-                @change="fmaker"
-                style="padding: 10px 15px"
-              >
+              <div class="member d-flex align-items-start" @change="fmaker" style="padding: 10px 15px">
                 <small
-                  ><button
-                    type="button"
-                    class="btn-close x-button"
-                    aria-label="Close"
-                    style="margin-right: 10px"
-                    @click="deletefavorit(item)"
-                  ></button
+                  ><button type="button" class="btn-close x-button" aria-label="Close" style="margin-right: 10px" @click="deletefavorit(item)"></button
                 ></small>
 
                 <div class="member-info">
@@ -83,7 +63,6 @@
         </div>
       </div>
     </section>
-    
   </main>
   <!-- End sidebar -->
 </template>
@@ -98,9 +77,7 @@ import Vue from "vue";
 import VueAlertify from "vue-alertify";
 import alertify from "alertifyjs";
 
-
 Vue.use(VueAlertify);
-
 
 export default {
   //emit: ["fmakerevent"],
@@ -108,7 +85,6 @@ export default {
   name: "SideBar",
   components: {
     draggable,
-    
   },
   computed: {},
 
@@ -120,11 +96,13 @@ export default {
       routeData: [],
       favoriteData: [],
       activeTab: true,
+      ischeck_1: true,
+      ischeck_2: false,
     };
   },
 
   methods: {
-    InsertPlan(){
+    InsertPlan() {
       this.$emit("insetPlan", this.routeData);
     },
 
@@ -141,9 +119,13 @@ export default {
       if (num == 1) {
         this.fmaker();
         this.activeTab = false;
+        this.ischeck_1 = false;
+        this.ischeck_2 = true;
       } else if (num == 0) {
         this.makeRoute();
         this.activeTab = true;
+        this.ischeck_1 = true;
+        this.ischeck_2 = false;
       }
     },
     addfavorit(post) {
@@ -231,7 +213,6 @@ export default {
     this.userSeq = this.data.userSeq;
     this.startList();
   },
-  
 };
 </script>
 
@@ -246,6 +227,10 @@ export default {
   padding: 0;
   margin: 0;
 }
+.check {
+  background-color: #4298f3;
+  color: white;
+}
 a {
   text-decoration: none;
   color: #666;
@@ -254,8 +239,7 @@ li {
   list-style: none;
 }
 body {
-  background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg)
-    no-repeat center center fixed;
+  background: #0137a1 url(https://tistory3.daumcdn.net/tistory/2808281/skin/images/background03.jpg) no-repeat center center fixed;
   background-size: cover;
   font-family: "Abel", sans-serif;
   font-size: 14px;
@@ -399,5 +383,16 @@ section {
 a {
   border: none;
   background: none;
+}
+
+/* 탭 버튼 */
+.tab-buttons {
+  display: flex;
+}
+
+.tab-buttons button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
 }
 </style>
