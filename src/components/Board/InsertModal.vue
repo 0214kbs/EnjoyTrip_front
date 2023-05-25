@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="container">
-            <button id="btnNoticeInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeInsert">등록</button>
+            <button id="btnBoardInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="boardInsert">등록</button>
             <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
           </div>
         </div>
@@ -126,7 +126,7 @@ export default {
 /*CKEditor Height*/
 .modal >>> .ck-editor__editable {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow-y: scroll;
 }
 
@@ -143,5 +143,44 @@ export default {
 
 label {
   position: static;
+}
+
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-outline {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
+}
+
+.w-btn-gray {
+  background-color: #828a93;
+  color: #deeaf2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

@@ -5,18 +5,19 @@
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">상세보기</h4>
+          <h4 class="modal-title">공지사항</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
         <div class="modal-body">
-          <div class="example table-responsive">
+          <h5>{{ notice.title }}</h5>
+          <p>{{ notice.regDate }}{{ notice.regTime }}</p>
+          <div class="box">
+            <h6 v-html="notice.content"></h6>
+          </div>
+          <!-- <div class="example table-responsive">
             <table class="table">
               <tbody>
-                <tr>
-                  <td>글번호</td>
-                  <td>{{ notice.noticeId }}</td>
-                </tr>
                 <tr>
                   <td>제목</td>
                   <td>{{ notice.title }}</td>
@@ -31,12 +32,13 @@
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div v-show="notice.admin" class="container">
-            <button v-show="notice.admin" @click="changeToUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button">글 수정하기</button>
-            <button v-show="notice.admin" @click="changeToDelete" class="w-btn w-btn-red" data-bs-dismiss="modal" type="button">글 삭제하기</button>
-          </div>
+           -->
         </div>
+        <div v-show="notice.admin" class="container">
+          <button v-show="notice.admin" @click="changeToUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button">글 수정하기</button>
+          <button v-show="notice.admin" @click="changeToDelete" class="w-btn w-btn-red" data-bs-dismiss="modal" type="button">글 삭제하기</button>
+        </div>
+        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -95,5 +97,13 @@ export default {
 .container {
   display: flex;
   justify-content: space-between;
+}
+
+.box {
+  border: 0.3px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  height: auto;
+  min-height: 200px;
 }
 </style>

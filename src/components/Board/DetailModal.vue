@@ -3,12 +3,10 @@
   <div class="modal fade" id="detailModal">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <!-- content제거하고 아래꺼 쓰고 싶은데 안됨.. -->
-        <!-- <div style="background-color: white"> -->
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글 상세</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
           <div class="example table-responsive">

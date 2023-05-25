@@ -16,10 +16,11 @@
 
           <div class="mb-3">
             <h5 for="contentUpdate" class="form-label">내용</h5>
-            <div id="divEditorUpdate"></div>
+            <textarea rows="7" type="text" class="form-control" id="contentUpdate" v-model="content" />
+            <!-- <div id="divEditorUpdate"></div> -->
           </div>
           <div class="container">
-            <button id="btnNoticeInsert" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeInsert">수정</button>
+            <button id="btnNoticeUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="noticeUpdate">수정</button>
             <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
           </div>
         </div>
@@ -30,12 +31,11 @@
 </template>
 
 <script>
-import Vue from "vue";
-import CKEditor from "@ckeditor/ckeditor5-vue2";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import VueAlertify from "vue-alertify";
-
-Vue.use(CKEditor).use(VueAlertify);
+// import Vue from "vue";
+// import CKEditor from "@ckeditor/ckeditor5-vue2";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import VueAlertify from "vue-alertify";
+// Vue.use(CKEditor).use(VueAlertify);
 import http from "@/common/axios";
 
 export default {
@@ -45,7 +45,7 @@ export default {
       noticeId: "",
       title: "",
       content: "",
-      CKEditor: "",
+      // CKEditor: "",
     };
   },
   methods: {
@@ -53,13 +53,15 @@ export default {
       let formData = new FormData();
       formData.append("noticeId", this.noticeId);
       formData.append("title", this.title);
-      formData.append("content", this.CKEditor.getData());
+      formData.append("content", this.content);
+      // formData.append("content", this.CKEditor.getData());
 
       let options = {
         headers: { "Content-Type": "multipart/form-data" },
       };
 
       let response = await http.post("/notices/" + this.noticeId, formData, options);
+      // let response = await http.post("/notices/" + this.noticeId, formData);
       let { data } = response;
 
       console.log(data);
@@ -77,31 +79,25 @@ export default {
     },
   },
   async mounted() {
-    try {
-      this.CKEditor = await ClassicEditor.create(document.querySelector("#divEditorUpdate"));
-    } catch (error) {
-      console.error(error);
-    }
+    // try {
+    //   this.CKEditor = await ClassicEditor.create(document.querySelector("#divEditorUpdate"));
+    // } catch (error) {
+    //   console.error(error);
+    // }
   },
   watch: {
     notice: function () {
       // notice props를 watch 하면서 notice가 변경되면 그 시점에 notice props -> noticeId, ... data() 항목을 갱신
       this.noticeId = this.notice.noticeId;
       this.title = this.notice.title;
-      this.CKEditor.setData(this.notice.content);
+      this.content = this.notice.content;
+      // this.CKEditor.setData(this.notice.content);
     },
   },
 };
 </script>
 
 <style scoped>
-/*CKEditor Height*/
-.modal >>> .ck-editor__editable {
-  width: 100%;
-  height: 200px;
-  overflow-y: scroll;
-}
-
 .w-btn {
   position: relative;
   border: none;

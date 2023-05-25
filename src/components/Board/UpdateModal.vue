@@ -6,7 +6,7 @@
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글수정</h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
           <div class="mb-3">
@@ -19,31 +19,25 @@
             <div id="divEditorUpdate"></div>
           </div>
 
-          <!-- <div class="mb-3">
+          <div class="mb-3">
             <h5>첨부 파일</h5>
             <div class="form-check">
               <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate" />
               <label class="form-check-label" for="chkFileUploadUpdate">파일 변경</label>
             </div>
-           <span v-for="(file, index) in board.fileList" :key="index">{{ file.fileName }}</span>
-          </div>  -->
-          <!-- <div class="mb-3">
-            <div class="form-check">
-              <input v-model="attachFile" class="form-check-input" type="checkbox" value="" id="chkFileUploadUpdate" />
-              <label class="form-check-label" for="chkFileUploadUpdate">파일 변경</label>
-            </div>
-          </div> -->
-          <!-- <div v-show="attachFile" class="mb-3" id="imgFileUploadUpdateWrapper">
+          </div>
+          <div v-show="attachFile" class="mb-3" style="display: none" id="imgFileUploadUpdateWrapper">
             <input @change="changeFile" type="file" id="inputFileUploadUpdate" multiple />
             <div id="imgFileUploadUpdateThumbnail" class="thumbnail-wrapper">
               <img v-for="(file, index) in fileList" v-bind:key="index" v-bind:src="file" />
             </div>
-          </div> -->
+          </div>
 
           <!-- button -->
-          <button @click="boardUpdate" id="btnBoardUpdate" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button">
-            수정
-          </button>
+          <div class="container">
+            <button id="btnBoardUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button" @click="boardUpdate">수정</button>
+            <button type="button" class="w-btn w-btn-gray" data-bs-dismiss="modal">취소</button>
+          </div>
         </div>
       </div>
     </div>
@@ -126,8 +120,8 @@ export default {
       this.title = this.board.title;
       this.CKEditor.setData(this.board.content);
 
-      // this.attachFile = false;
-      // (this.fileList = []), (document.querySelector("#inputFileUploadUpdate").value = "");
+      this.attachFile = false;
+      (this.fileList = []), (document.querySelector("#inputFileUploadUpdate").value = "");
     },
   },
 };
@@ -137,7 +131,7 @@ export default {
 /*CKEditor Height*/
 .modal >>> .ck-editor__editable {
   width: 100%;
-  height: 200px;
+  height: 150px;
   overflow-y: scroll;
 }
 
@@ -154,5 +148,44 @@ export default {
 
 label {
   position: static;
+}
+
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-outline {
+  position: relative;
+  padding: 6px 20px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
+}
+
+.w-btn-gray {
+  background-color: #828a93;
+  color: #deeaf2;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
