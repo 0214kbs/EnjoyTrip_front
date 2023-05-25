@@ -20,28 +20,10 @@
                 <input type="password" name="userPwd" id="userPwd" value="1234" placeholder="Password" v-model="userPassword" />
               </div>
 
-              <!-- <div class="form-group form-button">
-                <input @click="login" type="submit" value="Login" name="signin" id="signin" class="form-submit" />
-                <input @click="findpwd" type="submit" value="비밀번호찾기" name="signin" id="signin" class="form-submit" />
-              </div> -->
               <div class="form-group form-button">
                 <button @click="login" type="submit" name="signin" id="signin" class="form-submit form-wide w-btn w-btn-blue">Login</button>
               </div>
               <a @click="findpwd" href="#" class="form-link">비밀번호 찾기</a>
-              <!-- <div class="social-login">
-                <span class="social-label">Or login with</span>
-                <ul class="socials">
-                  <li>
-                    <a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a>
-                  </li>
-                </ul>
-              </div> -->
             </div>
           </div>
         </div>

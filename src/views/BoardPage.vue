@@ -185,21 +185,6 @@ export default {
       this.board = boardNew;
 
       this.detailModal.show();
-
-      // if (data.result == "login") {
-      //   this.$router.push("/login");
-      // } else {
-      //   let { regDt } = data.dto;
-      //   let boardNew = {
-      //     regDate: util.makeDateStr(regDt.date.year, regDt.date.month, regDt.date.day, "."),
-      //     regTime: util.makeTimeStr(regDt.time.hour, regDt.time.minute, regDt.time.second, ":"),
-      //     ...data.dto,
-      //   };
-
-      //   this.board = boardNew;
-
-      //   this.detailModal.show();
-      // }
     },
     showInsertModal() {
       this.insertModal.show();

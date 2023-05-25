@@ -30,25 +30,6 @@
                   <td style="width: 16.6667%; height: 20px; text-align: center"><b>내용</b></td>
                   <td style="width: 83.3335%; height: 20px" colspan="5" v-html="board.content"></td>
                 </tr>
-                <!-- <tr style="height: 20px">
-                <td style="height: 20px; text-align: center text-align: left; width: 16.6667%;"><b>첨부 파일</b></td>
-                <td v-if="board.fileList.length > 0" colspan="5">
-                  <span v-for="(file, index) in board.fileList" :key="index">
-                    <span class="fileName">{{ file.fileName }}</span>
-                    &nbsp;&nbsp;
-                    <a type="button" class="btn btn-outline btn-default btn-xs" v-bind:href="file.fileUrl" v-bind:download="file.fileName">내려받기</a>
-                  </span>
-                </td>
-              </tr> -->
-                <!-- <tr v-if="board.fileList.length > 0">
-                <td colspan="2">
-                  <div v-for="(file, index) in board.fileList" :key="index">
-                    <span class="fileName">{{ file.fileName }}</span>
-                    &nbsp;&nbsp;
-                    <a type="button" class="btn btn-outline btn-default btn-xs" v-bind:href="file.fileUrl" v-bind:download="file.fileName">내려받기</a>
-                  </div>
-                </td>
-              </tr> -->
               </tbody>
             </table>
           </div>

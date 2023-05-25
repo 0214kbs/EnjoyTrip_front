@@ -15,24 +15,6 @@
           <div class="box">
             <h6 v-html="notice.content"></h6>
           </div>
-          <!-- <div class="example table-responsive">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>제목</td>
-                  <td>{{ notice.title }}</td>
-                </tr>
-                <tr>
-                  <td>내용</td>
-                  <td v-html="notice.content"></td>
-                </tr>
-                <tr>
-                  <td>작성일시</td>
-                  <td>{{ notice.regDate }} {{ notice.regTime }}</td>
-                </tr>
-              </tbody>
-            </table>
-           -->
         </div>
         <div v-show="notice.admin" class="container">
           <button v-show="notice.admin" @click="changeToUpdate" class="w-btn w-btn-blue" data-bs-dismiss="modal" type="button">글 수정하기</button>
