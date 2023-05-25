@@ -69,68 +69,6 @@
             <a @click="setCat1direct('C01')"><font-awesome-icon :icon="['fas', 'thumbs-up']" /></a>
           </div>
 
-          <!--
-            <div class="button2 d-flex justify-content-between">
-              <div style="float: left; margin-right: 10px">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ cat1N }}
-                </button>
-                <ul class="dropdown-menu">
-                  <li v-for="(cat, index) in category1List" :key="index" @click="setCat1(cat)">
-                    <a class="dropdown-item">{{ cat.name }}</a>
-                  </li>
-                </ul>
-              </div>
-              <div style="float: left; margin-right: 10px">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ cat2N }}
-                </button>
-                <ul class="dropdown-menu">
-                  <li v-for="(cat, index) in category2List" :key="index" @click="setCat2(cat)">
-                    <a class="dropdown-item">{{ cat.name }}</a>
-                  </li>
-                </ul>
-              </div>
-              <div style="float: left">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ cat3N }}
-                </button>
-                <ul class="dropdown-menu">
-                  <li v-for="(cat, index) in category3List" :key="index" @click="setCat3(cat)">
-                    <a class="dropdown-item">{{ cat.name }}</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <button @click="search" class="bi bi-search searchbtn">검색</button>
-          -->
-
-          <!--지도
-            <div class="map-section" style="width: 100%; height: 100%">
-              <div id="map" class="mt-3" style="width: 100%; height: 400px"></div>
-            </div>-->
-          <!--
-          <div id="trip-list" class="row"></div>
-          <table class="shortest-route-table">
-            <thead>
-              <tr>
-                <th scope="col">순번</th>
-                <th scope="col">이름</th>
-                <th scope="col">장소</th>
-              </tr>
-            </thead>
-            <tbody v-for="(item, index) in itemList" :key="index">
-              <tr data-mapx="item.mapx" data-mapy="item.mapy" @click="selectSpot(item)">
-                <td>{{ item.title }}</td>
-                <td>{{ item.addr1 }}</td>
-                <td v-if="item.firstimage"><img :src="item.firstimage" alt="default" width="100px" /></td>
-                <td v-else><img src="@/assets/img/no-image.png" alt="default" width="100px" /></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
--->
-
           <div>
             <a
               href="#"
@@ -216,13 +154,134 @@ export default {
       shortestRouteList: [],
 
       routes: [],
+
       //즐겨찾기
       favoriteList: [],
       fMaker: [],
-      fMakerPosition: null,
+      fMakerPosition: [],
+      imageSrc: "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+
+      //선택된  경로 생성
+      lines: [],
+      selectMakers: [],
+      selectMakerInfo: [],
     };
   },
   methods: {
+    onMakeEvent(routeData) {
+      this.routes = routeData;
+      //기존에 떠있던 마커, 오버레이는 제거한다.
+      this.selectMakers.forEach((el) => {
+        el.setMap(null);
+      });
+
+      this.lines.forEach((el) => {
+        el.setMap(null);
+      });
+
+      // this.selectMakerInfo.forEach((el)=>{
+      //   el.setMap(null);
+      // })
+
+      //this.removeOverlays();
+
+      //routes의 순서로 마커와 순서, 이름을 알려주는 인포윈도우를 띄운다
+      // 마커가 가진 정보를 이용해 Route선을 그려준다.
+
+      console.log("경로 생성");
+      console.log(routeData);
+
+      var linePath = [];
+      //1.마커들
+      for (var i = 0; i < this.routes.length; i++) {
+        // 마커를 생성합니다
+        console.log(this.routes[i]);
+        var marker = new kakao.maps.Marker({
+          map: this.map, // 마커를 표시할 지도
+          position: new kakao.maps.LatLng(this.routes[i].mapy, this.routes[i].mapx), // 마커를 표시할 위치
+          title: this.routes[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+        });
+        this.selectMakers.push(marker);
+
+        linePath.push(marker.getPosition());
+
+        //   //1-2. 마커 설명보여주기
+        //   var content  = document.createElement("a");
+        //   var span = document.createElement("span");
+        //   span.classList.add("title");
+        //   span.innerHTML = this.routes.title;
+
+        //   content.appendChild(span);
+
+        // var infowindow = new kakao.maps.InfoWindow({
+        //   //map: this.map, // 인포윈도우가 표시될 지도
+        //   position: this.marker.getPosition(),
+        //   content: content,
+        //   map:this.map,
+        //   yAnchor: 1,
+        // });
+        // this.selectMakerInfo.push(infowindow);
+      }
+      //2.경로그리기
+      var polyline = new kakao.maps.Polyline({
+        path: linePath,
+        strokeColor: "#89ccbe",
+        strokeOpacity: 1,
+        strokeStyle: "solid",
+        strokeWeight: 3,
+      });
+      this.lines.push(polyline);
+      polyline.setMap(this.map);
+    },
+
+    //즐겨찾기 마크 표시
+    fmakerEvent(favoriteData) {
+      console.log(favoriteData);
+
+      this.deleteMaker();
+      this.fMakerPosition = [];
+      //this.favoriteList.forEach((el) => {
+      favoriteData.forEach((el) => {
+        // console.log(el);
+        // console.log(el.mapx + " " + el.mapy);
+
+        //즐겨찾기 마커표시 - favoriteList와 연동되는 상태여야한다.
+
+        this.fMakerPosition.push({
+          title: el.title,
+          latlng: new kakao.maps.LatLng(el.mapy, el.mapx),
+        });
+      });
+      //여기에 모든 마커가 있다.
+
+      for (var i = 0; i < this.fMakerPosition.length; i++) {
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35);
+
+        // 마커 이미지를 생성합니다
+        var markerImage = new kakao.maps.MarkerImage(this.imageSrc, imageSize);
+
+        // 마커를 생성합니다
+        this.fMaker.push(
+          new kakao.maps.Marker({
+            map: this.map, // 마커를 표시할 지도
+            position: this.fMakerPosition[i].latlng, // 마커를 표시할 위치
+            title: this.fMakerPosition[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image: markerImage, // 마커 이미지
+          })
+        );
+      }
+
+      //좋아요 리스트 마커표시하기
+    },
+
+    deleteMaker() {
+      //console.log("deleteMarker");
+      this.fMaker.forEach((el) => {
+        el.setMap(null);
+      });
+    },
+
     selectSpot(item) {
       //지도 중심 이동
       var point = new kakao.maps.LatLng(item.mapy, item.mapx);

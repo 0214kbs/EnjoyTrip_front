@@ -38,12 +38,7 @@
                   <p>{{ item.addr1 }}</p>
                 </div>
                 <div class="social" style="float: right; margin: 0px; position: absolute">
-                  <!-- v-if 부분 바꾸기!!! 즐겨찾기 리스트에 있는 경우로 바꾸기-->
-                  <a v-if="(item, index) in favoriteData">
-                    <font-awesome-icon :icon="['fas', 'star']" style="color: #dddddd"
-                  /></a>
-                  <!--@click="addfavorit(item)"-->
-                  <a v-else @click="insertfavorit(item)"
+                  <a @click="insertfavorit(item)"
                     ><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e"
                   /></a>
                 </div>
@@ -62,19 +57,23 @@
               v-for="(item, index) in favoriteData"
               :key="index"
             >
-              <div class="member d-flex align-items-start" style="padding: 10px 15px">
+              <div
+                class="member d-flex align-items-start"
+                @change="fmaker"
+                style="padding: 10px 15px"
+              >
                 <small
                   ><button
                     type="button"
                     class="btn-close x-button"
                     aria-label="Close"
                     style="margin-right: 10px"
-                    @click="favoriteDelete(index)"
+                    @click="deletefavorit(item)"
                   ></button
                 ></small>
 
                 <div class="member-info">
-                  <h4>{{ item.title }}</h4>
+                  <h4>{{ item.spotTitle }}</h4>
                   <hr />
                   <p>{{ item.addr1 }}</p>
                 </div>
@@ -100,6 +99,7 @@ import alertify from "alertifyjs";
 Vue.use(VueAlertify);
 
 export default {
+  emit: ["fmakerevent"],
   //props: ["routes"],
   name: "SideBar",
   components: {
@@ -115,16 +115,22 @@ export default {
       routeData: [],
       favoriteData: [],
       activeTab: true,
-
-      List: [], // 이게 favoriteData가 되어야 함
     };
   },
 
   methods: {
+    makeRoute() {
+      this.$emit("makeRoute", this.routeData);
+    },
+    fmaker() {
+      this.$emit("fmakerevent", this.favoriteData);
+    },
     changeTab(num) {
       if (num == 1) {
+        this.fmaker();
         this.activeTab = false;
       } else if (num == 0) {
+        this.makeRoute();
         this.activeTab = true;
       }
     },
@@ -163,7 +169,7 @@ export default {
       let { data } = response;
       console.log(data);
 
-      this.List = data;
+      this.favoriteData = data;
     },
 
     // 즐겨찾기 insert
@@ -172,15 +178,14 @@ export default {
     // },
 
     //백엔드로 일반 코스 정보 보내기
-     async courseInsert() {
-       var num = this.routeData.length;
+    async courseInsert() {
+      var num = this.routeData.length;
       console.log(num);
 
-    
-     let response = await http.post("/course", {
-          num : num,
-          Allcourse : this.routeData,
-        });
+      let response = await http.post("/course", {
+        num: num,
+        Allcourse: this.routeData,
+      });
 
       let { data } = response;
 
@@ -191,17 +196,17 @@ export default {
       } else {
         this.$alertify.success("경로가 등록되었습니다.");
       }
-     },
+    },
     //즐겨찾기 insert
     async insertfavorit(post) {
       console.log("작동한다");
       console.log(post);
-      console.log(post.title);
+
       let formData = new FormData();
-      formData.append("user_seq", this.userSeq);
-      formData.append("spot_title", post.title);
+      formData.append("userSeq", this.userSeq);
+      formData.append("spotTitle", post.title);
       formData.append("addr1", post.addr1);
-      formData.append("firstimg", post.title);
+      formData.append("firstimg", post.firstimage);
       formData.append("mapx", post.mapx);
       formData.append("mapy", post.mapy);
 
@@ -211,7 +216,7 @@ export default {
 
       let response = await http.post("/star", formData, options);
       let { data } = response;
-      console.log(data);
+
       if (data == 0) {
         alertify.alert("이미 등록되었습니다.");
       } else {
@@ -219,13 +224,20 @@ export default {
       }
       this.startList();
     },
+    async deletefavorit(item) {
+      let response = await http.delete("/star/" + this.userSeq + "/" + item.spotTitle);
+      let { data } = response;
+      if (data == 1) {
+        alertify.success("즐겨찾기 삭제 완료");
+      } else {
+        alertify.success("즐겨찾기 삭제 실패");
+      }
+      this.startList();
+    },
   },
   created() {
     eventBus.$on("send-plan", (routes) => {
       this.routeData.push(routes);
-    });
-    eventBus.$on("send-favorit", (favoriteList) => {
-      this.favoriteData = favoriteList;
     });
     this.userSeq = this.data.userSeq;
     this.startList();
