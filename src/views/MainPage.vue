@@ -23,7 +23,7 @@
     <br /><br /><br />
     <main-card></main-card>
     <video-page></video-page>
-    <korea-trip></korea-trip>
+    <!-- <korea-trip></korea-trip> -->
     <main-notice></main-notice>
     <main-footer></main-footer>
   </div>
@@ -32,13 +32,13 @@
 <script>
 import MainWeather from "@/components/main/MainWeather.vue";
 import VideoPage from "@/components/main/VideoPage.vue";
-import KoreaTrip from "@/components/main/KoreaTrip.vue";
+// import KoreaTrip from "@/components/main/KoreaTrip.vue";
 import MainNotice from "@/components/main/MainNotice.vue";
 import MainFooter from "@/components/main/MainFooter.vue";
 import MainCard from "@/components/main/MainCard";
 
 export default {
-  components: { MainWeather, KoreaTrip, VideoPage, MainNotice, MainCard, MainFooter },
+  components: { MainWeather, VideoPage, MainNotice, MainCard, MainFooter },
 };
 </script>
 
