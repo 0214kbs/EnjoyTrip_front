@@ -13,7 +13,9 @@
           <div class="card" v-for="(card,index) in this.routeList" :key="index">
             <div class="card-header">
               <h2 class="card-title">{{ card.title }}</h2>
+              
             </div>
+            
             <div class="card-body">
               <p class="card-text" v-html = card.content ></p>
 
@@ -26,8 +28,8 @@
                   {{ route.addr1 }}
                 </p>
               </div>
-
             </div>
+            <button class="bi bi-file-x" @click="deletePlan(card.userCourseId)">삭제</button>
           </div>
 
         </div>
@@ -56,7 +58,11 @@ export default {
       console.log(data.data);
       this.routeList = data.data;
 
-
+    },
+    async deletePlan(id){
+      let response = await http.delete("/course/"+id);
+      response.data;
+      this.planList()
 
     },
 
