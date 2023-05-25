@@ -1,45 +1,35 @@
 <template>
   <!-- Modal detail start -->
   <div class="modal fade" id="detailModal">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">글 상세</h4>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
         <div class="modal-body">
           <div class="example table-responsive">
-            <table class="table">
+            <table class="table" style="border-collapse: collapse; width: 100%; height: 107px" border="1" data-ke-align="alignLeft">
               <tbody>
-                <tr>
-                  <td>글번호</td>
-                  <td>{{ board.boardId }}</td>
+                <tr style="height: 20px">
+                  <td style="width: 16.6667%; height: 20px; text-align: center"><b>글 번호</b></td>
+                  <td style="width: 16.6667%; height: 20px">{{ board.boardId }}</td>
+                  <td style="width: 16.6667%; height: 20px; text-align: center"><b>작성자</b></td>
+                  <td style="width: 16.6667%; height: 20px">{{ board.userName }}</td>
+                  <td style="width: 16.6667%; height: 20px; text-align: center"><b>작성 일시</b></td>
+                  <td style="width: 16.6667%; height: 20px">{{ board.regDate }} {{ board.regTime }}</td>
                 </tr>
-                <tr>
-                  <td>제목</td>
-                  <td>{{ board.title }}</td>
+                <tr style="height: 20px">
+                  <td style="width: 16.6667%; height: 20px; text-align: center"><b>제목</b></td>
+                  <td style="width: 83.3335%; height: 20px" colspan="5">{{ board.title }}</td>
                 </tr>
-                <tr>
-                  <td>내용</td>
-                  <td v-html="board.content"></td>
+                <tr style="height: 20px">
+                  <td style="width: 16.6667%; height: 20px; text-align: center"><b>내용</b></td>
+                  <td style="width: 83.3335%; height: 20px" colspan="5" v-html="board.content"></td>
                 </tr>
-                <tr>
-                  <td>작성자</td>
-                  <td>{{ board.userName }}</td>
-                </tr>
-                <tr>
-                  <td>작성일시</td>
-                  <td>{{ board.regDate }} {{ board.regTime }}</td>
-                </tr>
-                <tr>
-                  <td>조회수</td>
-                  <td>{{ board.readCount }}</td>
-                </tr>
-                <!-- New for FileUpload -->
-                <tr>
-                  <td colspan="2">첨부파일</td>
+                <tr style="height: 20px">
+                  <td style="height: 20px; text-align: left" colspan="6"><b>첨부 파일</b></td>
                 </tr>
                 <tr v-if="board.fileList.length > 0">
                   <td colspan="2">
@@ -51,7 +41,6 @@
                     </div>
                   </td>
                 </tr>
-                <!-- / New for FileUpload -->
               </tbody>
             </table>
           </div>
