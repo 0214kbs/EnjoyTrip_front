@@ -55,8 +55,8 @@
             <!-- <template x-for="heading in headings"> -->
             <!-- <th style="width: 7.55811%; height: 17px; text-align: center">#</th>
             <th style="width: 33.6047%; height: 17px; text-align: center">제목</th> -->
-            <th style="width: 20%; height: 17px; text-align: center">제 목</th>
-            <th style="width: 60%; height: 17px; text-align: center">내 용</th>
+            <th style="width: 28%; height: 17px; text-align: center">제 목</th>
+            <th style="width: 52%; height: 17px; text-align: center">내 용</th>
             <th style="width: 20%; height: 17px; text-align: center">작성일시</th>
             <!-- </template> -->
           </tr>
@@ -64,8 +64,8 @@
         <tbody>
           <tr v-for="(notice, index) in list" :key="index" @click="noticeDetail(notice.noticeId)">
             <!-- <td style="text-align: center">{{ notice.noticeId }}</td> -->
-            <td style="padding-left: 100px">{{ notice.title }}</td>
-            <td style="padding-left: 100px">{{ notice.content }}</td>
+            <td style="padding-left: 50px">{{ notice.title }}</td>
+            <td style="padding-left: 10px">{{ notice.content }}</td>
             <td style="text-align: center">{{ ListDate(notice.regDt.date) }}</td>
           </tr>
         </tbody>
