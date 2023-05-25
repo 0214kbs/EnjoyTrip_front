@@ -17,6 +17,7 @@
           ></path>
         </svg>
       </summary>
+
       <!-- 세부내용 start-->
       <div>
         <h2>공지 사항</h2>
@@ -26,14 +27,14 @@
           <table class="table">
             <tbody>
               <tr>
-                <td style="color: #95a3b9; font-size: x-large; ">제목</td>
-                <td style="color: #95a3b9; font-size: large;"> 공지사항3 </td>
-                <!-- <td>{{ notice.title }}</td> -->
+                <td style="color: #95a3b9; font-size: x-large; width: 20%;">제목</td>
+                <!-- <td style="color: #95a3b9; font-size: large;"> 공지사항3 </td> -->
+                <td style="color: #95a3b9; font-size: large;">{{ notice.title }}</td>
               </tr>
               <tr>
-                <td style="color: #95a3b9; font-size: x-large; ">내용</td>
-                <td style="color: #95a3b9; font-size: large;"> 가장 최근 공지사항 내용 <br>랄랄랄랄 </td>
-                <!-- <td v-html="notice.content"></td> -->
+                <td style="color: #95a3b9; font-size: x-large; width: 20%;">내용</td>
+                <!-- <td style="color: #95a3b9; font-size: large;"> 가장 최근 공지사항 내용 <br>랄랄랄랄 </td> -->
+                <td style="color: #95a3b9; font-size: large;" v-html="notice.content"></td>
               </tr>
             </tbody>
           </table>
@@ -45,30 +46,39 @@
 </template>
 
 <script>
-// import http from "@/common/axios";
-// import util from "@/common/util";
-// export default {
-//   data() {
+import http from "@/common/axios";
 
-//       // detail
-//       notice: {
-//         content: "",
-//       },
-//     };
-//   },
-//   methods: {
-//     async noticeDetail(noticeId) {
-//       let response = await http.get("/notices/" + noticeId);
-//       let { data } = response;
+export default {
+// notice try
+  data() {
+    return {
+      mainNotice: null,
+      // detail
+      notice: {
+        noticeId: 0,
+        title: "",
+        content: "",
+        regDate: "",
+        regTime: "",
+        admin: false,
+      },
+    };
+  },
+  methods: {
+    async noticeListRecent() {
 
-//       console.log(data);
-//       this.notice = dat.dto;
-//     },
-//   },
-//   created() {
-//     this.noticeDetail();
-//   },
-// };
+      let response = await http.get("/notices/recent");
+      let { data } = response;
+      console.log("noticeList");
+      console.log(data);
+      this.notice = data.dto;
+      console.log(data.title);
+    },
+  },
+  created() {
+    this.noticeListRecent();
+    },
+};
 </script>
 
 <style>
@@ -99,7 +109,7 @@ details div {
   border-radius: 8px;
   position: absolute;
   max-height: calc(100vh - 100px);
-  width: 400px;
+  width: 450px;
   max-width: calc(100vw - 2rem);
   bottom: calc(100% + 1rem);
   right: 0;
@@ -150,7 +160,7 @@ summary {
   padding: 0.75em 3em 0.75em 1.25em;
   border-radius: 99em;
   color: #fff;
-  background-color: #185adb;
+  background-color: #4298f3;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   list-style: none;
   text-align: center;
@@ -163,7 +173,7 @@ summary::-webkit-details-marker {
 }
 summary:hover,
 summary:focus {
-  background-color: #1348af;
+  background-color: #4298f3;
 }
 summary svg {
   position: absolute;
