@@ -41,7 +41,8 @@
                   <a v-if="(item, index) in favoriteData">
                     <font-awesome-icon :icon="['fas', 'star']" style="color: #dddddd"
                   /></a>
-                  <a v-else @click="addfavorit(item)"
+                  <!--@click="addfavorit(item)"-->
+                  <a v-else @click="insertfavorit(item)"
                     ><font-awesome-icon :icon="['fas', 'star']" style="color: #ffe32e"
                   /></a>
                 </div>
@@ -91,6 +92,11 @@
 import http from "@/common/axios";
 import draggable from "vuedraggable";
 import { eventBus } from "@/main.js";
+
+import Vue from "vue";
+import VueAlertify from "vue-alertify";
+import alertify from "alertifyjs";
+Vue.use(VueAlertify);
 
 export default {
   //props: ["routes"],
@@ -159,10 +165,33 @@ export default {
       this.List = data;
     },
 
-    // 즐겨찾기 insert
-    // async insertfavorit(post) {
-    //   this.favoriteData.push(post.);
-    // },
+    //즐겨찾기 insert
+    async insertfavorit(post) {
+      console.log("작동한다");
+      console.log(post);
+      console.log(post.title);
+      let formData = new FormData();
+      formData.append("user_seq", this.userSeq);
+      formData.append("spot_title", post.title);
+      formData.append("addr1", post.addr1);
+      formData.append("firstimg", post.title);
+      formData.append("mapx", post.mapx);
+      formData.append("mapy", post.mapy);
+
+      let options = {
+        headers: { "Content-Type": "multipart/form-data" },
+      };
+
+      let response = await http.post("/star", formData, options);
+      let { data } = response;
+      console.log(data);
+      if (data == 0) {
+        alertify.alert("이미 등록되었습니다.");
+      } else {
+        alertify.success("즐겨찾기 추가");
+      }
+      this.startList();
+    },
   },
   created() {
     eventBus.$on("send-plan", (routes) => {
