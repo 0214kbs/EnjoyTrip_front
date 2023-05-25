@@ -15,16 +15,19 @@
                 <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                 <input type="text" name="userId" id="userId" value="ssafy" placeholder="userId" v-model="userId" />
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display: flex; justify-content: space-between">
                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                 <input type="password" name="userPwd" id="userPwd" value="1234" placeholder="Password" v-model="userPassword" />
               </div>
 
-              <div class="form-group form-button">
+              <!-- <div class="form-group form-button">
                 <input @click="login" type="submit" value="Login" name="signin" id="signin" class="form-submit" />
                 <input @click="findpwd" type="submit" value="비밀번호찾기" name="signin" id="signin" class="form-submit" />
+              </div> -->
+              <div class="form-group form-button">
+                <button @click="login" type="submit" name="signin" id="signin" class="form-submit form-wide w-btn w-btn-blue">Login</button>
               </div>
-
+              <a @click="findpwd" href="#" class="form-link">비밀번호 찾기</a>
               <!-- <div class="social-login">
                 <span class="social-label">Or login with</span>
                 <ul class="socials">
@@ -126,5 +129,25 @@ export default {
   width: 900px;
   background-color: #ffffff;
   margin: auto;
+}
+.form-link {
+  display: block;
+  text-align: center;
+}
+.w-btn {
+  position: relative;
+  border: none;
+  display: inline-block;
+  padding: 6px 122px;
+  border-radius: 5px;
+  font-family: "paybooc-Light", sans-serif;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue {
+  background-color: #4298f3;
+  color: #deeaf2;
 }
 </style>
