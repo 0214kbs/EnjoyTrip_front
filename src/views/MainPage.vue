@@ -28,6 +28,7 @@
     <video-page></video-page>
     <korea-trip></korea-trip>
     <main-notice></main-notice>
+    <main-footer></main-footer>
   </div>
 </template>
 
@@ -36,9 +37,10 @@ import MainWeather from "@/components/main/MainWeather.vue";
 import VideoPage from "@/components/main/VideoPage.vue";
 import KoreaTrip from "@/components/main/KoreaTrip.vue";
 import MainNotice from "@/components/main/MainNotice.vue";
+import MainFooter from "@/components/main/MainFooter.vue";
 
 export default {
-  components: { MainWeather, KoreaTrip, VideoPage, MainNotice },
+  components: { MainWeather, KoreaTrip, VideoPage, MainNotice, MainFooter },
 };
 </script>
 
