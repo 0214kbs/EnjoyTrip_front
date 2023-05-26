@@ -18,7 +18,6 @@
             <!-- / New for FileUpload, CKEditor -->
           </div>
 
-  
           <button id="btnBoardInsert" class="btn btn-sm btn-primary btn-outline float-end" data-bs-dismiss="modal" type="button" @click="boardInsert">
             등록
           </button>
@@ -39,33 +38,33 @@ Vue.use(CKEditor).use(VueAlertify);
 import http from "@/common/axios";
 
 export default {
-  props:["routeData"],
+  props: ["routeData"],
 
   data() {
     return {
       title: "",
       CKEditor: "",
-      attachFile: false,
-      fileList: [],
+      // attachFile: false,
+      // fileList: [],
 
-      id:0,
+      id: 0,
     };
   },
   methods: {
     initUI() {
       this.title = "";
       this.CKEditor.setData("");
-      this.attachFile = false;
-      this.fileList = [];
-      document.querySelector("#inputFileUploadInsert").value = "";
+      // this.attachFile = false;
+      // this.fileList = [];
+      // document.querySelector("#inputFileUploadInsert").value = "";
     },
-    changeFile(fileEvent) {
-      this.fileList = [];
-      const fileArray = Array.from(fileEvent.target.files); // Array 로 변환 가능
-      fileArray.forEach((file) => {
-        this.fileList.push(URL.createObjectURL(file));
-      });
-    },
+    // changeFile(fileEvent) {
+    //   this.fileList = [];
+    //   const fileArray = Array.from(fileEvent.target.files); // Array 로 변환 가능
+    //   fileArray.forEach((file) => {
+    //     this.fileList.push(URL.createObjectURL(file));
+    //   });
+    // },
     async boardInsert() {
       // file upload - multipart/form-data
       // let formData = new FormData();
@@ -74,11 +73,11 @@ export default {
       this.id = this.id + 1;
       var num = this.routeData.length;
       console.log(num);
-     
+
       let response = await http.post("/course", {
-        num : num,
-        userCourseId:this.id,
-        Allcourse : this.routeData,
+        num: num,
+        userCourseId: this.id,
+        Allcourse: this.routeData,
         title: this.title,
         content: this.CKEditor.getData(),
       });

@@ -5,22 +5,20 @@
       <div class="container">
         <div class="page-name">
           <span class="title">나의 일정</span>
-          <button class="button_1">+</button>
+          <router-link to="/map"><button class="button_1">+</button></router-link>
         </div>
         <hr />
         <div class="card-container wrap">
-
-          <div class="card" v-for="(card,index) in this.routeList" :key="index">
+          <div class="card" v-for="(card, index) in this.routeList" :key="index">
             <div class="card-header">
               <h2 class="card-title">{{ card.title }}</h2>
-              
             </div>
-            
-            <div class="card-body">
-              <p class="card-text" v-html = card.content ></p>
 
-              <div class="card-text" v-for="(route ,index) in card.Allcourse" :key="index">
-                <img :src= route.firstimage width="100px"/>
+            <div class="card-body">
+              <p class="card-text" v-html="card.content"></p>
+
+              <div class="card-text" v-for="(route, index) in card.Allcourse" :key="index">
+                <img :src="route.firstimage" width="100px" />
                 <p>
                   {{ route.spotTitle }}
                 </p>
@@ -31,7 +29,6 @@
             </div>
             <button class="bi bi-file-x" @click="deletePlan(card.userCourseId)">삭제</button>
           </div>
-
         </div>
       </div>
     </section>
@@ -44,35 +41,29 @@ import http from "@/common/axios";
 export default {
   data() {
     return {
-      routeList:[],
+      routeList: [],
     };
   },
-  methods:{
+  methods: {
+    async planList() {
+      console.log("sdfs");
 
-    async planList(){
-      console.log("sdfs")
-     
       let response = await http.get("/course");
 
       let { data } = response;
       console.log(data.data);
       this.routeList = data.data;
-
     },
-    async deletePlan(id){
-      let response = await http.delete("/course/"+id);
+    async deletePlan(id) {
+      let response = await http.delete("/course/" + id);
       response.data;
-      this.planList()
-
+      this.planList();
     },
-
   },
 
-  mounted(){
+  mounted() {
     this.planList();
   },
-
-  
 };
 </script>
 
